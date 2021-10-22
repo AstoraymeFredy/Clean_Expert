@@ -3,10 +3,15 @@ package pe.edu.upc.spring.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.CleaningStaff;
 import pe.edu.upc.spring.model.Client;
+import pe.edu.upc.spring.model.User;
 import pe.edu.upc.spring.service.iUserService;
 
 @Controller
@@ -28,14 +33,22 @@ public class UserController {
 		return "";
 	}
 	
-	@RequestMapping("/login")
-	public String goPageLogin() {
-		return "index";
+	@RequestMapping("/gologin")
+	public String goPageLogin(Model model) {
+		model.addAttribute("user", new User());
+		return "login";
 	}
 	
-	@RequestMapping("/")
-	public String Login() {
-		return "";
+	@RequestMapping("/login")
+	public String Login(@ModelAttribute User objUser, BindingResult binRes, Model model)throws ParseException{
+		if (binRes.hasErrors()) {
+			
+			return "login";
+		} else {
+			System.out.println(objUser.getUsername());
+			System.out.println(objUser.getPassword());
+		}
+		return "login";
 	}
 	
 	@RequestMapping("/5")
