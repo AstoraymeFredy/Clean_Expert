@@ -2,8 +2,11 @@ package pe.edu.upc.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pe.edu.upc.spring.model.CleaningStaff;
+import pe.edu.upc.spring.model.Client;
 import pe.edu.upc.spring.service.iUserService;
 
 @Controller
@@ -14,21 +17,23 @@ public class UserController {
 	private iUserService uService;
 	
 	@RequestMapping("/1")
-	public String goPageRegisterClient() {
+	public String goPageRegisterClient(Model model) {
+		model.addAttribute("client", new Client());
 		return "";
 	}
 	
 	@RequestMapping("/2")
-	public String goPageRegisterStaff() {
+	public String goPageRegisterStaff(Model model) {
+		model.addAttribute("staff", new CleaningStaff());
 		return "";
 	}
 	
-	@RequestMapping("/3")
+	@RequestMapping("/login")
 	public String goPageLogin() {
-		return "";
+		return "index";
 	}
 	
-	@RequestMapping("/4")
+	@RequestMapping("/")
 	public String Login() {
 		return "";
 	}
