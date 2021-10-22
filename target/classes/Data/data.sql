@@ -91,6 +91,6 @@ INSERT INTO distrito (nombre) VALUES ('Villa MarÃ­a del Triunfo');
 --INSERT INTO detallereserva (cantidad,idambiente,idreserva) VALUES (1,5,2);
 --INSERT INTO detallereserva (cantidad,idambiente,idreserva) VALUES (2,6,2);
 --
---INSERT INTO parametro (nombre,valor,unidad) VALUES ('Tiempo de limpieza',45,'minutos');
---INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo de promedio',15,'soles/hora');
---INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo kit',50,'soles/hora');
+INSERT INTO parametro (nombre,valor,unidad) VALUES ('Tiempo de limpieza',45,'minutos');
+INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo de promedio',15,'soles/hora');
+INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo kit',50,'soles/hora');
