@@ -1,7 +1,5 @@
 package pe.edu.upc.spring.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +42,8 @@ public class ClientController {
 		} else {
 			User user = objClient.getUser();
 			user.setType_user(new TypeUser(1, "Cliente"));
+			user.setUsername(user.getUsername().trim());
+			user.setPassword(user.getPassword().trim());
 			boolean flag = uService.createUser(user);
 			if(flag) {
 				objClient.setUser(user);
