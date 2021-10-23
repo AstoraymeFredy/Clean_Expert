@@ -36,6 +36,9 @@ public class CleaningStaff implements Serializable  {
 	@Column(name="celular", nullable=false, length=20)
 	private String phone;
 	
+	@Column(name="habilitado", nullable=false)
+	private boolean enabled;
+	
 	@OneToOne
 	@JoinColumn(name="id_usuario", nullable=false)
 	private User user;

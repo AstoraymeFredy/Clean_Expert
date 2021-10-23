@@ -9,8 +9,8 @@ INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('us4','MartaP',2
 INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Torres Arias',978563412,'torresA@gmail.com','Ana',1);
 INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Castillo Flores',975372412,'Juan1234@gmail.com','Juan',2);
 
-INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado','12345MP@gmail.com','Marta',4);
-INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre,id_usuario) VALUES ('Galvez Acosta',912433412,'10 aÃ±os de experiencia en limpieza','pedro123@gmail.com','Pedro',3);
+INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado','12345MP@gmail.com','Marta',true,4);
+INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Galvez Acosta',912433412,'10 aÃ±os de experiencia en limpieza','pedro123@gmail.com','Pedro',true,3);
 
 
 --INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,2);
