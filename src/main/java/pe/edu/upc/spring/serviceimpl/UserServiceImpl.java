@@ -18,7 +18,7 @@ public class UserServiceImpl implements iUserService {
 
 	@Override
 	@Transactional
-	public boolean CreateUser(User user) {
+	public boolean createUser(User user) {
 		User objUser = dUser.save(user);
 		if(objUser==null) {
 			return false;

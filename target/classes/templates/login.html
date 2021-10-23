@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><a th:href="@{/client/register}">Registrar cliente</a></li>
+			<li>Registrar Personal limpieza</li>
+		</ul>
+	</div>
+	<form th:action="@{/user/login}" method="post" th:object="${user}">
+		<label for="usuario">Usuario:</label>
+		<input id="usuario" placeholder="Ingrese su usuario" th:field="*{username}" type="text"/>
+		<label for="password">Contraseña:</label>
+		<input id="password" placeholder="Ingrese su contraseña" th:field="*{password}" type="password"/>
+		
+		<button type="submit">
+			guardar
+		</button>
+	</form>
+	
+</body>
+</html>
