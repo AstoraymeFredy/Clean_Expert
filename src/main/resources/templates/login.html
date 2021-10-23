@@ -5,6 +5,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
+		<ul>
+			<li><a th:href="@{/client/register}">Registrar cliente</a></li>
+			<li>Registrar Personal limpieza</li>
+		</ul>
+	</div>
 	<form th:action="@{/user/login}" method="post" th:object="${user}">
 		<label for="usuario">Usuario:</label>
 		<input id="usuario" placeholder="Ingrese su usuario" th:field="*{username}" type="text"/>
@@ -15,5 +21,6 @@
 			guardar
 		</button>
 	</form>
+	
 </body>
 </html>
