@@ -16,19 +16,19 @@ INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habil
 --INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,2);
 --INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,1);
 
---INSERT INTO ambiente (nombre) VALUES ('Dormitorio');
---INSERT INTO ambiente (nombre) VALUES ('Comedor');
---INSERT INTO ambiente (nombre) VALUES ('Cocina');
---INSERT INTO ambiente (nombre) VALUES ('Biblioteca');
---INSERT INTO ambiente (nombre) VALUES ('Baño');
---INSERT INTO ambiente (nombre) VALUES ('Sala');
+INSERT INTO ambiente (nombre) VALUES ('Dormitorio');
+INSERT INTO ambiente (nombre) VALUES ('Comedor');
+INSERT INTO ambiente (nombre) VALUES ('Cocina');
+INSERT INTO ambiente (nombre) VALUES ('Biblioteca');
+INSERT INTO ambiente (nombre) VALUES ('Baño');
+INSERT INTO ambiente (nombre) VALUES ('Sala');
 
 
 
 INSERT INTO distrito (nombre) VALUES ('Ancon');
 INSERT INTO distrito (nombre) VALUES ('Ate');
 INSERT INTO distrito (nombre) VALUES ('Barranco');
-INSERT INTO distrito (nombre) VALUES ('BreÃ±a');
+INSERT INTO distrito (nombre) VALUES ('Breña');
 INSERT INTO distrito (nombre) VALUES ('Carabayllo');
 INSERT INTO distrito (nombre) VALUES ('Chaclacayo');
 INSERT INTO distrito (nombre) VALUES ('Chorrillos');
@@ -36,14 +36,14 @@ INSERT INTO distrito (nombre) VALUES ('Cieneguilla');
 INSERT INTO distrito (nombre) VALUES ('Comas');
 INSERT INTO distrito (nombre) VALUES ('El Agustino');
 INSERT INTO distrito (nombre) VALUES ('Independencia');
-INSERT INTO distrito (nombre) VALUES ('JesÃºs MarÃ­a');
+INSERT INTO distrito (nombre) VALUES ('Jesus Maria');
 INSERT INTO distrito (nombre) VALUES ('La Molina');
 INSERT INTO distrito (nombre) VALUES ('La Victoria');
 INSERT INTO distrito (nombre) VALUES ('Lima');
 INSERT INTO distrito (nombre) VALUES ('Lince');
 INSERT INTO distrito (nombre) VALUES ('Los Olivos');
 INSERT INTO distrito (nombre) VALUES ('Lurigancho');
-INSERT INTO distrito (nombre) VALUES ('LurÃ­n');
+INSERT INTO distrito (nombre) VALUES ('Lurin');
 INSERT INTO distrito (nombre) VALUES ('Magdalena del Mar');
 INSERT INTO distrito (nombre) VALUES ('Miraflores');
 INSERT INTO distrito (nombre) VALUES ('Pachacamac');
@@ -59,24 +59,23 @@ INSERT INTO distrito (nombre) VALUES ('San Isidro');
 INSERT INTO distrito (nombre) VALUES ('San Juan de Lurigancho');
 INSERT INTO distrito (nombre) VALUES ('San Juan de Miraflores');
 INSERT INTO distrito (nombre) VALUES ('San Luis');
-INSERT INTO distrito (nombre) VALUES ('San MartÃ­n de Porres');
+INSERT INTO distrito (nombre) VALUES ('San Martin de Porres');
 INSERT INTO distrito (nombre) VALUES ('San Miguel');
 INSERT INTO distrito (nombre) VALUES ('Santa Anita');
-INSERT INTO distrito (nombre) VALUES ('Santa MarÃ­a del Mar');
+INSERT INTO distrito (nombre) VALUES ('Santa Maria del Mar');
 INSERT INTO distrito (nombre) VALUES ('Santa Rosa');
 INSERT INTO distrito (nombre) VALUES ('Santiago de Surco');
 INSERT INTO distrito (nombre) VALUES ('Surquillo');
 INSERT INTO distrito (nombre) VALUES ('Villa El Salvador');
-INSERT INTO distrito (nombre) VALUES ('Villa MarÃ­a del Triunfo');
---
---INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av univeritaria',2,3);
---INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av la marina',1,5);
---INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av tomas valle',1,6);
---
---
---INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2019-07-17', '08:00',true,80,1,1);
---INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2019-07-17', '08:00',true,90,1,2);
---
+INSERT INTO distrito (nombre) VALUES ('Villa Maria del Triunfo');
+
+INSERT INTO propiedad (direccion,id_client,id_district) VALUES ('av univeritaria',2,3);
+INSERT INTO propiedad (direccion,id_client,id_district) VALUES ('av la marina',1,5);
+INSERT INTO propiedad (direccion,id_client,id_district) VALUES ('av tomas valle',1,6);
+
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2019-07-17', '08:00',true,80,1,1);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2019-07-17', '08:00',true,90,1,2);
+
 --INSERT INTO detallereserva (cantidad,idambiente,idreserva) VALUES (2,1,1);
 --INSERT INTO detallereserva (cantidad,idambiente,idreserva) VALUES (3,2,1);
 --INSERT INTO detallereserva (cantidad,idambiente,idreserva) VALUES (2,3,1);
