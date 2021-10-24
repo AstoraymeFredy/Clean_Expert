@@ -9,7 +9,6 @@ import pe.edu.upc.spring.model.Schedule;
 
 @Repository
 public interface iScheduleRepository extends JpaRepository<Schedule, Integer> {
-	
-	//List<Schedule> findByDate();
+	List<Schedule> findByDate();
 	
 }
