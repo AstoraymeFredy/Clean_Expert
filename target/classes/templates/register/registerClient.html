@@ -5,6 +5,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form th:action="@{/client/registerClient}" method="post" th:object="${client}">
+		<label for="usuario">Nombre:</label>
+		<input id="usuario" placeholder="Ingrese su nombre" th:field="*{name}" type="text"/>
+		<label for="password">Apellido:</label>
+		<input id="usuario" placeholder="Ingrese su apellido" th:field="*{lastname}" type="text"/>
+		<label for="password">Correo:</label>
+		<input id="usuario" placeholder="Ingrese su correo" th:field="*{email}" type="text"/>
+		<label for="password">Celular:</label>
+		<input id="usuario" placeholder="Ingrese su celular" th:field="*{phone}" type="text"/>
+		<label for="password">Usuario:</label>
+		<input id="usuario" placeholder="Ingrese su usuario" th:field="*{user.username}" type="text"/>
+		<label for="password">Contraseña:</label>
+		<input id="usuario" placeholder="Ingrese su contraseña" th:field="*{user.password}" type="text"/>
 
+		<button type="submit">
+			guardar
+		</button>
+	</form>
 </body>
 </html>
