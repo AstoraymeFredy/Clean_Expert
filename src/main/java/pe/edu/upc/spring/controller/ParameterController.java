@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,30 +24,47 @@ public class ParameterController {
 	@Autowired
 	private iParameterService pService;
 	
-	@RequestMapping("/1")
+	@RequestMapping("/list")
 	public String goPageListParameters(Map<String, Object> model) {
 		model.put("listParameters", pService.list());
-		return "";
+		return "/parameter/listParameter";
 	}
 	
-	@RequestMapping("/2")
+	@RequestMapping("/register")
+	public String goPageRegister(Model model) {
+		model.addAttribute("parameter", new Parameter());
+		return "/parameter/Parameter";
+	}
+	
+	@RequestMapping("/registerParameter")
+	public String registrar(@ModelAttribute Parameter objParameter, BindingResult binRes, Model model)
+			throws ParseException
+	{
+		if (binRes.hasErrors())
+			return "parameter";
+		else {
+			boolean flag = pService.createParameter(objParameter);
+			if (flag)
+				return "redirect:/parameter/list";
+			else {
+				model.addAttribute("mensaje", "Ocurrio un error");
+				return "redirect:/parameter/register";
+			}
+		}
+	}
+	
+	@RequestMapping("/modify/{id}")
 	public String modify(@PathVariable int id, Model model, RedirectAttributes objRedir)
 		throws ParseException 
 		{
 			Optional<Parameter> objPar= pService.listId(id);
 			if (objPar == null) {
 				objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-				return "";
+				return "redirect:/parameter/list";
 			}
 			else {
-				model.addAttribute("par", objPar);
-				return "parameter";
+				model.addAttribute("parameter", objPar);
+				return "/parameter/Parameter";
 			}
 		}
-	
-	@RequestMapping("/list")
-	public String list(Map<String, Object> model) {
-		model.put("listParameters", pService.list());
-		return "";
-	}	
 }
