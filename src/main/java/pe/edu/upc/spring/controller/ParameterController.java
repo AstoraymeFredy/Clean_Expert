@@ -41,7 +41,7 @@ public class ParameterController {
 			throws ParseException
 	{
 		if (binRes.hasErrors())
-			return "parameter";
+			return "/parameter/Parameter";
 		else {
 			boolean flag = pService.createParameter(objParameter);
 			if (flag)
