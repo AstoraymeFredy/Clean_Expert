@@ -27,7 +27,7 @@ public class User implements Serializable {
 	private String password;
 	
 	@OneToOne
-	@JoinColumn(name="idTipoUsuario", nullable=false)
+	@JoinColumn(name="id_tipo_usuario", nullable=false)
 	private TypeUser type_user;
 
 	public User() {
