@@ -7,7 +7,7 @@ import pe.edu.upc.spring.model.Parameter;
 
 public interface iParameterService {
 	
-	public boolean CreateParameter(Parameter parameter);
+	public boolean createParameter(Parameter parameter);
 	public Optional<Parameter> listId(int id_parameter);
 	List<Parameter> list();
 }

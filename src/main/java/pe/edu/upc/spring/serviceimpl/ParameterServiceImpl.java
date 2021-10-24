@@ -19,15 +19,13 @@ public class ParameterServiceImpl implements iParameterService{
 
 	@Override
 	@Transactional
-	public boolean CreateParameter(Parameter parameter ) {
+	public boolean createParameter(Parameter parameter ) {
 		Parameter objParameter = dParameter.save(parameter);
-		if(objParameter==null) {
+		if (objParameter == null)
 			return false;
-		} else {
+		else
 			return true;
-		}
 	}
-	
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<Parameter> listId(int id_parameter) {

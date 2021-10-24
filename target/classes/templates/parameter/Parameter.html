@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Parametro</title>
+</head>
+
+<body>
+	<form th:action="@{/parameter/registerParameter}" method="post" th:object="${parameter}">
+		<label for="nombre">Nombre:</label>
+		<input type="text" th:field="*{name}" id="nombre"></input>
+		
+		<label for="valor">Valor:</label>
+		<input type="text" th:field="*{value}" id="valor"></input>
+		
+		<label for="unidad">Unidad:</label>
+		<input type="text" th:field="*{unit}" id="unidad"></input>
+		
+		<button type="submit">Guardar</button>
+	</form>
+</body>
+</html>
