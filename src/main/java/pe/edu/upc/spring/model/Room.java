@@ -10,37 +10,36 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Distrito")
-public class District implements Serializable {
-	
+@Table(name="Ambiente")
+public class Room implements Serializable{
+
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_district;
+	private int id_room;
 	
 	@Column(name="nombre", nullable=false, length=50)
 	private String name;
 
-	public District() {
+	public Room() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public District(int id_district, String name) {
+	public Room(int id_room, String name) {
 		super();
-		this.id_district  = id_district;
+		this.id_room = id_room;
 		this.name = name;
 	}
 
-	
-
-	public int getId_district() {
-		return id_district;
+	public int getId_room() {
+		return id_room;
 	}
 
-	public void setId_district(int id_district) {
-		this.id_district = id_district;
+	public void setId_room(int id_room) {
+		this.id_room = id_room;
 	}
 
 	public String getName() {
@@ -52,5 +51,5 @@ public class District implements Serializable {
 	}
 	
 	
-
+	
 }
