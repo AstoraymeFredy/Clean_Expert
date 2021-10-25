@@ -31,7 +31,7 @@ public class ReservationServiceImpl implements iReservationService {
 		
 	@Override
 	public Optional<Reservation> findById(int idReservation) {
-		return dReservation.findByIdReservation(idReservation);
+		return dReservation.findById(idReservation);
 	}
 
 	@Override

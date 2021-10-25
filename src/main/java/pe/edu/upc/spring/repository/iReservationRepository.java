@@ -22,7 +22,7 @@ public interface iReservationRepository extends JpaRepository<Reservation, Integ
 	
     List<Reservation> findByDate(Date date);
     
-    Optional<Reservation> findByIdReservation(int id);
+    Optional<Reservation> findById(int id);
 
 }
 

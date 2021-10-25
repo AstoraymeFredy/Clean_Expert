@@ -83,7 +83,7 @@ public class Reservation implements Serializable {
 	public Reservation(int id_reservation, Date date, float price, Date start_time, int duration,
 			boolean extra_cleaning_kit, String state, String card_owner_name,
 			Long card_number, Date expiration_date,
-			String cvv_card, CleaningStaff cleaningStaff, Property porperty) {
+			String cvv_card, CleaningStaff cleaningStaff, Property property) {
 		super();
 		this.id_reservation = id_reservation;
 		this.date = date;
@@ -97,7 +97,7 @@ public class Reservation implements Serializable {
 		this.expiration_date = expiration_date;
 		this.cvv_card = cvv_card;
 		this.cleaningStaff = cleaningStaff;
-		this.property = porperty;
+		this.property = property;
 	}
 
 	public int getId_reservation() {
@@ -196,12 +196,12 @@ public class Reservation implements Serializable {
 		this.cleaningStaff = cleaningStaff;
 	}
 
-	public Property getPorperty() {
+	public Property getProperty() {
 		return property;
 	}
 
-	public void setPorperty(Property porperty) {
-		this.property = porperty;
+	public void setProperty(Property property) {
+		this.property = property;
 	}
 
 

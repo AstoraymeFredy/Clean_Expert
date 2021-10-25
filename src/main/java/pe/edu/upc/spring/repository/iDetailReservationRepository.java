@@ -12,7 +12,7 @@ import pe.edu.upc.spring.model.DetailReservation;
 @Repository
 public interface iDetailReservationRepository extends JpaRepository<DetailReservation, Integer> {
 	
-	@Query("from Reservation r where r.reservation.id_reservation = :idReservation")
+	@Query("from DetailReservation r where r.reservation.id_reservation = :idReservation")
 	List<DetailReservation> findByReservationId(@Param("idReservation") int idReservation);
 }
 
