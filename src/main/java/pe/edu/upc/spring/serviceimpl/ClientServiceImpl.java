@@ -20,6 +20,7 @@ public class ClientServiceImpl implements iClientService {
 	@Override
 	@Transactional
 	public boolean createClient(Client client) {
+		System.out.println(client.getId_client());
 		Client objClient = dClient.save(client);
 		if(objClient==null) {
 			return false;
