@@ -12,6 +12,7 @@ import pe.edu.upc.spring.model.Schedule;
 
 @Repository
 public interface iScheduleRepository extends JpaRepository<Schedule, Integer> {
+
 	@Query("from Schedule s where :filter = True")
 	List<Schedule> findHorarioByDate(@Param("filter") String filter);
 	

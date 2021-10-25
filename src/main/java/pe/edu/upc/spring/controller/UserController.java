@@ -44,7 +44,7 @@ public class UserController {
 	@RequestMapping("/doLogin")
 	public String Login(@ModelAttribute User objUser, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
-			return "login";
+			return "redirect:/user/login";
 		} else {
 			Optional<User> findedUser = uService.findByUsernameAndPassword(objUser.getUsername(), objUser.getPassword());
 			if(findedUser.isPresent()) {
@@ -55,23 +55,23 @@ public class UserController {
 					if(findedClient.isPresent()) {
 						Client client = findedClient.get();
 						sesion.setClient(client);
+						model.addAttribute("client", client);
 						return "redirect:/reservation/client/list";
 					} else {
-						return "login";
+						return "redirect:/user/login";
 					}
 				} else {
 					Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(currentUser.getId_user());
 					if(findedCleaningStaff.isPresent()) {
 						CleaningStaff cleaningStaff = findedCleaningStaff.get();
 						sesion.setCleaningStaff(cleaningStaff);
-						return "redirect:/reservation/test";
+						return "redirect:/service/list";
 					} else {
-						return "login";
+						return "redirect:/user/login";
 					}
 				}
 			} else {
-				System.out.println("6");
-				return "login";
+				return "redirect:/user/login";
 			}
 		}
 	}

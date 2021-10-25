@@ -60,15 +60,31 @@ public class ClientController {
 		
 	}
 	
-	@RequestMapping("/edit")
-	public String goPageEdit(Model model) {
+	@RequestMapping("/view")
+	public String goPageView(Model model) {
 		model.addAttribute("client", sesion.getClient());
-		return "";
+		return "/perfilClient/view";
+	}
+	
+	@RequestMapping("/edit")
+	public String goPageEdit(Model model){
+		model.addAttribute("client", sesion.getClient());
+		return "/perfilClient/edit";
 	}
 	
 	@RequestMapping("/editClient")
 	public String editClient(@ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
-		return "";
+		if(binRes.hasErrors()) {
+			return "redirect:/client/edit";
+		} else {
+			boolean flag = cService.createClient(objClient);
+			if(flag) {
+				sesion.setClient(objClient);
+				return "redirect:/reservation/client/list";
+			} else {
+				return "redirect:/client/edit";
+			}
+		}
 	}
 	
 }
