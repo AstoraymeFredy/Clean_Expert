@@ -14,6 +14,7 @@ import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Valoration;
 import pe.edu.upc.spring.service.iValorationService;
+import pe.edu.upc.spring.utils.Sesion;
 
 @Controller
 @RequestMapping("/valoration")
