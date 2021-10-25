@@ -55,7 +55,7 @@ public class UserController {
 					if(findedClient.isPresent()) {
 						Client client = findedClient.get();
 						sesion.setClient(client);
-						return "redirect:/reservation/test";
+						return "redirect:/reservation/client/list";
 					} else {
 						return "login";
 					}
