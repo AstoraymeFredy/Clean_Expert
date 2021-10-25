@@ -54,6 +54,8 @@ public class UserController {
 					Optional<Client> findedClient =cService.findByUserId(currentUser.getId_user());
 					if(findedClient.isPresent()) {
 						Client client = findedClient.get();
+						System.out.println(client.getId_client());
+						System.out.println(client.getUser().getType_user().getId_type_user());
 						sesion.setClient(client);
 						model.addAttribute("client", client);
 						return "redirect:/reservation/client/list";

@@ -68,12 +68,13 @@ public class ClientController {
 	
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
-		model.addAttribute("client", sesion.getClient());
-		return "/perfilClient/edit";
+		System.out.println(sesion.getClient().getId_client());
+		model.addAttribute("clientEdit", sesion.getClient());
+		return "/perfilClient/update";
 	}
 	
 	@RequestMapping("/editClient")
-	public String editClient(@ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
+	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {
 			return "redirect:/client/edit";
 		} else {
