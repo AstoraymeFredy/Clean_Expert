@@ -29,14 +29,28 @@ public class ScheduleServiceImpl implements iScheduleService {
 	}
 	
 	@Override
-	@Transactional(readOnly = true)
-	public Optional<Schedule> listId(int id_schedule) {
-		return dSchedule.findById(id_schedule);
+	@Transactional
+	public boolean updateSchedule(Schedule schedule) {
+		return true;
 	}
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Schedule> list() {
+	public List<Schedule> findHorarioByDate(String filter){
+		return dSchedule.findHorarioByDate(filter);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Schedule> findByIdStaff(int idStaff)
+	{
+		return dSchedule.findById(idStaff);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Schedule> listSchedule()
+	{
 		return dSchedule.findAll();
 	}
 	
