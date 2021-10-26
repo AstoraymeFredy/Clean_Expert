@@ -69,9 +69,9 @@ INSERT INTO distrito (nombre) VALUES ('Surquillo');
 INSERT INTO distrito (nombre) VALUES ('Villa El Salvador');
 INSERT INTO distrito (nombre) VALUES ('Villa Maria del Triunfo');
 
-INSERT INTO propiedad (direccion,id_client,id_district) VALUES ('av univeritaria',2,3);
-INSERT INTO propiedad (direccion,id_client,id_district) VALUES ('av la marina',1,5);
-INSERT INTO propiedad (direccion,id_client,id_district) VALUES ('av tomas valle',1,6);
+INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('av univeritaria',2,3);
+INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('av la marina',1,5);
+INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('av tomas valle',1,6);
 
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2019-07-17', '08:00',true,80,1,1);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2019-07-17', '08:00',true,90,1,2);
