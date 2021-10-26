@@ -72,10 +72,16 @@
 												<td class="align-middle" th:text="${prop.district.name}"></td>
 												<td class="align-middle" th:text="${prop.address}"></td>
 												<td class="align-middle">
-													<a title="Modificar" class="btn btn-warning rounded-circle"><i
-														class="bi bi-pencil text-white"> </i></a> 
-													<a title="Eliminar" class="btn btn-danger rounded-circle me-2"><i
-														class="bi bi-trash text-white"></i></a></td>
+													<a title="Modificar" class="btn btn-warning rounded-circle"
+													th:href="@{'/property/edit/'}+${prop.id_property}"
+													><i	class="bi bi-pencil text-white"> </i></a> 
+													
+													<a title="Eliminar" class="btn btn-danger rounded-circle me-2"
+													th:href="@{/property/delete?id=}+${prop.id_property}"
+													><i	class="bi bi-trash text-white"></i></a></td>
+														
+<!-- 												<td><a th:href="@{/pet/eliminar?id=}+${pet.idPet}">Eliminar</a></td>    								 -->
+<!--     											<td><a th:href="@{'/pet/modificar/'}+${pet.idPet}">Modificar</a></td> -->
 
 											</tr>
 										</tbody>
@@ -85,6 +91,9 @@
 						</div>
 
 					</div>
+					<div th:if="${mensaje}" class="alert alert-danger">
+    				<p th:text="${mensaje}"></p>
+    			</div>
 				</div>
 			</main>
 		</div>
