@@ -31,7 +31,7 @@
 								<div
 									class="border-bottom pb-4 mb-4 d-flex align-items-center justify-content-between">
 									<div>
-										<h3 class="mb-0 fw-bold text-primary">Guardar direccion</h3>
+										<h3 class="mb-0 fw-bold text-primary">Agregar direccion</h3>
 									</div>
 									<div></div>
 								</div>
@@ -41,9 +41,8 @@
 					<div class="row mb-4">
 						<div class="col-xl-3 col-lg-4 col-md-12 col-12">
 							<div class="mb-4 mb-lg-0">
-								<h4 class="mb-1">Detalle de direccion</h4>
-								<p class="mb-0 fs-5 text-muted">Ingrese los detalles de su
-									direccion</p>
+								
+								<p class="mb-0 fs-5 text-muted">Complete los campos de la direccion</p>
 							</div>
 						</div>
 						<div class="col-xl-9 col-lg-8 col-md-12 col-12">
@@ -53,9 +52,7 @@
 								<div class="card-body">
 									<form th:action="@{/property/registerProperty}" method="post"
 										th:object="${property}">
-										<div class="mb-4 mt-4">
-											<h4 class="mb-1 text-primary">Propiedad</h4>
-										</div>
+										
 										<!-- row -->
 										<div class="mb-4 row">
 											<label for="district"
@@ -63,19 +60,15 @@
 	                                            form-label">Distrito</label>
 											<div class="col-md-8 col-12">
 
-<!-- 												<select class="form-select" id="location"> -->
-<!-- 													<option selected>Selecciona un distrito</option> -->
-<!-- 													<option value="1">Su casa</option> -->
-<!-- 													<option value="2">Su oficina</option> -->
-<!-- 													<option value="3">xxxxx</option> -->
-<!-- 												</select>  -->
-												
-												
-												<select class="form-control" th:field="*{district.id_district}">
+												<select class="form-control" th:field="*{district.id_district}" >
+													
+													<option value="0">Selecciona un distrito</option>
 													<option th:each="dis: ${listDistrict}" 
 															th:value="${dis.id_district}"
 															th:text="${dis.name}"
-															th:selected="(${dis.id_district}==*{district.id_district})">Selecciona un distrito</option>
+															th:selected="(${dis.id_district}==*{district.id_district})"
+															
+															></option>
 															
 												</select>
 
@@ -83,11 +76,11 @@
 											</div>
 										</div>
 										<div class="mb-4 row">
-											<label for="email"
+											<label for="address"
 												class="col-sm-4 col-form-label
 	                                            form-label">Direccion</label>
 											<div class="col-md-8 col-12">
-												<input type="text" class="form-control" th:field="*{address}" placeholder="Direccion" id="address" required>
+												<input type="text" class="form-control" th:field="*{address}" placeholder="Ingresa una direccion" id="address" required="required">
 													
 												
 											</div>
