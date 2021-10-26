@@ -25,11 +25,11 @@ private static final long serialVersionUID = 1L;
 	private String address;
 	
 	@ManyToOne
-	@JoinColumn(name="id_client", nullable=false)
+	@JoinColumn(name="id_cliente", nullable=false)
 	private Client client;
 	
 	@ManyToOne
-	@JoinColumn(name="id_district", nullable=false)
+	@JoinColumn(name="id_distrito", nullable=false)
 	private District district;
 
 	public Property(int id_property, String address, Client client, District district) {
