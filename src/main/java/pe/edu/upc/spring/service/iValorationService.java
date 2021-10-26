@@ -9,5 +9,7 @@ public interface iValorationService {
 	
 	public boolean createValoration(Valoration valoration);
 	public Optional<Valoration> listId(int id_valoration);
+	//public Optional<Valoration> listByReservation(int id_reservation);
 	List<Valoration> list();
+	
 }
