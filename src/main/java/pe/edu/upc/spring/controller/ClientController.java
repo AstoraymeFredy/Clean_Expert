@@ -68,7 +68,6 @@ public class ClientController {
 	
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
-		System.out.println(sesion.getClient().getId_client());
 		model.addAttribute("clientEdit", sesion.getClient());
 		return "/perfilClient/update";
 	}

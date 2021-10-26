@@ -63,14 +63,19 @@ public class UserController {
 						return "redirect:/user/login";
 					}
 				} else {
-					Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(currentUser.getId_user());
-					if(findedCleaningStaff.isPresent()) {
-						CleaningStaff cleaningStaff = findedCleaningStaff.get();
-						sesion.setCleaningStaff(cleaningStaff);
-						return "redirect:/service/list";
+					if(currentUser.getType_user().getId_type_user() == 2) {
+						Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(currentUser.getId_user());
+						if(findedCleaningStaff.isPresent()) {
+							CleaningStaff cleaningStaff = findedCleaningStaff.get();
+							sesion.setCleaningStaff(cleaningStaff);
+							return "redirect:/service/list";
+						} else {
+							return "redirect:/user/login";
+						}
 					} else {
-						return "redirect:/user/login";
+						return "";
 					}
+					
 				}
 			} else {
 				return "redirect:/user/login";
