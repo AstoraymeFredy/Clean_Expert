@@ -7,6 +7,9 @@
 
 <body>
 	<form th:action="@{/valoration/registerValoration}" method="post" th:object="${valoration}">
+		<input type="hidden" th:field= "*{client.id_client}">
+		<input type="hidden" th:field= "*{cleaning_staff.id_cleaning_staff}">
+		
 		<label for="calificacion">Calificacion</label>
 		<input type="text" th:field="*{calification}" id="calificacion"></input>
 		

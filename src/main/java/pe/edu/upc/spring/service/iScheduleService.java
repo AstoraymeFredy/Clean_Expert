@@ -7,6 +7,8 @@ import pe.edu.upc.spring.model.Schedule;
 
 public interface iScheduleService {
 	public boolean createSchedule(Schedule schedule);
-	public Optional<Schedule> listId(int id_schedule);
-	List<Schedule> list();
+	public boolean updateSchedule(Schedule schedule);
+	public List<Schedule> findHorarioByDate(String filter);
+	public Optional<Schedule> findByIdStaff(int idStaff);
+	public List<Schedule> listSchedule();
 }

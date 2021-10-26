@@ -7,6 +7,9 @@
 
 <body>
 	<form th:action="@{/parameter/registerParameter}" method="post" th:object="${parameter}">
+		
+		<input id="Parametro" placeholder="Ingrese su nombre" th:field="*{id_parameter}" type="hidden"/>
+		
 		<label for="nombre">Nombre:</label>
 		<input type="text" th:field="*{name}" id="nombre"></input>
 		
