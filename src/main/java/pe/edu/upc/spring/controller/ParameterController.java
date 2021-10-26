@@ -33,7 +33,7 @@ public class ParameterController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("parameter", new Parameter());
-		return "/parameter/Parameter";
+		return "/parameter/update";
 	}
 	
 	@RequestMapping("/registerParameter")
@@ -41,7 +41,7 @@ public class ParameterController {
 			throws ParseException
 	{
 		if (binRes.hasErrors())
-			return "/parameter/Parameter";
+			return "redirect:/parameter/update";
 		else {
 			boolean flag = pService.createParameter(objParameter);
 			if (flag)
@@ -64,7 +64,7 @@ public class ParameterController {
 			}
 			else {
 				model.addAttribute("parameter", objPar);
-				return "/parameter/Parameter";
+				return "/parameter/update";
 			}
 		}
 }
