@@ -31,6 +31,7 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<!-- Page header -->
+							<form th:action="@{/property/register}" method="post">
 							<div>
 								<div
 									class="pb-3 mb-4 d-flex align-items-center justify-content-between">
@@ -38,12 +39,14 @@
 										<h3 class="mb-0 fw-bold text-white">Reservas</h3>
 									</div>
 									<div>
-										<button class="btn btn-light">
+										<button class="btn btn-light" type="submit">
 											Nuevo</i>
 										</button>
+										
 									</div>
 								</div>
 							</div>
+							</form>
 						</div>
 					</div>
 					<div class="row mb-4">
@@ -68,11 +71,12 @@
 												<td class="align-middle" th:text="${prop.id_property}"></td>
 												<td class="align-middle" th:text="${prop.district.name}"></td>
 												<td class="align-middle" th:text="${prop.address}"></td>
-												<td class="align-middle">
-													<a title="Ver" class="btn btn-light rounded-circle"><i class="bi bi-eye-fill text-success"> </i></a> 
-													<a title="Calificar" class="btn btn-light rounded-circle me-2"><i class="bi bi-pencil-square text-primary"></i></a>
-													</td>
-													
+												<td class="align-middle"><a title="Ver"
+													class="btn btn-light rounded-circle"><i
+														class="bi bi-eye-fill text-success"> </i></a> <a
+													title="Calificar" class="btn btn-light rounded-circle me-2"><i
+														class="bi bi-pencil-square text-primary"></i></a></td>
+
 											</tr>
 										</tbody>
 									</table>

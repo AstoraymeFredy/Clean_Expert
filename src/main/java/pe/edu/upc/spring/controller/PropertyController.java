@@ -15,7 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
+import pe.edu.upc.spring.model.District;
 import pe.edu.upc.spring.model.Property;
+import pe.edu.upc.spring.service.iDistrictService;
 import pe.edu.upc.spring.service.iPropertyService;
 import pe.edu.upc.spring.utils.Sesion;
 
@@ -29,6 +31,8 @@ public class PropertyController {
 	@Autowired
 	private iPropertyService pService;
 	
+	@Autowired
+	private iDistrictService dService;
 	
 	@RequestMapping("/list")
 	public String goPageListProperties(Map<String, Object> model) {
@@ -39,7 +43,10 @@ public class PropertyController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("property", new Property());
-		return "/register/registerProperty";
+		model.addAttribute("district", new District());
+		model.addAttribute("listDistrict", dService.listDistrict());
+		
+		return "/property/Property";
 	}
 	
 	
@@ -47,6 +54,7 @@ public class PropertyController {
 	public String register(@ModelAttribute Property objProperty, BindingResult binRes, Model model)
 			throws ParseException
 	{
+		objProperty.setClient(sesion.getClient());
 		if (binRes.hasErrors())
 			return "/property/Property";
 		else {
