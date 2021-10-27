@@ -38,7 +38,7 @@ public class ClientController {
 	@RequestMapping("/registerClient")
 	public String registerClient(@ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
-			return "registerClient";
+			return "redirect:/client/register";
 		} else {
 			User user = objClient.getUser();
 			user.setType_user(new TypeUser(1, "Cliente"));

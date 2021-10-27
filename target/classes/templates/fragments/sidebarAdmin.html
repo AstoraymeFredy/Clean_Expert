@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<aside th:fragment="sidebarClient" class="sidebar bg-dark">
+	<aside th:fragment="sidebarAdmin" class="sidebar bg-dark">
 		<div class="sidebar-start">
 			<div class="sidebar-head">
 				<a href="#" class="logo-wrapper" title="Home"> <img
@@ -19,11 +19,10 @@
 			<div class="sidebar-body">
 				<ul class="sidebar-body-menu list-unstyled">
 					<li><a class="text-decoration-none"
-						th:href="@{/reservation/client/list}"><span
-							class="icon bi bi-card-checklist fs-5" aria-hidden="true"></span>Mis
-							reservas</a></li>
-					<li><a class="text-decoration-none" href="/"><span
-							class="icon bi bi-bookmark-plus-fill fs-5" aria-hidden="true"></span>Reservar</a>
+						th:href="@{/admin/staff/list}"><span
+							class="icon bi bi-card-checklist fs-5" aria-hidden="true"></span>Personal de limpieza</a></li>
+					<li><a class="text-decoration-none" th:href="@{/parameter/list}"><span
+							class="icon bi bi-bookmark-plus-fill fs-5" aria-hidden="true"></span>Parametros</a>
 					</li>
 					<li><a class="show-cat-btn text-decoration-none" href="##">
 							<span class="icon bi bi-geo-alt-fill fs-5" aria-hidden="true"></span>Mis

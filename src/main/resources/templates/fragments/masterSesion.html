@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+<body >
+	<div th:fragment="masterSesion" class="wrapper">
+		<div id="content">
+			<div name="header">
+				<nav class="navbar navbar-expand-md navbar-dark bg-transparent d-block px-4 py-2 fixed-top">
+					<div class="d-block">
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="bd-highlight">
+								<a class="navbar-brand" href="#"> <img
+									th:src="@{/img/logo.png}" alt="" height="80" />
+								</a>
+							</div>
+							<div class="d-flex">
+								<div class="me-4 align-middle">
+									<a th:href="@{/staff/register}">Quiero ser Clean Expert</a>
+								</div>
+								<div class="me-4 align-middle">
+									<a th:href="@{/client/register}">Registrate</a>
+								</div>
+								<button class="btn btn-primary bg-primary ">
+									Iniciar Sesion
+								</button>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+
+		</div>
+		
+	</div>
+	
+</body>
+</html>
