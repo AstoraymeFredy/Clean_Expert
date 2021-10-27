@@ -58,7 +58,7 @@ public class UserController {
 						System.out.println(client.getUser().getType_user().getId_type_user());
 						sesion.setClient(client);
 						model.addAttribute("client", client);
-						return "redirect:/reservation/client/list";
+						return "redirect:/reservation/list";
 					} else {
 						return "redirect:/user/login";
 					}

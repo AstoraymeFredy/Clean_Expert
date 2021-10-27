@@ -78,9 +78,6 @@ body {
     background-color: #45C3D3 !important;
     width: 253px;
     padding: 20px 15px 37px 20px;
-    -webkit-transition: 0.5s all;
-    -o-transition: 0.5s all;
-    transition: 0.5s all;
     min-height: 100vh;
     /* sidebar head */
     /* sidebar body */

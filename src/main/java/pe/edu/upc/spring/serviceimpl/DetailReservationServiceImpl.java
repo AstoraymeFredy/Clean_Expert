@@ -8,10 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import pe.edu.upc.spring.model.DetailReservation;
 import pe.edu.upc.spring.repository.iDetailReservationRepository;
-import pe.edu.upc.spring.service.iDeatailReservationService;
+import pe.edu.upc.spring.service.iDetailReservationService;
 
 @Service
-public class DetailReservationServiceImpl implements iDeatailReservationService {
+public class DetailReservationServiceImpl implements iDetailReservationService {
 	
 	@Autowired
 	private iDetailReservationRepository dDetailReservation;
