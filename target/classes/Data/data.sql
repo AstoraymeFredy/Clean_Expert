@@ -8,7 +8,7 @@ INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('12345','persona
 INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('us4','MartaP',2);
 INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('admin','admin',3);
 
-INSERT INTO administrador (apellidos,celular,email,nombre,id_usuario) VALUES ('Pacheco Diaz',954685126,'pachecoD@gmail.com','Alberto',5);
+INSERT INTO administrador (apellidos,email,nombre,id_usuario) VALUES ('Pacheco Diaz','pachecoD@gmail.com','Alberto',5);
 
 INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Torres Arias',978563412,'torresA@gmail.com','Ana',1);
 INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Castillo Flores',975372412,'Juan1234@gmail.com','Juan',2);
