@@ -4,7 +4,7 @@ import java.util.List;
 
 import pe.edu.upc.spring.model.DetailReservation;
 
-public interface iDeatailReservationService {
+public interface iDetailReservationService {
 	public boolean createDetailReservation(DetailReservation detailReservation);
 	public List<DetailReservation> listByReservation(int idResrvation);
 }

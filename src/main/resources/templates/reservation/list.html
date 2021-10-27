@@ -42,15 +42,6 @@
 	                        </div>
 	                        <div class="row mb-4">
 	                            <div class="col-12">
-	                                <!-- card -->
-	                                <div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
-	                                    <div class="row">
-	                                        <div class="col-12 col-sm-6 d-flex">
-	                                            <input type="text" class="form-control me-2" id="inputPassword" placeholder="Si su modulo tiene busqueda lo agregan, de lo contrario retiran el card">
-	                                            <button title="Ver" class="btn btn-primary"><i class="bi bi-search text-white"></i></button>
-	                                        </div>
-	                                    </div>
-	                                </div>
 	                              <!-- card -->
 	                              <div class="card rounded-3 shadow-sm border-0">
 	                                <div class="card-header bg-white border-bottom-0 py-3">
@@ -58,7 +49,7 @@
 	                                  </div>
 	                                <!-- card body -->
 	                                    <div class="table-responsive">
-	                                        <table class="table text-nowrap">
+	                                         <table class="table text-nowrap">
 	                                          <thead class="table-light">
 	                                            <tr>
 	                                              <th>#</th>
@@ -75,12 +66,12 @@
 				    								<td class="align-middle" th:text="${res.id_reservation}"></td>
 				    								<td class="align-middle" th:text="${#dates.format(res.date,'dd/MM/yyyy')}"></td>
 				    								<td class="align-middle" th:text="${res.property.address}"></td>
-				    								<td class="align-middle" th:text="${res.property.district.name}"></td>
+				    								<td class="align-middle" th:text="${res.property.address}"></td>
 				    								<td class="align-middle" th:text="${res.cleaningStaff.name}"></td>
 				    								<td class="align-middle" th:text="${res.price}"></td>
       												<td class="align-middle">
-	                                                    <a title="Ver" class="btn btn-light rounded-circle"><i class="bi bi-eye-fill text-success"> </i></a>
-	                                                    <a title="Calificar" class="btn btn-light rounded-circle me-2"><i class="bi bi-pencil-square text-primary"></i></a>
+	                                                    <a title="Ver" class="btn btn-primary rounded-circle" th:href="@{'/reservation/view/'}+${res.id_reservation}"><i class="bi bi-eye-fill"> </i></a>
+	                                                    <a title="Calificar" class="btn btn-success rounded-circle me-2" th:href="@{'/valoration/register/'}+${res.id_reservation}"><i class="bi bi-pencil-square"></i></a>
 	                                                </td>
 				    							</tr>
 	                                          </tbody>

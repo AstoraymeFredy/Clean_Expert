@@ -18,8 +18,8 @@ import pe.edu.upc.spring.service.iReservationService;
 import pe.edu.upc.spring.service.iDetailReservationService;
 
 @Controller
-@RequestMapping("/reservation")
-public class ReservationController {
+@RequestMapping("/service")
+public class ServiceController {
 	
 	@Autowired
 	private Sesion sesion;
@@ -32,8 +32,8 @@ public class ReservationController {
 	
 	@RequestMapping("/list")
 	public String listReservationByClient(Map<String, Object> model) {
-		model.put("listReservations", rService.listByClient(sesion.getClient().getId_client()));
-		return "/reservation/list";
+		model.put("listServices", rService.listByCleaningStaff(sesion.getCleaningStaff().getId_cleaning_staff()));
+		return "/service/list";
 	}	
 	
 	@RequestMapping("/view/{id}")
@@ -43,23 +43,16 @@ public class ReservationController {
 		Optional<Reservation> objRes = rService.findById(id);
 		if (objRes == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-			return "redirect:/reservation/list";
+			return "redirect:/service/list";
 		}
 		else {	
 			if (objRes.isPresent())
-				objRes.ifPresent(o -> model.addAttribute("reservation", o));
+				objRes.ifPresent(o -> model.addAttribute("service", o));
 			
-			modelList.put("listDetailsReservation", dService.listByReservation(id));
+			modelList.put("listDetailsService", dService.listByReservation(id));
 
-			return "reservation/view";
+			return "service/view";
 		}
-	}	
-	
-	@RequestMapping("/registerReservation")
-	public String goPageCreate(Model model, Map<String, Object> modelList)
-		throws ParseException 
-	{
-		return "reservation/view";
 	}	
 	
 	
