@@ -21,6 +21,7 @@ import pe.edu.upc.spring.service.iDistrictService;
 import pe.edu.upc.spring.service.iPropertyService;
 import pe.edu.upc.spring.utils.Sesion;
 
+
 @Controller
 @RequestMapping("/property")
 public class PropertyController {
@@ -80,17 +81,26 @@ public class PropertyController {
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
 			model.put("mensaje","La propiedad no se puede eliminar, esta siendo utilizada");
-			
+			//Message.messageInfo("Actualizado correctamente");
 			model.put("listProp", pService.findByClientId(sesion.getClient().getId_client()));
 		}
-		return "listProperties";
+		return "property/listProperties";
 	}
+	
+	
+//	@RequestMapping("/edit")
+//	public String goPageEdit(Model model){
+//		model.addAttribute("propertyUpdate", sesion.());
+//		return "/property/propertyUpdate";
+//	}
 	
 	
 	@RequestMapping("/edit/{id}")
 	public String editProperty(@PathVariable int id, Model model, RedirectAttributes objRedir)
 		throws ParseException 
 	{
+		
+
 		Optional<Property> objProperty = pService.findById(id);
 		if (objProperty == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
@@ -98,7 +108,7 @@ public class PropertyController {
 		}
 		else {
 			model.addAttribute("property", objProperty);
-			return "property";
+			return "property/propertyUpdate";
 		}
 	}
 	
