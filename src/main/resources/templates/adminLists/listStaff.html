@@ -36,7 +36,7 @@
 									<div
 										class="pb-3 mb-4 d-flex align-items-center justify-content-between">
 										<div>
-											<h3 class="mb-0 fw-bold text-white">Parámetros</h3>
+											<h3 class="mb-0 fw-bold text-white">Personal de limpieza</h3>
 										</div>
 									</div>
 								</div>
@@ -46,7 +46,7 @@
 						<div class="col-12">
 							<div class="card rounded-3 shadow-sm border-0">
 								<div class="card-header bg-white border-bottom-0 py-3">
-									<h6 class="mb-0 fw-bold">Listado de parámetros</h6>
+									<h6 class="mb-0 fw-bold">Listado de personal</h6>
 								</div>
 								<!-- card body -->
 								<div class="table-responsive">
@@ -55,20 +55,28 @@
 											<tr >
 												<th >#</th>
 												<th>Nombre</th>
-												<th>Valor</th>
-												<th>Unidad</th>
+												<th>Email</th>
+												<th>Celular</th>
+												<th>Descripcion</th>
+												<th>Estado</th>
 												<th>Acciones</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="par: ${listParameters}">
-												<td class="align-middle" th:text="${par.id_parameter}"></td>
-												<td class="align-middle" th:text="${par.name}"></td>
-												<td class="align-middle" th:text="${par.value}"></td>
-												<td class="align-middle" th:text="${par.unit}"></td>
+											<tr th:each="staff: ${listStaff}">
+												<td class="align-middle" th:text="${staff.id_cleaning_staff}"></td>
+												<td class="align-middle" th:text="${staff.name}"></td>
+												<td class="align-middle" th:text="${staff.email}"></td>
+												<td class="align-middle" th:text="${staff.phone}"></td>
+												<td class="align-middle" th:text="${staff.description}"></td>
+												<td class="align-middle" th:text="${staff.enabled} ? 'Aceptado' : 'En espera'"></td>
 												<td class="align-middle">
-												<a title="Modificar" class="btn btn-warning rounded-circle" th:href="@{'/parameter/modify/'}+${par.id_parameter}"><i
-														class="bi bi-pencil text-white"> </i></a> 
+													<div th:if="${not staff.enabled}">
+														<a title="Modificar" class="btn btn-success rounded-circle" th:href="@{'/admin/staff/active/'}+${staff.id_cleaning_staff}"><i
+														class="bi bi-person-check-fill text-white"> </i></a> 
+													</div>
+												
+												</td>
 											</tr>
 										</tbody>
 									</table>
