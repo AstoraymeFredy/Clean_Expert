@@ -15,7 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
+
 import pe.edu.upc.spring.model.District;
+
 import pe.edu.upc.spring.model.Property;
 import pe.edu.upc.spring.service.iDistrictService;
 import pe.edu.upc.spring.service.iPropertyService;
@@ -55,7 +57,10 @@ public class PropertyController {
 	public String register(@ModelAttribute Property objProperty, BindingResult binRes, Model model)
 			throws ParseException
 	{
-		objProperty.setClient(sesion.getClient());
+		if (objProperty.getClient()==null) {
+			objProperty.setClient(sesion.getClient());	
+		}
+		
 		if (binRes.hasErrors())
 			return "/property/Property";
 		else {
@@ -87,32 +92,29 @@ public class PropertyController {
 		return "property/listProperties";
 	}
 	
-	
-//	@RequestMapping("/edit")
-//	public String goPageEdit(Model model){
-//		model.addAttribute("propertyUpdate", sesion.());
-//		return "/property/propertyUpdate";
-//	}
-	
-	
+
 	@RequestMapping("/edit/{id}")
 	public String editProperty(@PathVariable int id, Model model, RedirectAttributes objRedir)
 		throws ParseException 
 	{
-		
-
 		Optional<Property> objProperty = pService.findById(id);
 		if (objProperty == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/property/list";
 		}
 		else {
-			model.addAttribute("property", objProperty);
+			model.addAttribute("listDistrict", dService.listDistrict());
+						
+					
+			if (objProperty.isPresent())
+				objProperty.ifPresent(p -> model.addAttribute("property", p));
+			
 			return "property/propertyUpdate";
 		}
 	}
-	
 
+	
+	
 	
 	
 	
