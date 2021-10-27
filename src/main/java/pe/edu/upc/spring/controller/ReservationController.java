@@ -134,7 +134,7 @@ public class ReservationController {
 		}
 	}
 
-	@RequestMapping("/register")
+	@RequestMapping("/listClientStaff")
 	public String listClientStaff(Model model) {
 		listCleaningStaff.clear();
 		List<Schedule> listSchedule = new ArrayList<Schedule>();
