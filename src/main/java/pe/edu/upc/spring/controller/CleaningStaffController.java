@@ -68,9 +68,30 @@ public class CleaningStaffController {
 		}
 	}
 	
+	@RequestMapping("/view")
+	public String goPageView(Model model) {
+		model.addAttribute("staff", sesion.getCleaningStaff());
+		return "/perfilStaff/view";
+	}
+	
 	@RequestMapping("/edit")
-	public String goPageEdit(Model model) {
-		model.addAttribute("client", sesion.getCleaningStaff());
-		return "";
+	public String goPageEdit(Model model){
+		model.addAttribute("staff", sesion.getCleaningStaff());
+		return "/perfilStaff/edit";
+	}
+	
+	@RequestMapping("/editStaff")
+	public String editClient(@ModelAttribute CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
+		if(binRes.hasErrors()) {
+			return "redirect:/staff/edit";
+		} else {
+			boolean flag = csService.createCleaningStaff(objCleaningStaff);
+			if(flag) {
+				sesion.setCleaningStaff(objCleaningStaff);
+				return "redirect:/service/staff/list";
+			} else {
+				return "redirect:/staff/edit";
+			}
+		}
 	}
 }

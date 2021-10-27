@@ -31,12 +31,7 @@ public class PropertyServiceImpl implements iPropertyService{
 	@Override
 	@Transactional
 	public void deleteProperty(int idProperty) {
-		// falta
-		
-		
-		
-		
-		
+		dProperty.deleteById(idProperty);
 	}
 
 	@Override

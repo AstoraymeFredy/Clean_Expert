@@ -2,7 +2,6 @@ package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,14 +12,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Cliente")
-public class Client implements Serializable {
+@Table(name="Administrador")
+public class Admin implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_client;
+	private int id_admin;
 	
 	@Column(name="nombre", nullable=false, length=80)
 	private String name;
@@ -31,33 +30,29 @@ public class Client implements Serializable {
 	@Column(name="email", nullable=false, length=100)
 	private String email;
 	
-	@Column(name="celular", nullable=false, length=20)
-	private String phone;
-	
 	@OneToOne
 	@JoinColumn(name="id_usuario", nullable=false)
 	private User user;
 
-	public Client() {
+	public Admin() {
 		super();
 	}
 
-	public Client(int id_client, String name, String lastname, String email, String phone, User user) {
+	public Admin(int id_admin, String name, String lastname, String email, User user) {
 		super();
-		this.id_client = id_client;
+		this.id_admin = id_admin;
 		this.name = name;
 		this.lastname = lastname;
 		this.email = email;
-		this.phone = phone;
 		this.user = user;
 	}
 
-	public int getId_client() {
-		return id_client;
+	public int getId_admin() {
+		return id_admin;
 	}
 
-	public void setId_client(int id_client) {
-		this.id_client = id_client;
+	public void setId_admin(int id_admin) {
+		this.id_admin = id_admin;
 	}
 
 	public String getName() {
@@ -84,14 +79,6 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
 	public User getUser() {
 		return user;
 	}
@@ -101,5 +88,5 @@ public class Client implements Serializable {
 	}
 	
 	
-
+	
 }

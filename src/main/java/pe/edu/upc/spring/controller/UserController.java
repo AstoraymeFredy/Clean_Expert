@@ -44,7 +44,7 @@ public class UserController {
 	@RequestMapping("/doLogin")
 	public String Login(@ModelAttribute User objUser, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
-			return "login";
+			return "redirect:/user/login";
 		} else {
 			Optional<User> findedUser = uService.findByUsernameAndPassword(objUser.getUsername(), objUser.getPassword());
 			if(findedUser.isPresent()) {
@@ -54,24 +54,31 @@ public class UserController {
 					Optional<Client> findedClient =cService.findByUserId(currentUser.getId_user());
 					if(findedClient.isPresent()) {
 						Client client = findedClient.get();
+						System.out.println(client.getId_client());
+						System.out.println(client.getUser().getType_user().getId_type_user());
 						sesion.setClient(client);
+						model.addAttribute("client", client);
 						return "redirect:/reservation/client/list";
 					} else {
-						return "login";
+						return "redirect:/user/login";
 					}
 				} else {
-					Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(currentUser.getId_user());
-					if(findedCleaningStaff.isPresent()) {
-						CleaningStaff cleaningStaff = findedCleaningStaff.get();
-						sesion.setCleaningStaff(cleaningStaff);
-						return "redirect:/reservation/test";
+					if(currentUser.getType_user().getId_type_user() == 2) {
+						Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(currentUser.getId_user());
+						if(findedCleaningStaff.isPresent()) {
+							CleaningStaff cleaningStaff = findedCleaningStaff.get();
+							sesion.setCleaningStaff(cleaningStaff);
+							return "redirect:/service/list";
+						} else {
+							return "redirect:/user/login";
+						}
 					} else {
-						return "login";
+						return "";
 					}
+					
 				}
 			} else {
-				System.out.println("6");
-				return "login";
+				return "redirect:/user/login";
 			}
 		}
 	}

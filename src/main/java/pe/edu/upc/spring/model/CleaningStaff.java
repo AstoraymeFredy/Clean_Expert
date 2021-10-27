@@ -2,6 +2,7 @@ package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -48,7 +49,7 @@ public class CleaningStaff implements Serializable  {
 	}
 
 	public CleaningStaff(int id_cleaning_staff, String name, String lastname, String description, String email,
-			String phone, User user) {
+			String phone, boolean enabled, User user) {
 		super();
 		this.id_cleaning_staff = id_cleaning_staff;
 		this.name = name;
@@ -56,6 +57,7 @@ public class CleaningStaff implements Serializable  {
 		this.description = description;
 		this.email = email;
 		this.phone = phone;
+		this.enabled = enabled;
 		this.user = user;
 	}
 
@@ -107,6 +109,14 @@ public class CleaningStaff implements Serializable  {
 		this.phone = phone;
 	}
 
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	public User getUser() {
 		return user;
 	}
@@ -114,6 +124,8 @@ public class CleaningStaff implements Serializable  {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	
 	
 	
 	

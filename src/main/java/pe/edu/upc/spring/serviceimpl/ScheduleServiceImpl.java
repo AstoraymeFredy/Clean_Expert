@@ -1,5 +1,8 @@
 package pe.edu.upc.spring.serviceimpl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,5 +27,31 @@ public class ScheduleServiceImpl implements iScheduleService {
 			return true;
 		}
 	}
-
+	
+	@Override
+	@Transactional
+	public boolean updateSchedule(Schedule schedule) {
+		return true;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Schedule> findHorarioByDate(String filter){
+		return dSchedule.findHorarioByDate(filter);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Schedule> findByIdStaff(int idStaff)
+	{
+		return dSchedule.findById(idStaff);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Schedule> listSchedule()
+	{
+		return dSchedule.findAll();
+	}
+	
 }
