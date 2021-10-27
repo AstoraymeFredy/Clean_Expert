@@ -31,6 +31,17 @@ body {
     background-color: #f0f2fa;
 }
 
+
+.background-image-client{
+ 	background: url('../img/back1.png'); 
+    background-size: cover;
+    min-height:100vh;
+ }
+
+.w-65 {
+    width: 65%!important;
+}
+
 .page-flex {
     display: -webkit-box;
     display: -ms-flexbox;
