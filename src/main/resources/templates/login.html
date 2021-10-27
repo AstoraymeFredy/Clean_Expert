@@ -19,66 +19,68 @@
 		<div class="main-wrapper">
 			<!-- ! Main -->
 			<main class="main position-relative d-flex" id="skip-target">
-				<div class="vh-100">
-					<img th:src="@{/img/client-background.png}" />
-				</div>
-				<div class="container-fluid">
-					<div class="d-flex justify-content-center align-items-center mt-5">
-
-						<div class="container mt-5 w-75 p-3">
-							<div class="row col-sm-6 mt-5">
-								<h4 class="principal-title text-dark fs-2 ">Iniciar Sesion</h4>
-							</div>
-							<div class="">
-								<form th:action="@{/user/doLogin}" method="post"
-								th:object="${user}">
-									<div class="row mb-2">
-										<div class="row">
-											<label for="usuario"
-												class="col-sm-12 col-form-label
+				<div class="row" style="width: 100%">
+					<div class="col-6 background-image-client"></div>
+					<div class="col-6">
+						<div class="d-flex justify-content-center align-items-center"
+							style="height: 100vh">
+							<div class="container w-50 p-3">
+								<div class="mt-5">
+									<h4 class="principal-title text-dark fs-2 ">Iniciar Sesion</h4>
+								</div>
+								<div class="">
+									<form th:action="@{/user/doLogin}" method="post"
+										th:object="${user}">
+										<div class="row mb-2">
+											<div class="row">
+												<label for="usuario"
+													class="col-sm-12 col-form-label
 	                                            form-label">Usuario*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="usuario" class="form-control" required="required"
-													placeholder="Ingrese su usuario" th:field="*{username}"
-													type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="usuario" class="form-control"
+														required="required" placeholder="Ingrese su usuario"
+														th:field="*{username}" type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-4">
-										<div class="row">
-											<label for="password"
-												class="col-sm-12 col-form-label
+										<div class="row mb-4">
+											<div class="row">
+												<label for="password"
+													class="col-sm-12 col-form-label
 	                                            form-label">Contraseña*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="password" class="form-control" required="required"
-													placeholder="Ingrese su contraseña" th:field="*{password}"
-													type="password" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="password" class="form-control"
+														required="required" placeholder="Ingrese su contraseña"
+														th:field="*{password}" type="password" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
 										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-											<button type="submit" class="btn btn-primary form-control px-4">
-												Ingresar
-											</button>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<button type="submit"
+														class="btn btn-primary form-control px-4">
+														Ingresar</button>
+												</div>
+											</div>
+
 										</div>
-										</div>
-										
-									</div>
-								</form>
-								
+									</form>
+
+								</div>
+
 							</div>
-							
 						</div>
 					</div>
+
 				</div>
+
 
 			</main>
 		</div>
