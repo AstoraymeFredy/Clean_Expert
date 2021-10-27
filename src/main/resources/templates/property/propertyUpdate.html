@@ -55,8 +55,7 @@
 										
 										<!-- row -->
 										<div class="mb-4 row">
-											<label for="district"
-												class="col-sm-4 col-form-label
+											<label for="district" class="col-sm-4 col-form-label
 	                                            form-label">Distrito</label>
 											<div class="col-md-8 col-12">
 
@@ -79,6 +78,7 @@
 											<label for="address"
 												class="col-sm-4 col-form-label
 	                                            form-label">Direccion</label>
+	                                        <input id="id" placeholder="Ingrese" th:field="*{id_property}" type="hidden"/>
 											<div class="col-md-8 col-12">
 												<input type="text" class="form-control" th:field="*{address}" placeholder="Ingresa una direccion" id="address" required="required">
 													
