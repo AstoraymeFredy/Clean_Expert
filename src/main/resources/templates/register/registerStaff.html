@@ -19,141 +19,141 @@
 			<main class="main position-relative d-flex" id="skip-target">
 				<div class="row" style="width: 100%">
 					<div class="col-6 background-image-client"></div>
-					<div class="col-6" style="height: 100vh; overflow: auto;">
+					<div class="col-6 container-scroll" style="height: 100vh; overflow: auto;">
 						<div class="d-flex justify-content-center align-items-center mt-3">
 
-	<div class="container mt-5 w-65 p-3">
-							<div class="row col-sm-6">
-								<h4 class="principal-title text-dark fs-2 ">Registrate
-									ahora</h4>
-							</div>
-							<div class="">
-								<form th:action="@{/staff/registerStaff}" method="post"
-									th:object="${staff}">
-									<div class="row mb-2">
-										<div class="row">
-											<label for="name"
-												class="col-sm-12 col-form-label
+							<div class="container mt-5 w-65 p-3">
+								<div class="row col-12">
+									<h4 class="principal-title text-dark fs-2 ">¡Regístrate
+										ahora!</h4>
+								</div>
+								<div class="">
+									<form th:action="@{/staff/registerStaff}" method="post"
+										th:object="${staff}">
+										<div class="row mb-2">
+											<div class="row">
+												<label for="name"
+													class="col-sm-12 col-form-label
 	                                            form-label">Nombre*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="name" class="form-control" required="required"
-													placeholder="Ingrese su nombre" th:field="*{name}"
-													type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="name" class="form-control" required="required"
+														placeholder="Ingrese su nombre" th:field="*{name}"
+														type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-2">
-										<div class="row">
-											<label for="lastname"
-												class="col-sm-12 col-form-label
+										<div class="row mb-2">
+											<div class="row">
+												<label for="lastname"
+													class="col-sm-12 col-form-label
 	                                            form-label">Apellidos*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="password" class="form-control"
-													required="required" placeholder="Ingrese su apellido"
-													th:field="*{lastname}" type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="password" class="form-control"
+														required="required" placeholder="Ingrese su apellido"
+														th:field="*{lastname}" type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-2">
-										<div class="row">
-											<label for="phone"
-												class="col-sm-12 col-form-label
+										<div class="row mb-2">
+											<div class="row">
+												<label for="phone"
+													class="col-sm-12 col-form-label
 	                                            form-label">Celular*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="phone" class="form-control" required="required"
-													placeholder="Ingrese su celular" th:field="*{phone}"
-													type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="phone" class="form-control" required="required"
+														placeholder="Ingrese su celular" th:field="*{phone}"
+														type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-2">
-										<div class="row">
-											<label for="email"
-												class="col-sm-12 col-form-label
+										<div class="row mb-2">
+											<div class="row">
+												<label for="email"
+													class="col-sm-12 col-form-label
 	                                            form-label">Correo
-												electronico*</label>
+													electronico*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="email" class="form-control" required="required"
-													placeholder="Ingrese su correo electronico"
-													th:field="*{email}" type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="email" class="form-control" required="required"
+														placeholder="Ingrese su correo electronico"
+														th:field="*{email}" type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-2">
-										<div class="row">
-											<label for="usuario"
-												class="col-sm-12 col-form-label
+										<div class="row mb-2">
+											<div class="row">
+												<label for="usuario"
+													class="col-sm-12 col-form-label
 	                                            form-label">Usuario*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="usuario" class="form-control" required="required"
-													placeholder="Ingrese su usuario"
-													th:field="*{user.username}" type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="usuario" class="form-control"
+														required="required" placeholder="Ingrese su usuario"
+														th:field="*{user.username}" type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-2">
-										<div class="row">
-											<label for="password"
-												class="col-sm-12 col-form-label
+										<div class="row mb-2">
+											<div class="row">
+												<label for="password"
+													class="col-sm-12 col-form-label
 	                                            form-label">Contraseña*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<input id="password" class="form-control"
-													required="required" placeholder="Ingrese su contraseña"
-													th:field="*{user.password}" type="password" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<input id="password" class="form-control"
+														required="required" placeholder="Ingrese su contraseña"
+														th:field="*{user.password}" type="password" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row mb-4">
-										<div class="row">
-											<label for="description"
-												class="col-sm-12 col-form-label
+										<div class="row mb-4">
+											<div class="row">
+												<label for="description"
+													class="col-sm-12 col-form-label
 	                                            form-label">¿En
-												que te especializas?*</label>
+													que te especializas?*</label>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<textarea id="description" class="form-control"
-													required="required" placeholder="Ingrese su descripcion"
-													th:field="*{description}" type="text" />
+											</div>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<textarea id="description" class="form-control"
+														required="required" placeholder="Ingrese su descripcion"
+														th:field="*{description}" type="text" />
+												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
 										<div class="row">
-											<div class="col-sm-12 mb-2 mb-lg-0">
-												<button type="submit"
-													class="btn btn-primary form-control px-4">
-													Registrar cuenta</button>
+											<div class="row">
+												<div class="col-sm-12 mb-2 mb-lg-0">
+													<button type="submit"
+														class="btn btn-primary form-control px-4">
+														Registrar cuenta</button>
+												</div>
 											</div>
-										</div>
 
-									</div>
-								</form>
+										</div>
+									</form>
+
+								</div>
 
 							</div>
 
 						</div>
-				
-</div>
 					</div>
 				</div>
 			</main>

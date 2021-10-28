@@ -9,7 +9,7 @@
 		<div class="sidebar-start">
 			<div class="sidebar-head">
 				<a href="#" class="logo-wrapper" title="Home"> <img
-					src="./img/logo.png" alt="" height="60" />
+					th:src="@{/img/logo.png}" alt="" height="60" />
 				</a>
 				<div class="sidebar-toggle bg-transparent" type="button">
 					<span class="bi-list fs-5 text-white"></span> <span class="sr-only">Toggle
@@ -20,36 +20,22 @@
 				<ul class="sidebar-body-menu list-unstyled">
 					<li><a class="text-decoration-none"
 						th:href="@{/admin/staff/list}"><span
-							class="icon bi bi-card-checklist fs-5" aria-hidden="true"></span>Personal de limpieza</a></li>
-					<li><a class="text-decoration-none" th:href="@{/parameter/list}"><span
-							class="icon bi bi-bookmark-plus-fill fs-5" aria-hidden="true"></span>Parametros</a>
-					</li>
-					<li><a class="show-cat-btn text-decoration-none" href="##">
-							<span class="icon bi bi-geo-alt-fill fs-5" aria-hidden="true"></span>Mis
-							direcciones <span class="category__btn transparent-btn"
-							title="Open list"> <i
-								class="bi bi-arrow-down-circle-fill text-white-50"></i>
+							class="icon bi bi-person-lines-fill fs-5" aria-hidden="true"></span>Personal
+							de limpieza</a></li>
+					<li><a class="text-decoration-none" href="##">
+							<span class="icon bi bi-person-workspace fs-5" aria-hidden="true"></span>Administradores
+							<span class="category__btn transparent-btn" title="Open list">
+								<i class="bi bi-arrow-down-circle-fill text-white-50"></i>
 						</span>
 					</a>
 						<ul class="cat-sub-menu ms-4 list-unstyled">
-							<li><a class="text-decoration-none" href="posts.html">Listado</a>
-							</li>
-							<li><a class="text-decoration-none" href="new-post.html">Agregar</a>
-							</li>
+							<li><a class="text-decoration-none" href="#">Listado</a></li>
+							<li><a class="text-decoration-none" href="#">Agregar</a></li>
 						</ul></li>
-					<li><a class="show-cat-btn text-decoration-none" href="##">
-							<span class="icon bi bi-person-badge-fill fs-5"
-							aria-hidden="true"></span>Mi perfil <span
-							class="category__btn transparent-btn" title="Open list"> <i
-								class="bi bi-arrow-down-circle-fill text-white-50"></i>
-						</span>
-					</a>
-						<ul class="cat-sub-menu ms-4 list-unstyled">
-							<li><a class="text-decoration-none"
-								th:href="@{/client/view}">Ver</a></li>
-							<li><a class="text-decoration-none"
-								th:href="@{/client/edit}">Editar</a></li>
-						</ul></li>
+					<li><a class=" text-decoration-none"
+						th:href="@{/parameter/list}"><span class="icon bi bi-map fs-5"
+							aria-hidden="true"></span>Parametros</a></li>
+
 				</ul>
 			</div>
 		</div>
