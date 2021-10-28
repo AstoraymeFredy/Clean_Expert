@@ -1,6 +1,6 @@
 package pe.edu.upc.spring.controller;
 
-import java.util.Map;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import pe.edu.upc.spring.model.Valoration;
 import pe.edu.upc.spring.model.Reservation;
 import pe.edu.upc.spring.service.iReservationService;
 import pe.edu.upc.spring.service.iValorationService;
-import pe.edu.upc.spring.utils.Sesion;
+
 
 @Controller
 @RequestMapping("/valoration")
