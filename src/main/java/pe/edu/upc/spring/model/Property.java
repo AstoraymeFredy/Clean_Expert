@@ -42,7 +42,6 @@ private static final long serialVersionUID = 1L;
 
 	public Property() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId_property() {
@@ -76,6 +75,4 @@ private static final long serialVersionUID = 1L;
 	public void setDistrict(District district) {
 		this.district = district;
 	}
-	
-	
 }

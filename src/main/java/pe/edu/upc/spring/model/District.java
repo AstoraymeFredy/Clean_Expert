@@ -24,7 +24,6 @@ public class District implements Serializable {
 
 	public District() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public District(int id_district, String name) {
@@ -50,7 +49,4 @@ public class District implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-
 }
