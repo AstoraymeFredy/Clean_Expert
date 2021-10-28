@@ -16,7 +16,6 @@ import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Admin;
 import pe.edu.upc.spring.model.CleaningStaff;
-import pe.edu.upc.spring.model.Parameter;
 import pe.edu.upc.spring.model.TypeUser;
 import pe.edu.upc.spring.model.User;
 import pe.edu.upc.spring.service.iAdminService;
