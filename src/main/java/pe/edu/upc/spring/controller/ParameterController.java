@@ -30,12 +30,6 @@ public class ParameterController {
 		return "/parameter/listParameter";
 	}
 	
-	@RequestMapping("/register")
-	public String goPageRegister(Model model) {
-		model.addAttribute("parameter", new Parameter());
-		return "/parameter/update";
-	}
-	
 	@RequestMapping("/registerParameter")
 	public String registrar(@ModelAttribute Parameter objParameter, BindingResult binRes, Model model)
 			throws ParseException
