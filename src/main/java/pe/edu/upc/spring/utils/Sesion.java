@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+import pe.edu.upc.spring.model.Admin;
 import pe.edu.upc.spring.model.CleaningStaff;
 import pe.edu.upc.spring.model.Client;
 import pe.edu.upc.spring.model.User;
@@ -15,6 +16,7 @@ public class Sesion {
 	private User user;
 	private Client client;
 	private CleaningStaff cleaningStaff;
+	private Admin admin;
 
 	public User getUser() {
 		return user;
@@ -39,6 +41,15 @@ public class Sesion {
 	public void setCleaningStaff(CleaningStaff cleaningStaff) {
 		this.cleaningStaff = cleaningStaff;
 	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	
 	
 	
 	

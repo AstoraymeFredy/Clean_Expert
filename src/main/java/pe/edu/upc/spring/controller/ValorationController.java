@@ -43,8 +43,8 @@ public class ValorationController {
 			Valoration objValoration = new Valoration();
 			if (objRes.isPresent()) {
                 objRes.ifPresent(o -> {
-                objValoration.setClient(o.getProperty().getClient());
-                objValoration.setCleaning_staff(o.getCleaningStaff());
+	                objValoration.setClient(o.getProperty().getClient());
+	                objValoration.setCleaning_staff(o.getCleaningStaff());
                 });
             }
 			model.addAttribute("valoration", objValoration);
