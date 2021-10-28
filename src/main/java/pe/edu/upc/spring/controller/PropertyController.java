@@ -15,14 +15,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sun.el.parser.ParseException;
 
-
 import pe.edu.upc.spring.model.District;
 
 import pe.edu.upc.spring.model.Property;
 import pe.edu.upc.spring.service.iDistrictService;
 import pe.edu.upc.spring.service.iPropertyService;
 import pe.edu.upc.spring.utils.Sesion;
-
 
 @Controller
 @RequestMapping("/property")
@@ -52,7 +50,6 @@ public class PropertyController {
 		return "/property/Property";
 	}
 	
-	
 	@RequestMapping("/registerProperty")
 	public String register(@ModelAttribute Property objProperty, BindingResult binRes, Model model)
 			throws ParseException
@@ -74,7 +71,6 @@ public class PropertyController {
 		}
 	}
 	
-	
 	@RequestMapping("/delete")
 	public String deleteProperty(Map<String, Object> model, @RequestParam(value="id") Integer id) {
 		try {
@@ -84,13 +80,11 @@ public class PropertyController {
 			}
 		}
 		catch(Exception ex) {
-			System.out.println(ex.getMessage());
 			model.put("mensaje","La propiedad no se puede eliminar, esta siendo utilizada en una reserva");
 			model.put("listProp", pService.findByClientId(sesion.getClient().getId_client()));
 		}
 		return "property/listProperties";
 	}
-	
 
 	@RequestMapping("/edit/{id}")
 	public String editProperty(@PathVariable int id, Model model, RedirectAttributes objRedir)
@@ -103,18 +97,9 @@ public class PropertyController {
 		}
 		else {
 			model.addAttribute("listDistrict", dService.listDistrict());
-						
-					
 			if (objProperty.isPresent())
 				objProperty.ifPresent(p -> model.addAttribute("property", p));
-			
 			return "property/propertyUpdate";
 		}
 	}
-
-	
-	
-	
-	
-	
 }
