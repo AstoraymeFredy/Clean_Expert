@@ -149,8 +149,10 @@ public class ReservationController {
 
 		List<CleaningStaff> cleaningStaffPerSchedule = new ArrayList<CleaningStaff>();
 
-		for (int i = 0; i < listSchedule.size(); i++) {
-			cleaningStaffPerSchedule.add(listSchedule.get(i).getCleaning_staff());
+		for (int i = 0; i < cleaningStaffPerSchedule.size(); i++) {
+			if(listSchedule.get(i).getCleaning_staff().isEnabled()) {
+				cleaningStaffPerSchedule.add(listSchedule.get(i).getCleaning_staff());
+			}
 		}
 
 		for (int i = 0; i < cleaningStaffPerSchedule.size(); i++) {
