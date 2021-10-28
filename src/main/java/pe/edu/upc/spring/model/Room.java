@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Table(name="Ambiente")
 public class Room implements Serializable{
 
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -25,7 +24,6 @@ public class Room implements Serializable{
 
 	public Room() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Room(int id_room, String name) {
@@ -49,7 +47,4 @@ public class Room implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
 }

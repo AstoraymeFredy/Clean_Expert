@@ -20,6 +20,5 @@ public class RoomServiceImpl  implements iRoomService{
 	@Transactional(readOnly = true)
 	public List<Room> listRooms () {
 		return dRoom.findAll();
-	}
-	
+	}	
 }
