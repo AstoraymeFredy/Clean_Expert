@@ -16,7 +16,7 @@
 <body class="bg-light">
 	<div class="page-flex">
 		<!-- ! Sidebar -->
-		<div th:replace="fragments/sidebarClient :: sidebarClient"></div>
+		<div th:replace="fragments/sidebarCleaningStaff :: sidebarCleaningStaff"></div>
 		<div class="main-wrapper">
 			<!-- ! Navbar -->
 			<div th:replace="fragments/navbar :: navbar"></div>
@@ -35,9 +35,6 @@
 									class="pb-3 mb-4 d-flex align-items-center justify-content-between">
 									<div>
 										<h3 class="mb-0 fw-bold text-white">Servicios</h3>
-									</div>
-									<div>
-										<button class="btn btn-light">Reservar</button>
 									</div>
 								</div>
 							</div>
@@ -78,7 +75,7 @@
 												<td class="align-middle" th:text="${res.price}"></td>
 												<td class="align-middle"><a title="Ver"
 													class="btn btn-primary rounded-circle"
-													th:href="@{'/service/view/'}+${res.id_reservation}"><i
+													href="#"><i
 														class="bi bi-eye-fill"> </i></a></td>
 											</tr>
 										</tbody>
