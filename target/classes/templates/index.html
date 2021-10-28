@@ -1,26 +1,331 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- Favicon -->
-        <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" />
-        <!-- Custom styles -->
-		<link th:href="@{/css/style.css}" rel="stylesheet" />
-		<link th:href="@{/css/main.css}" rel="stylesheet" />
-	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/jpg" href="./favicon.ico" />
+	<link th:href="@{/css/main.css}" rel="stylesheet" />
+	<link th:href="@{/css/landing.css}" rel="stylesheet" />
 		<title>CLEAN EXPERT</title>
 </head>
-<body class="bg-light">
-		
-						<li><a class="dropdown-item" th:href="@{/user/login}">Login</a></li>
-						<li><a class="dropdown-item" href="#">Registrar Cliente</a></li>
-						<li><a class="dropdown-item" href="#">Registrar Personal</a></li>
-	
-		<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
-		<script type="text/javascript" th:src="@{/js/script.js}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-     
+<body>
+	<!--Navbar-->
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#"> <img
+				th:src="@{/img/logo.png}" alt="logo-share" height="90" />
+			</a>
+			<!--Navbar:button-collapse-->
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--Navbar:items-menu-->
+			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+					<li class="nav-item ms-3"><a
+						class="nav-link text-white text-uppercase" href="#features">Características</a>
+					</li>
+					<li class="nav-item ms-3"><a
+						class="nav-link text-white text-uppercase" href="#experience">Logros</a>
+					</li>
+					<li class="nav-item ms-3"><a
+						class="nav-link text-white text-uppercase" href="#teachers">Personal</a>
+					</li>
+					<li class="nav-item ms-3"><a
+						th:href="@{/user/login}">
+							<button type="button"
+								class="btn btn-dark button text-uppercase btn-padding-x-sm fw-bold">
+								Únete</button>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--Header-->
+	<header class="principal-bg bg-primary">
+		<!--Welcome-->
+		<div class="container p-4">
+			<div class="row">
+				<div class="col-lg-5 col-md-12 mt-4 principal-left">
+					<h1 class="principal-title text-white">
+						Encuentra el servicio que estabas <span
+							class="principal-title--cream text-dark">buscando</span>
+					</h1>
+					<p class="text-white mb-4 principal-message">Conoce a nuestro
+						personal de limpieza ideal para tu hogar con nosotros de manera
+						rápida y sencilla.</p>
+				</div>
+				<div class="col-lg-1 col-md-12"></div>
+				<div class="col-lg-5 col-md-12 text-center">
+					<img  th:src="@{/img/portada-screens.png}" alt=""
+						class="img-fluid big-principal-img ms-2" />
+				</div>
+			</div>
+		</div>
+		<!--Wave-->
+		<div class="wave" id="features"></div>
+	</header>
+	<main class="main">
+		<!--Features-->
+		<section class="features animated p-5">
+			<h2 class="secondary-title text-primary text-center">Conseguir
+				un personal de limpieza nunca fue tan fácil</h2>
+			<p class="text-dark text-center">Te brindamos todas las
+				facilidades para que puedas reservar tu asesorías sin pasar horas
+				buscando</p>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<div
+							class="d-flex flex-column justify-content-center p-xs-3 p-xl-5 feature-item-container">
+							<div class="feature-item animated">
+								<div class="p-2 text-center">
+									<img th:src="@{/img/feature1.png}" alt=""
+										class="img-fluid feature-img" />
+								</div>
+								<div class="p-2 text-center fw-bold">Diferentes
+									habitaciones para elegir</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div
+							class="d-flex flex-column justify-content-center p-xs-3 p-xl-5 feature-item-container">
+							<div class="feature-item">
+								<div class="p-2 text-center">
+									<img th:src="@{/img/feature2.png}" alt=""
+										class="img-fluid feature-img" />
+								</div>
+								<div class="p-2 text-center fw-bold">Información al
+									alcance de tu mano</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div
+							class="d-flex flex-column justify-content-center p-xs-3 p-xl-5 feature-item-container">
+							<div class="feature-item animated">
+								<div class="p-2 text-center">
+									<img th:src="@{/img/feature3.png}" alt=""
+										class="img-fluid feature-img" />
+								</div>
+								<div class="p-2 text-center fw-bold">A solo S/15 por hora</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--Experience-->
+		<section class="experience bg-primary p-5" id="experience">
+			<h2 class="secondary-title text-center text-white animated">Confía
+				en nuestra experiencia</h2>
+			<div class="text-white text-center animated">Podrás encontrar
+				una lista de personal disponibles en un solo lugar</div>
+			<div class="container animated">
+				<div class="row mt-4">
+					<div class="col-6 col-sm-6 col-lg-4 animated">
+						<div class="d-flex flex-column justify-content-center">
+							<div
+								class="
+                                        description
+                                        border-end
+                                        d-flex
+                                        flex-column
+                                        justify-content-center
+                                        align-items-center
+                                    ">
+								<div>
+									<div class="text-center h3 fw-bold text-white number">S/.
+										15</div>
+									<div class="p-1 text-center text-white">Tarifa por hora</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-6 col-sm-6 col-lg-4">
+						<div class="d-flex flex-column justify-content-center">
+							<div
+								class="
+                                        description
+                                        border-end
+                                        d-flex
+                                        flex-column
+                                        justify-content-center
+                                        align-items-center
+                                    ">
+								<div>
+									<div class="text-center h3 fw-bold text-white number">50+</div>
+									<div class="p-1 text-center text-white">personales</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-6 col-sm-6 col-lg-4 animated">
+						<div class="d-flex flex-column justify-content-center">
+							<div
+								class="
+                                        description
+                                        border-end
+                                        d-flex
+                                        flex-column
+                                        justify-content-center
+                                        align-items-center
+                                    ">
+								<div>
+									<div class="text-center h3 fw-bold text-white number">200+</div>
+									<div class="p-1 text-center text-white">Clientes</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!--Email-->
+		<section class="email bg-primary p-5" id="subscribe">
+			<div class="container animated email-container">
+				<div class="row">
+					<div class="col animated text-center">
+						<img th:src="@{/img/email.png}"/>
+					</div>
+					<div class="col animated">
+						<h3 class="secondary-title text-white text-center animated">
+							Suscríbete para más novedades</h3>
+						<div class="input-group mb-3 mt-3">
+							<input type="text" class="form-control"
+								placeholder="Ingresa tu email" aria-label="Ingresa tu email"
+								aria-describedby="button-email" />
+							<button class="btn btn-dark" type="button" id="button-email">Suscríbete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--Asesor-->
+		<section id="teachers" class="px-5 pt-5 bg-white">
+			<h2 class="secondary-title text-primary text-center animated">¿Quieres
+				ser un personal de limpieza de Clean Expert?</h2>
+			<div class="container mt-2">
+				<div class="row">
+					<div class="col-md-6 mt-5 animated">
+						<div class="row mb-4">
+							<div class="col-auto">
+								<img th:src="@{/img/CirculoVineta.png}"
+									class="rounded float-start" alt="" />
+							</div>
+							<div class="col">
+								<p class="fw-bold h5">Incrementa tu red contactos</p>
+
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-auto">
+								<img th:src="@{/img/CirculoVineta.png}"
+									class="rounded float-start" alt="..." />
+							</div>
+							<div class="col">
+								<p class="fw-bold h5">Gana dinero</p>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-auto">
+								<img th:src="@{/img/CirculoVineta.png}"
+									class="rounded float-start" alt="..." />
+							</div>
+							<div class="col">
+								<p class="fw-bold h5">Tu información disponible en un
+									instante</p>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-auto">
+								<img th:src="@{/img/CirculoVineta.png}"
+									class="rounded float-start" alt="..." />
+							</div>
+							<div class="col">
+								<p class="fw-bold h5">Gestiona tu tiempo</p>
+							</div>
+						</div>
+						<div class="mt-lg-5"></div>
+					</div>
+					<div class="col-md-6 text-right animated">
+						<img th:src="@{/img/PersonaShare.png}" alt=""
+							class="img-fluid ms-2 d-none d-md-block" />
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<!-- Footer -->
+	<footer class="text-center text-lg-start bg-dark text-white p-5">
+		<!-- Section: Links  -->
+		<section class="">
+			<div class="container text-left text-md-start">
+				<!-- Grid row -->
+				<div class="row">
+					<div class="col-md-5">
+						<!-- Content -->
+						<h6 class="text-uppercase fw-bold mb-4">
+							<i class="fas fa-gem mr-3"></i><img
+								th:src="@{/img/logo.png}" alt="logo-share" height="90" />
+						</h6>
+						<p class="text-left description">Clean Expert es una empresa
+							que te brinda servicio de limpieza</p>
+					</div>
+					<div class="col-md-3">
+						<!-- Links -->
+						<h6 class="text-left fw-bold mb-4">Menú</h6>
+						<p>
+							<a href="#!" class="text-reset">Características</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Tutorial</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Logros</a>
+						</p>
+						<p>
+							<a href="#!" class="text-reset">Testimonios</a>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<!-- Links -->
+						<h6 class="fw-bold mb-4">Contacto</h6>
+						<p class="d-flex">
+							<i class="bi bi-envelope-fill mr-2"></i> <span>
+								contacto@clean.com.pe </span>
+						</p>
+						<p class="d-flex">
+							<i class="bi bi-telephone-fill mr-2"></i> <span>
+								+51 922556565</span>
+						</p>
+						<p class="d-flex">
+							<i class="bi bi-geo-fill"></i> <span>772
+								Av. Grau - La Molina</span>
+						</p>
+					</div>
+					<!-- Copyright -->
+					<div class="col-xs-12 text-left p-3">© 2021 Clean
+						Expert. Todos los derechos reservados</div>
+					<!-- Copyright -->
+				</div>
+			</div>
+		</section>
+	</footer>
+	<!-- Footer -->
+	<script src="./js/bootstrap.bundle.min.js"></script>
+	<script src="./js/index.js"></script>
 </body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+	crossorigin="anonymous" type=""></script>
 </html>
