@@ -38,7 +38,6 @@ public class PropertyServiceImpl implements iPropertyService{
 	@Transactional(readOnly = true)
 	public Optional<Property> findById(int idProperty) {
 		return dProperty.findById(idProperty);
-		//merge
 	}	
 	
 	@Override
@@ -46,5 +45,4 @@ public class PropertyServiceImpl implements iPropertyService{
 	public List<Property> findByClientId(int idClient) {
 		return dProperty.findByClientId(idClient);
 	}
-	
 }
