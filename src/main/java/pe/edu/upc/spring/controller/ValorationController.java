@@ -30,12 +30,6 @@ public class ValorationController {
 	@Autowired
 	private iReservationService rService;
 	
-	@RequestMapping("/list")
-	public String goPageListValoration(Map<String, Object> model) {
-		model.put("listValorations", vService.list());
-		return "/valoration/listValoration";
-	}
-	
 	@RequestMapping("/register/{id}")
 	public String goPageRegister(@PathVariable int id, Model model, RedirectAttributes objRedir)
 		throws ParseException 
