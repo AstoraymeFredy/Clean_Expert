@@ -35,8 +35,6 @@ public class ValorationController {
 		model.put("listValorations", vService.list());
 		return "/valoration/listValoration";
 	}
-	//
-	
 	
 	@RequestMapping("/register/{id}")
 	public String goPageRegister(@PathVariable int id, Model model, RedirectAttributes objRedir)
@@ -56,7 +54,7 @@ public class ValorationController {
                 });
             }
 			model.addAttribute("valoration", objValoration);
-			return "/valoration/RegisterValoration";
+			return "/valoration/create";
 		}
 	}
 	
@@ -67,12 +65,10 @@ public class ValorationController {
 		if (binRes.hasErrors())
 			return "valoration";
 		else {
-			//objValoration.setCalification(objValoration.getCleaning_staff().getId_cleaning_staff());
-			//objValoration.setCleaning_staff()
 			boolean flag = vService.createValoration(objValoration);
 			System.out.println(flag);
 			if (flag)
-				return "redirect:/valoration/list";
+				return "redirect:/reservation/list";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
 				return "redirect:/valoration/register";
