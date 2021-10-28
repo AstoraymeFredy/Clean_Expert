@@ -85,8 +85,7 @@ public class PropertyController {
 		}
 		catch(Exception ex) {
 			System.out.println(ex.getMessage());
-			model.put("mensaje","La propiedad no se puede eliminar, esta siendo utilizada");
-			//Message.messageInfo("Actualizado correctamente");
+			model.put("mensaje","La propiedad no se puede eliminar, esta siendo utilizada en una reserva");
 			model.put("listProp", pService.findByClientId(sesion.getClient().getId_client()));
 		}
 		return "property/listProperties";
