@@ -98,7 +98,7 @@ public class ReservationController {
 	}
 
 	@RequestMapping("/goPayment")
-	public String goPageCreate(
+	public String goPagePayment(
 			@ModelAttribute("listDetailsReservation") ArrayList<DetailReservation> listDetailsReservation,
 			@ModelAttribute Reservation objReservation, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors()) {
