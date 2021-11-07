@@ -70,7 +70,7 @@ public class AdminController {
 	@RequestMapping("/list")
 	public String goPageListAdmin(Map<String, Object> model) {
 		model.put("listAdmin", aService.listAdmin());
-		return "/admin/list";
+		return "/adminLists/listAdmin";
 	}
 	
 	@RequestMapping("/registerAdmin")
