@@ -77,18 +77,18 @@ public class CleaningStaffController {
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("staff", sesion.getCleaningStaff());
-		return "/perfilStaff/edit";
+		return "/perfilStaff/update";
 	}
 	
 	@RequestMapping("/editStaff")
-	public String editClient(@ModelAttribute CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
+	public String editClient(@ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {
 			return "redirect:/staff/edit";
 		} else {
 			boolean flag = csService.createCleaningStaff(objCleaningStaff);
 			if(flag) {
 				sesion.setCleaningStaff(objCleaningStaff);
-				return "redirect:/service/staff/list";
+				return "redirect:/staff/view";
 			} else {
 				return "redirect:/staff/edit";
 			}
