@@ -37,7 +37,22 @@ public class ScheduleServiceImpl implements iScheduleService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Schedule> findHorarioByDate(String filter){
-		return dSchedule.findHorarioByDate(filter);
+		switch (filter) {
+		case "lunes":
+			return dSchedule.findHorarioByMonday();
+		case "martes":
+			return dSchedule.findHorarioByTuesday();
+		case "miércoles":
+			return dSchedule.findHorarioByWednesday();
+		case "jueves":
+			return dSchedule.findHorarioByThursday();
+		case "viernes":
+			return dSchedule.findHorarioByFriday();
+		case "sábado":
+			return dSchedule.findHorarioBySaturday();
+		default:
+			return dSchedule.findHorarioBySunday();
+		}
 	}
 	
 	@Override
