@@ -13,28 +13,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Usuario")
-public class User implements Serializable {
+public class UserModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_user;
 	
-	@Column(name="username", nullable=false, length=50)
+	@Column(name="username", nullable=false, length=50, unique = true)
 	private String username;
 	
-	@Column(name="password", nullable=false, length=50)
+	@Column(name="password", nullable=false, length=50, unique = true)
 	private String password;
 	
 	@OneToOne
 	@JoinColumn(name="id_tipo_usuario", nullable=false)
 	private TypeUser type_user;
 
-	public User() {
+	public UserModel() {
 		super();
 	}
 
-	public User(int id_user, String username, String password, TypeUser type_user) {
+	public UserModel(int id_user, String username, String password, TypeUser type_user) {
 		super();
 		this.id_user = id_user;
 		this.username = username;

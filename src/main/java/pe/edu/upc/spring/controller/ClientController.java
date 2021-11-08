@@ -11,7 +11,7 @@ import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Client;
 import pe.edu.upc.spring.model.TypeUser;
-import pe.edu.upc.spring.model.User;
+import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iClientService;
 import pe.edu.upc.spring.service.iUserService;
 import pe.edu.upc.spring.utils.Sesion;
@@ -40,7 +40,7 @@ public class ClientController {
 		if (binRes.hasErrors()) {
 			return "redirect:/client/register";
 		} else {
-			User user = objClient.getUser();
+			UserModel user = objClient.getUser();
 			user.setType_user(new TypeUser(1, "Cliente"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
