@@ -145,25 +145,16 @@ public class ReservationController {
 	@RequestMapping("/goPayment")
 	public String goPagePayment(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors()) {
+
+			System.out.println(binRes.getAllErrors());
+
 			return "/reservation/create";
 		} else {
-
-	
-		System.out.println(objReservation.getDate().toString());
-		System.out.println(objReservation.getCleaningStaff().getId_cleaning_staff());
-
-		System.out.println(objReservation.getListDetails().get(0).getQuantity());
-		System.out.println(objReservation.getDuration());
-
-		System.out.println(this.listDetailReservation.size());
-		System.out.println(objReservation.getPrice());
-		System.out.println(objReservation.getListDetails().get(0).getRoom());
-		System.out.println(objReservation.getListDetails().get(0).getRoom().getClass().getName());
 
 		this.reservation = objReservation;
 		model.addAttribute("reservation", objReservation);
 
-		return "/reservation/create";
+		return "/reservation/payment";
 
 	/*	if (binRes.hasErrors()) {
 			model.addAttribute("listDetailsReservation", roService.listRooms());

@@ -25,42 +25,34 @@ window.onload = function() {
 
 		});
 
-	document.getElementById("personal").addEventListener("click", function() {console.log("js")
+	document.getElementById("personal").addEventListener("click", function() {
 
 		var data = document.getElementById('date').value;
-		console.log(data)
 
 		$.ajax({
-			type: 'GET',
-			url: '/reservation/listClientStaff/' + data,
-			success: function(result) {
-				select = document.getElementById('select-personal');
-				var result = JSON.parse(result);
-		
-				var i, L = select.options.length - 1;
-			   for(i = L; i >= 0; i--) {
-			      select.remove(i);
-			   }
-				   
-				for (var i = 0; i<= result.length-1; i++){
-				    var opt = document.createElement('option');		    
-				    opt.value = result[i].id_cleaning_staff;
-				    opt.innerHTML = result[i].name;
-				    select.appendChild(opt);
-				}
-			}
+				type: 'GET',
+				url: '/reservation/listClientStaff/' + data,
+				success: function(result) {
+					select = document.getElementById('select-personal');
+					var result = JSON.parse(result);
 			
-		});
-
-		console.log("ajax")
-
-		});
-	
+					var i, L = select.options.length - 1;
+				   for(i = L; i >= 0; i--) {
+				      select.remove(i);
+				   }
+					   
+					for (var i = 0; i<= result.length-1; i++){
+					    var opt = document.createElement('option');		    
+					    opt.value = result[i].id_cleaning_staff;
+					    opt.innerHTML = result[i].name;
+					    select.appendChild(opt);
+					}
+				}				
+			});
+		});	
 };
 	
 function calculate(s) {
-
-
 	
 	var data = document.getElementById("Dormitorio").getAttribute('data-post');
 	console.log(typeof data)
@@ -88,13 +80,6 @@ function calculate(s) {
 					<form th:action="@{/reservation/goPayment}" method="post"
 						th:object="${reservation}">
 						<div class="row">
-							<div class="col-xl-3 col-lg-4 col-md-12 col-12">
-								<div class="mb-4 mb-lg-0">
-									<h4 class="mb-1">General Setting</h4>
-									<p class="mb-0 fs-5 text-muted">Profile configuration
-										settings</p>
-								</div>
-							</div>
 							<div class="col-lg-12 col-md-12 col-12">
 								<!-- Page header -->
 								<div>
@@ -190,7 +175,8 @@ function calculate(s) {
                                             form-label">Personal
 												de limpieza</label>
 											<div class="col-md-8 col-12">
-												<select class="form-select" id="select-personal" th:field="*{cleaningStaff.id_cleaning_staff}">
+												<select class="form-select" id="select-personal"
+													th:field="*{cleaningStaff.id_cleaning_staff}">
 
 												</select>
 											</div>
@@ -207,10 +193,8 @@ function calculate(s) {
 												<div class="form-check  mb-2">
 													<input type="checkbox" class="form-check-input"
 														id="customChecktellMe"> <label
-														class="form-check-label" 
-														th:field="*{extra_cleaning_kit}"
-														for="customChecktellMe">Agregar
-														kit de limpieza</label>
+														class="form-check-label" th:field="*{extra_cleaning_kit}"
+														for="customChecktellMe">Agregar kit de limpieza</label>
 												</div>
 											</div>
 
