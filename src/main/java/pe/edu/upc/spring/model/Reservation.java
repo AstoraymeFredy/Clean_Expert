@@ -2,6 +2,7 @@ package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -75,6 +76,10 @@ public class Reservation implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_propiedad", nullable=false)
 	private Property property;
+	
+	@Transient
+	private List<DetailReservation> listDetails;
+
 
 	public Reservation() {
 		super();
@@ -204,5 +209,13 @@ public class Reservation implements Serializable {
 		this.property = property;
 	}
 
+
+	public List<DetailReservation> getListDetails() {
+		return listDetails;
+	}
+
+	public void setListDetails(List<DetailReservation> listDetails) {
+		this.listDetails = listDetails;
+	}
 
 }
