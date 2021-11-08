@@ -73,10 +73,10 @@
 													th:text="${res.property.district.name}"></td>
 												<td class="align-middle" th:text="${res.property.client.name}"></td>
 												<td class="align-middle" th:text="${res.price}"></td>
-												<td class="align-middle"><a title="Ver"
-													class="btn btn-primary rounded-circle"
-													href="#"><i
+												<td class="align-middle">
+												<a title="Ver"class="btn btn-primary rounded-circle" th:href="@{'/service/view/'}+${res.id_reservation}"><i
 														class="bi bi-eye-fill"> </i></a></td>
+											
 											</tr>
 										</tbody>
 									</table>

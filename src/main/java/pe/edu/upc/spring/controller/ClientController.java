@@ -80,7 +80,7 @@ public class ClientController {
 			boolean flag = cService.createClient(objClient);
 			if(flag) {
 				sesion.setClient(objClient);
-				return "redirect:/reservation/client/list";
+				return "redirect:/client/view";
 			} else {
 				return "redirect:/client/edit";
 			}
