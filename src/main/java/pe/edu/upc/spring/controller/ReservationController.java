@@ -120,6 +120,8 @@ public class ReservationController {
 	@RequestMapping("/calculate")
 	public String calculate(@ModelAttribute Reservation reservation, BindingResult binRes, Model model) throws ParseException {
 			System.out.println("INGRESA");
+			System.out.println("INGRESA");
+
 			/*System.out.println(reservation.getListDetails());
 			System.out.println(reservation.getClass().getName());
 
@@ -145,11 +147,13 @@ public class ReservationController {
 	@RequestMapping("/goPayment")
 	public String goPagePayment(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model) throws ParseException {
 		if (binRes.hasErrors()) {
+			System.out.println(objReservation.getStart_time());
 
 			System.out.println(binRes.getAllErrors());
 
 			return "/reservation/create";
 		} else {
+			System.out.println(objReservation.getStart_time());
 
 		this.reservation = objReservation;
 		model.addAttribute("reservation", objReservation);

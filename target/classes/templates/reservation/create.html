@@ -28,7 +28,8 @@ window.onload = function() {
 	document.getElementById("personal").addEventListener("click", function() {
 
 		var data = document.getElementById('date').value;
-
+		var time = document.getElementById('start_time').value;
+		console.log(time);
 		$.ajax({
 				type: 'GET',
 				url: '/reservation/listClientStaff/' + data,
