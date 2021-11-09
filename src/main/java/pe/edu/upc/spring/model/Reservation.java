@@ -1,7 +1,10 @@
 package pe.edu.upc.spring.model;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import java.util.Date;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,9 +42,8 @@ public class Reservation implements Serializable {
 	@Column(name="precio", nullable=false)
 	private float price;
 	
-	@Temporal(TemporalType.TIME)
 	@Column(name="hora_inicio", nullable=false)
-	private Date start_time;
+	private LocalTime  start_time;
 	
 	@Column(name="duracion", nullable=false)
 	private int duration;
@@ -75,12 +77,16 @@ public class Reservation implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="id_propiedad", nullable=false)
 	private Property property;
+	
+	@Transient
+	private List<DetailReservation> listDetails;
+
 
 	public Reservation() {
 		super();
 	}
 
-	public Reservation(int id_reservation, Date date, float price, Date start_time, int duration,
+	public Reservation(int id_reservation, Date date, float price, LocalTime start_time, int duration,
 			boolean extra_cleaning_kit, String state, String card_owner_name,
 			Long card_number, Date expiration_date,
 			String cvv_card, CleaningStaff cleaningStaff, Property property) {
@@ -124,11 +130,11 @@ public class Reservation implements Serializable {
 		this.price = price;
 	}
 
-	public Date getStart_time() {
+	public LocalTime getStart_time() {
 		return start_time;
 	}
 
-	public void setStart_time(Date start_time) {
+	public void setStart_time(LocalTime start_time) {
 		this.start_time = start_time;
 	}
 
@@ -204,5 +210,13 @@ public class Reservation implements Serializable {
 		this.property = property;
 	}
 
+
+	public List<DetailReservation> getListDetails() {
+		return listDetails;
+	}
+
+	public void setListDetails(List<DetailReservation> listDetails) {
+		this.listDetails = listDetails;
+	}
 
 }
