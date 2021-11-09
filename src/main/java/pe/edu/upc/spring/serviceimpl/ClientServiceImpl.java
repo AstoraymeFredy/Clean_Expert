@@ -32,6 +32,17 @@ public class ClientServiceImpl implements iClientService {
 			return true;
 		}
 	}
+	
+	@Override
+	@Transactional
+	public boolean updateClient(Client client) {
+		Client objClient = dClient.save(client);
+		if(objClient==null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	@Override
 	@Transactional
