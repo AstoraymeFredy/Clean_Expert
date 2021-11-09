@@ -23,7 +23,7 @@ public class UserModel implements Serializable {
 	@Column(name="username", nullable=false, length=50, unique = true)
 	private String username;
 	
-	@Column(name="password", nullable=false, length=50, unique = true)
+	@Column(name="password", nullable=false, unique = true)
 	private String password;
 	
 	@OneToOne

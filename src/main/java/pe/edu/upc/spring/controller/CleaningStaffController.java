@@ -60,7 +60,7 @@ public class CleaningStaffController {
 				}
 			}
 			if(flag) {
-				return "redirect:/user/login";
+				return "redirect:/";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
 				return "redirect:/staff/register"; 
