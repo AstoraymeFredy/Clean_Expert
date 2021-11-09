@@ -28,6 +28,7 @@ public class JpaUserDetailsService implements UserDetailsService {
 		UserModel user = userRepository.findByUsername(username);
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(user.getType_user().getName()));
+		System.out.println(authorities.get(0));
 		return new User(user.getUsername(), user.getPassword(), true, true, true, true, authorities);
 	}
 

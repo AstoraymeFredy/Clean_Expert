@@ -2,11 +2,11 @@ INSERT INTO tipo_usuario (nombre) VALUES ('Cliente');
 INSERT INTO tipo_usuario (nombre) VALUES ('Personal de limpieza');
 INSERT INTO tipo_usuario (nombre) VALUES ('Administrador');
 
-INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('12345','cliente',1);
-INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('us2','JuanC',1);
-INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('12345','personal',2);
-INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('us4','MartaP',2);
-INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('admin','admin',3);
+INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$yyfMs7yIs/UHnJ4D7r.diOc5ofJgOQKVVo10zMWAU0QTe3ngliK4O','cliente',1);
+INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$BaK6uXKaDcb6e8vsfbapDuhPWQRZcoDKKUjx5dJXeFYHhr7rg775q','JuanC',1);
+INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$VgdKdZ/.KeSw0JSBOiyUdeIUyhI2xAY4xQ/0Aljb39dNAFTYQhvLC','personal',2);
+INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$7j0Of9blyHI8u7g68P2RQu0rY9.GgL4n59Bch8MiFY8w92iIdsaty','MartaP',2);
+INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$UCGyX7aXX4jugVnQNt.9pOzEhOLD1z2KVzbZK/Bi1Dy6KZiqhZOy2','admin',3);
 
 INSERT INTO administrador (apellidos,email,nombre,id_usuario) VALUES ('Pacheco Diaz','pachecoD@gmail.com','Alberto',5);
 

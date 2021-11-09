@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,18 +61,21 @@ public class ClientController {
 		
 	}
 	
+	@Secured("Cliente")
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("client", sesion.getClient());
 		return "/perfilClient/view";
 	}
 	
+	@Secured("Cliente")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("clientEdit", sesion.getClient());
 		return "/perfilClient/update";
 	}
 	
+	@Secured("Cliente")
 	@RequestMapping("/editClient")
 	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {
