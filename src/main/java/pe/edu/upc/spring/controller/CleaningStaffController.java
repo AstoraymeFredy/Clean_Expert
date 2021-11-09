@@ -47,7 +47,7 @@ public class CleaningStaffController {
 			return "register";
 		} else {
 			UserModel user = objCleaningStaff.getUser();
-			user.setType_user(new TypeUser(2, "Personal de limpieza"));
+			user.setType_user(new TypeUser(2, "ROLE_Personal_de_Limpieza"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
 			boolean flag = uService.createUser(user);
@@ -69,21 +69,21 @@ public class CleaningStaffController {
 		}
 	}
 	
-	@Secured("Personal de Limpieza")
+	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/view";
 	}
 	
-	@Secured("Personal de Limpieza")
+	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/update";
 	}
 	
-	@Secured("Personal de Limpieza")
+	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/editStaff")
 	public String editClient(@ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {

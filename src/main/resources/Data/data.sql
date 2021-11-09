@@ -1,5 +1,5 @@
 INSERT INTO tipo_usuario (nombre) VALUES ('Cliente');
-INSERT INTO tipo_usuario (nombre) VALUES ('Personal de limpieza');
+INSERT INTO tipo_usuario (nombre) VALUES ('Personal_de_Limpieza');
 INSERT INTO tipo_usuario (nombre) VALUES ('Administrador');
 
 INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$yyfMs7yIs/UHnJ4D7r.diOc5ofJgOQKVVo10zMWAU0QTe3ngliK4O','cliente',1);

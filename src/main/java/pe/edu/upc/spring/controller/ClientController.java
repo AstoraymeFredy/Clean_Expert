@@ -61,21 +61,21 @@ public class ClientController {
 		
 	}
 	
-	@Secured("Cliente")
+	@Secured("ROLE_Cliente")
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("client", sesion.getClient());
 		return "/perfilClient/view";
 	}
 	
-	@Secured("Cliente")
+	@Secured("ROLE_Cliente")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("clientEdit", sesion.getClient());
 		return "/perfilClient/update";
 	}
 	
-	@Secured("Cliente")
+	@Secured("ROLE_Cliente")
 	@RequestMapping("/editClient")
 	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {

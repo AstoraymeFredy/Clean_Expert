@@ -6,13 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import pe.edu.upc.spring.model.CustomUser;
 import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.repository.iUserRepository;
 
@@ -27,9 +27,10 @@ public class JpaUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserModel user = userRepository.findByUsername(username);
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(user.getType_user().getName()));
+		String role = "ROLE_"+user.getType_user().getName();
+		authorities.add(new SimpleGrantedAuthority(role));
 		System.out.println(authorities.get(0));
-		return new User(user.getUsername(), user.getPassword(), true, true, true, true, authorities);
+		return new CustomUser(user.getUsername(), user.getPassword(), true, true, true, true, authorities, user.getId_user(), user.getType_user().getId_type_user());
 	}
 
 }
