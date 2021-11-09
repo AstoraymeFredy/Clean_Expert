@@ -41,14 +41,14 @@ public class CleaningStaff implements Serializable  {
 	
 	@OneToOne
 	@JoinColumn(name="id_usuario", nullable=false)
-	private User user;
+	private UserModel user;
 
 	public CleaningStaff() {
 		super();
 	}
 
 	public CleaningStaff(int id_cleaning_staff, String name, String lastname, String description, String email,
-			String phone, boolean enabled, User user) {
+			String phone, boolean enabled, UserModel user) {
 		super();
 		this.id_cleaning_staff = id_cleaning_staff;
 		this.name = name;
@@ -116,11 +116,11 @@ public class CleaningStaff implements Serializable  {
 		this.enabled = enabled;
 	}
 
-	public User getUser() {
+	public UserModel getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserModel user) {
 		this.user = user;
 	}
 

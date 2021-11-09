@@ -7,6 +7,7 @@ import pe.edu.upc.spring.model.Client;
 
 public interface iClientService {
 	public boolean createClient(Client client);
+	public boolean updateClient(Client client);
 	public void deleteClient(int idClient);
 	public Optional<Client> findById(int idClient);
 	public Optional<Client> findByUserId(int idUser);

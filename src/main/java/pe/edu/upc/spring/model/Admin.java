@@ -32,13 +32,13 @@ public class Admin implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="id_usuario", nullable=false)
-	private User user;
+	private UserModel user;
 
 	public Admin() {
 		super();
 	}
 
-	public Admin(int id_admin, String name, String lastname, String email, User user) {
+	public Admin(int id_admin, String name, String lastname, String email, UserModel user) {
 		super();
 		this.id_admin = id_admin;
 		this.name = name;
@@ -79,11 +79,11 @@ public class Admin implements Serializable {
 		this.email = email;
 	}
 
-	public User getUser() {
+	public UserModel getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserModel user) {
 		this.user = user;
 	}
 	

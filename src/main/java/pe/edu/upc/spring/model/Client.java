@@ -35,13 +35,13 @@ public class Client implements Serializable {
 	
 	@OneToOne
 	@JoinColumn(name="id_usuario", nullable=false)
-	private User user;
+	private UserModel user;
 
 	public Client() {
 		super();
 	}
 
-	public Client(int id_client, String name, String lastname, String email, String phone, User user) {
+	public Client(int id_client, String name, String lastname, String email, String phone, UserModel user) {
 		super();
 		this.id_client = id_client;
 		this.name = name;
@@ -91,11 +91,11 @@ public class Client implements Serializable {
 		this.phone = phone;
 	}
 
-	public User getUser() {
+	public UserModel getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserModel user) {
 		this.user = user;
 	}
 	

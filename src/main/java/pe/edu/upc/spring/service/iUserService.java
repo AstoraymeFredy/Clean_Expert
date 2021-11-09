@@ -1,11 +1,7 @@
 package pe.edu.upc.spring.service;
 
-import java.util.Optional;
-
-import pe.edu.upc.spring.model.User;
+import pe.edu.upc.spring.model.UserModel;
 
 public interface iUserService {
-	public boolean createUser (User user);
-	public Optional<User> findByUsernameAndPassword(String username, String password);
-
+	public boolean createUser (UserModel user);
 }
