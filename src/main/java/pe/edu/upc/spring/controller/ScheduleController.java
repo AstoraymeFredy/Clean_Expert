@@ -50,14 +50,14 @@ public class ScheduleController {
 			throws ParseException
 	{
 		if (binRes.hasErrors())
-			return "redirect:/schedule/update";
+			return "schedule";
 		else {
 			boolean flag = sService.createSchedule(objSchedule);
 			if (flag)
-				return "redirect:/schedule/list";
+				return "redirect:/schedule/register";
 			else {
 				model.addAttribute("mensaje", "Ocurrio un error");
-				return "redirect:/schedule/register";
+				return "redirect:/schedule/update";
 			}
 		}
 	}
