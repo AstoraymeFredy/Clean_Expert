@@ -16,6 +16,7 @@
 <body class="bg-light">
 
 	<div class="page-flex">
+	
 		<!-- ! Sidebar -->
 		<div th:replace="fragments/sidebarAdmin :: sidebarAdmin"></div>
 		<div class="main-wrapper">
@@ -57,10 +58,11 @@
 							<div class="card rounded-3">
 								<!-- card body -->
 								<div class="card-body">
-									<form th:action="@{/admin/register}" method="post"
+									<form th:action="@{/admin/registerAdmin}" method="post"
 										th:object="${admin}">
 										
 										<!-- row -->
+										
 										<div class="mb-4 row">
 											<label for="name"
 												class="col-sm-4 col-form-label
@@ -138,7 +140,7 @@
 											
 										</div>
 										
-										<input type="hidden" th:field= "*{admin.id_admin}">
+										<input type="hidden" th:field= "*{id_admin}">
 										
 										<div class="mt-2">
 										
@@ -165,5 +167,6 @@
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous">
 	</script>
+	
 </body>
 </html>
