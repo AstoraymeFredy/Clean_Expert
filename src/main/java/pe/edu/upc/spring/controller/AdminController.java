@@ -38,7 +38,7 @@ public class AdminController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("admin", new Admin());
-		return "/admin/register";
+		return "/adminLists/registerAdmin";
 	}
 	
 	@RequestMapping("/staff/list")
