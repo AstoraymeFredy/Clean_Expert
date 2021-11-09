@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,7 @@ import com.sun.el.parser.ParseException;
 import pe.edu.upc.spring.model.CleaningStaff;
 import pe.edu.upc.spring.model.Schedule;
 import pe.edu.upc.spring.model.TypeUser;
-import pe.edu.upc.spring.model.User;
+import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iCleaningStaffService;
 import pe.edu.upc.spring.service.iScheduleService;
 import pe.edu.upc.spring.service.iUserService;
@@ -45,8 +46,8 @@ public class CleaningStaffController {
 		if(binRes.hasErrors()) {
 			return "register";
 		} else {
-			User user = objCleaningStaff.getUser();
-			user.setType_user(new TypeUser(2, "Personal de limpieza"));
+			UserModel user = objCleaningStaff.getUser();
+			user.setType_user(new TypeUser(2, "ROLE_Personal_de_Limpieza"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
 			boolean flag = uService.createUser(user);
@@ -60,7 +61,7 @@ public class CleaningStaffController {
 				}
 			}
 			if(flag) {
-				return "redirect:/user/login";
+				return "redirect:/";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
 				return "redirect:/staff/register"; 
@@ -68,18 +69,21 @@ public class CleaningStaffController {
 		}
 	}
 	
+	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/view";
 	}
 	
+	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/update";
 	}
 	
+	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/editStaff")
 	public String editClient(@ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {
