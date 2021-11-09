@@ -81,7 +81,7 @@ public class ClientController {
 		if(binRes.hasErrors()) {
 			return "redirect:/client/edit";
 		} else {
-			boolean flag = cService.createClient(objClient);
+			boolean flag = cService.updateClient(objClient);
 			if(flag) {
 				sesion.setClient(objClient);
 				return "redirect:/client/view";

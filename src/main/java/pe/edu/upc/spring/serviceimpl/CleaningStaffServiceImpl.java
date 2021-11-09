@@ -32,6 +32,17 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 			return true;
 		}
 	}
+	
+	@Override
+	@Transactional
+	public boolean updateCleaningStaff(CleaningStaff cleaningStaff) {
+		CleaningStaff objCleaningStaff = dCleaningStaff.save(cleaningStaff);
+		if(objCleaningStaff==null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 
 	@Override
 	@Transactional
