@@ -56,9 +56,7 @@ public class ClientController {
 				model.addAttribute("errorMessage", "Ocurrio un error");
 				return "redirect:/client/register"; 
 			}
-			
 		}
-		
 	}
 	
 	@Secured("ROLE_Cliente")
