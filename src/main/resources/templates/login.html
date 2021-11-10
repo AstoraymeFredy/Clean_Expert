@@ -29,8 +29,7 @@
 									<h4 class="principal-title text-dark fs-2 ">Iniciar Sesion</h4>
 								</div>
 								<div class="">
-									<form th:action="@{/user/doLogin}" method="post"
-										th:object="${user}">
+									<form th:action="@{/login}" method="post">
 										<div class="row mb-2">
 											<div class="row">
 												<label for="usuario"
@@ -40,9 +39,9 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="usuario" class="form-control"
+													<input id="username" name="username" class="form-control"
 														required="required" placeholder="Ingrese su usuario"
-														th:field="*{username}" type="text" />
+														type="text" />
 												</div>
 											</div>
 										</div>
@@ -55,9 +54,9 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="password" class="form-control"
+													<input name="password" id="password" class="form-control"
 														required="required" placeholder="Ingrese su contraseña"
-														th:field="*{password}" type="password" />
+														type="password" />
 												</div>
 											</div>
 										</div>

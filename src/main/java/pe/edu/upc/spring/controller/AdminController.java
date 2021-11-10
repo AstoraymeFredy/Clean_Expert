@@ -17,7 +17,7 @@ import com.sun.el.parser.ParseException;
 import pe.edu.upc.spring.model.Admin;
 import pe.edu.upc.spring.model.CleaningStaff;
 import pe.edu.upc.spring.model.TypeUser;
-import pe.edu.upc.spring.model.User;
+import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iAdminService;
 import pe.edu.upc.spring.service.iCleaningStaffService;
 import pe.edu.upc.spring.service.iUserService;
@@ -38,7 +38,7 @@ public class AdminController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("admin", new Admin());
-		return "/admin/register";
+		return "/adminLists/registerAdmin";
 	}
 	
 	@RequestMapping("/staff/list")
@@ -78,7 +78,7 @@ public class AdminController {
 		if (binRes.hasErrors()) {
 			return "registerAdmin";
 		} else {
-			User user = objAdmin.getUser();
+			UserModel user = objAdmin.getUser();
 			user.setType_user(new TypeUser(3, "Administrador"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());

@@ -7,22 +7,22 @@ import org.springframework.stereotype.Component;
 import pe.edu.upc.spring.model.Admin;
 import pe.edu.upc.spring.model.CleaningStaff;
 import pe.edu.upc.spring.model.Client;
-import pe.edu.upc.spring.model.User;
+import pe.edu.upc.spring.model.UserModel;
 
 @Component
 @Scope(value = "session",proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class Sesion {
 	
-	private User user;
+	private UserModel user;
 	private Client client;
 	private CleaningStaff cleaningStaff;
 	private Admin admin;
 
-	public User getUser() {
+	public UserModel getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(UserModel user) {
 		this.user = user;
 	}
 

@@ -7,6 +7,7 @@ import pe.edu.upc.spring.model.CleaningStaff;
 
 public interface iCleaningStaffService {
 	public boolean createCleaningStaff(CleaningStaff cleaningStaff);
+	public boolean updateCleaningStaff(CleaningStaff cleaningStaff);
 	public void deleteCleaningStaff(int idCleaningStaff);
 	public Optional<CleaningStaff> findById(int idCleaningStaff);
 	public Optional<CleaningStaff> findByUserId(int idUser);

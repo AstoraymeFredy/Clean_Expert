@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,10 +17,25 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 	
 	@Autowired
 	private iCleaningStaffRepository dCleaningStaff;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	@Transactional
 	public boolean createCleaningStaff(CleaningStaff cleaningStaff) {
+		cleaningStaff.getUser().setPassword(passwordEncoder.encode(cleaningStaff.getUser().getPassword()));
+		CleaningStaff objCleaningStaff = dCleaningStaff.save(cleaningStaff);
+		if(objCleaningStaff==null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	@Override
+	@Transactional
+	public boolean updateCleaningStaff(CleaningStaff cleaningStaff) {
 		CleaningStaff objCleaningStaff = dCleaningStaff.save(cleaningStaff);
 		if(objCleaningStaff==null) {
 			return false;
