@@ -58,12 +58,12 @@ public class Reservation implements Serializable {
 	private String card_owner_name;
 	
 	@Transient
-	@Min(1111111111111L)
-	@Max(9999999999999999L)
-	private Long card_number;
+	@Size(min=19, max=19)
+	private String card_number;
 	
 	@Transient
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date expiration_date;
 	
 	@Transient
@@ -88,7 +88,7 @@ public class Reservation implements Serializable {
 
 	public Reservation(int id_reservation, Date date, float price, LocalTime start_time, int duration,
 			boolean extra_cleaning_kit, String state, String card_owner_name,
-			Long card_number, Date expiration_date,
+			String card_number, Date expiration_date,
 			String cvv_card, CleaningStaff cleaningStaff, Property property) {
 		super();
 		this.id_reservation = id_reservation;
@@ -170,11 +170,11 @@ public class Reservation implements Serializable {
 		this.card_owner_name = card_owner_name;
 	}
 
-	public Long getCard_number() {
+	public String getCard_number() {
 		return card_number;
 	}
 
-	public void setCard_number(Long card_number) {
+	public void setCard_number(String card_number) {
 		this.card_number = card_number;
 	}
 

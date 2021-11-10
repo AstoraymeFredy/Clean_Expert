@@ -14,16 +14,8 @@
 <title>CLEAN EXPERT</title>
 </head>
 <script type="text/javascript">
+
 window.onload = function() { 
-	document.getElementById("Dormitorio").addEventListener("keyup", function() {console.log("sd")
-
-		/*$.ajax({
-			url : "/reservation/calculate",
-			type : "post",
-			
-		});*/
-
-		});
 
 	document.getElementById("personal").addEventListener("click", function() {
 
@@ -120,9 +112,13 @@ function calculate(s) {
 													th:text="*{listDetails[__${rowStat.index}__].room.name}"></label>
 												<input type="number" class="form-control"
 													th:field="*{listDetails[__${rowStat.index}__].quantity}"
-													th:id="*{listDetails[__${rowStat.index}__].room.name}"
+													th:data-duration="${duration}"
+													th:data-cost-hour="${cost_hour}"
+													th:id="|room_*{listDetails[__${rowStat.index}__].room.name}|"
 													th:placeholder="ss"></input> <input type="hidden"
 													th:field="*{listDetails[__${rowStat.index}__].room.name}">
+												<input type="hidden"
+													th:field="*{listDetails[__${rowStat.index}__].room.id_room}">
 											</div>
 										</div>
 
@@ -149,7 +145,7 @@ function calculate(s) {
 												class="col-sm-4 col-form-label
                                             form-label">Horario</label>
 											<div class="col-sm-4 mb-3 mb-lg-0">
-												<input class="form-control" type="time" step="3600"
+												<input class="form-control" type="time"
 													th:field="*{start_time}" id="start_time" min="08:00"
 													max="18:00" required>
 											</div>
@@ -192,10 +188,10 @@ function calculate(s) {
 											</div>
 											<div class="col-md-8 col-12">
 												<div class="form-check  mb-2">
-													<input type="checkbox" class="form-check-input"
-														id="customChecktellMe"> <label
+													<input type="checkbox" th:data-cost-kit="${cost_kit}"
+														class="form-check-input" id="extra-kit"> <label
 														class="form-check-label" th:field="*{extra_cleaning_kit}"
-														for="customChecktellMe">Agregar kit de limpieza</label>
+														for="extra-kit">Agregar kit de limpieza</label>
 												</div>
 											</div>
 
@@ -220,12 +216,11 @@ function calculate(s) {
 										</div>
 										<div class="mb-3">
 											<label for="bath" class="form-label d-block">Horas
-												promedio</label> <span class="fw-bold">5 horas</span>
+												promedio</label> <span class="fw-bold" id="hours"></span>
 										</div>
 										<div class="mb-3">
 											<label for="bath" class="form-label d-block">Monto
-												total a pagar</label> <span class="fw-bold"
-												th:text="${reservation.price}"></span>
+												total a pagar</label> <span class="fw-bold" id="price"></span>
 										</div>
 									</div>
 								</div>
@@ -239,6 +234,9 @@ function calculate(s) {
 	</div>
 
 
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/popper.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
 	<script
@@ -249,5 +247,61 @@ function calculate(s) {
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js">
     </script>
+	<script type="text/javascript">
+
+		$(function() {
+			$("#room_Dormitorio").bind('keyup mouseup', function(){
+				functions.calculatePrice()
+			});
+			$("#room_Comedor").bind('keyup mouseup',function(){
+				functions.calculatePrice()
+			});
+			$("#room_Cocina").bind('keyup mouseup',function(){
+				functions.calculatePrice()
+			});
+			$("#room_Biblioteca").bind('keyup mouseup',function(){
+				functions.calculatePrice()
+			});
+			$("#room_Baño").bind('keyup mouseup',function(){
+				functions.calculatePrice()
+			});
+			$("#room_Sala").bind('keyup mouseup',function(){
+				functions.calculatePrice()
+			});
+
+			$('#extra-kit').change(function() {
+				functions.calculatePrice()     
+		    });
+
+		});
+
+		var functions={
+			calculatePrice: function(){
+				var total = 0;
+				var duration= $("#room_Dormitorio").attr("data-duration");
+				var cost_hour=$("#room_Dormitorio").attr("data-cost-hour");
+				var price_total=0;
+				
+				$('input[id^="room_"]').each(function(){
+					total += parseInt($(this).val())*parseInt(duration);
+				});
+
+				var aprox_duration= parseInt(Math.ceil(total/60));
+				price_total= aprox_duration*cost_hour;
+
+				$('#hours').html(aprox_duration + ' horas');
+
+				var cost_kit=$("#extra-kit").attr("data-cost-kit");
+				
+				if($("#extra-kit").is(':checked')){
+					price_total+=parseInt(cost_kit);
+				}
+
+				$('#price').html('S/. ' + price_total);
+							
+			},	
+	
+		}
+</script>
 </body>
 </html>
