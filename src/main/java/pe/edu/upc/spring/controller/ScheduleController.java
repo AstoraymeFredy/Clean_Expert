@@ -38,7 +38,7 @@ public class ScheduleController {
 		else {	
 			if (objSch.isPresent()) {
                 objSch.ifPresent(o -> {
-                	model.addAttribute("schedule", objSch);
+                	model.addAttribute("schedule", o);
                 });
             }
 			return "/schedule/update";
@@ -52,6 +52,9 @@ public class ScheduleController {
 		if (binRes.hasErrors())
 			return "schedule";
 		else {
+			System.out.println(objSchedule.getId_schedule());
+			System.out.println(objSchedule.isMonday());
+			System.out.println(objSchedule.isSunday());
 			boolean flag = sService.createSchedule(objSchedule);
 			if (flag)
 				return "redirect:/schedule/register";
