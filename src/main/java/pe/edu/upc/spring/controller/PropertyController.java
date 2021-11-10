@@ -3,6 +3,8 @@ package pe.edu.upc.spring.controller;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,16 +53,19 @@ public class PropertyController {
 	}
 	
 	@RequestMapping("/registerProperty")
-	public String register(@ModelAttribute Property objProperty, BindingResult binRes, Model model)
+	public String register(@Valid @ModelAttribute Property objProperty, BindingResult binRes, Model model)
 			throws ParseException
 	{
 		if (objProperty.getClient()==null) {
 			objProperty.setClient(sesion.getClient());	
 		}
 		
-		if (binRes.hasErrors())
-			return "/property/Property";
+		if (binRes.hasErrors()) {
+			model.addAttribute("listDistrict", dService.listDistrict());
+			return "/property/Property";}
+			
 		else {
+	
 			boolean flag = pService.createProperty(objProperty);
 			if (flag)
 				return "redirect:/property/list";
