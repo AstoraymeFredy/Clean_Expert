@@ -27,6 +27,7 @@
 			<!-- ! Main -->
 			<main class="main position-relative mt-5" id="skip-target">
 				<div class="container ">
+				
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<!-- Page header -->
@@ -41,6 +42,8 @@
 											<button class="btn btn-light" type="submit">
 												<i>Guardar</i>
 											</button>
+											<input type="hidden" th:field= "*{id_schedule}">
+											<input type="hidden" th:field= "*{cleaning_staff.id_cleaning_staff}">
 										</div>
 									</div>
 								</div>
@@ -56,6 +59,7 @@
 								
 								<!-- card body -->
 								<div class="table-responsive">
+									
 									<table class="table text-nowrap">
 										<thead class=" table-light">
 											<tr>
@@ -66,58 +70,74 @@
 										</thead>
 										
 										<tbody>
-											<tr th:each="sch: ${schedule}">
+											
+											<tr>
 												<td class="align-middle">1</td>
 												<td class="align-middle">Lunes</td>
-												<td class="align-middle"></td>
-
+												<td class="align-middle">
+													<input type="checkbox" th:field="*{schedule.tuesday}" th:value="${schedule}"
+													class="form-check-label">
+												</td>
 											</tr>
-											
-											<tr th:each="sch: ${schedule}">
+										
+											<tr>
 												<td class="align-middle">2</td>
 												<td class="align-middle">Martes</td>
 												<td class="align-middle">
-													<input type="checkbox" value="${schedule.monday}">
+													<input type="checkbox" th:field="*{schedule.tuesday}" th:value="${schedule}"
+													>
 												</td>
-
 											</tr>
 											
-											<tr th:each="sch: ${schedule}">
+											<tr>
 												<td class="align-middle">3</td>
 												<td class="align-middle">Miércoles</td>
-												<td class="align-middle"></td>
-
+												<td class="align-middle">
+													<input type="checkbox" th:field="*{schedule.wednesday}" th:value="${schedule}"
+													>
+												</td>
 											</tr>
 											
-											<tr th:each="sch: ${schedule}">
+											<tr>
 												<td class="align-middle">4</td>
 												<td class="align-middle">Jueves</td>
-												<td class="align-middle"></td>
-
+												<td class="align-middle">
+													<input type="checkbox" th:field="*{schedule.thursday}" th:value="${schedule}"
+													>
+												</td>
 											</tr>
 											
-											<tr th:each="sch: ${schedule}">
+											<tr>
 												<td class="align-middle">5</td>
 												<td class="align-middle">Viernes</td>
-												<td class="align-middle"></td>
-
+												<td class="align-middle">
+													<input type="checkbox" th:field="*{schedule.friday}" th:value="${schedule}"
+													>
+												</td>
 											</tr>
 											
-											<tr th:each="sch: ${schedule}">
+											<tr>
 												<td class="align-middle">6</td>
 												<td class="align-middle">Sábado</td>
-												<td class="align-middle"></td>
-
+												<td class="align-middle">
+													<input type="checkbox" th:field="*{schedule.saturday}" th:value="${schedule}"
+													>
+												</td>
 											</tr>
 											
-											<tr th:each="sch: ${schedule}">
+											<tr>
 												<td class="align-middle">7</td>
 												<td class="align-middle">Domingo</td>
-												<td class="align-middle"></td>
-
+												<td class="align-middle">
+													<input type="checkbox" th:field="*{schedule.sunday}" th:value="${schedule}"
+													>
+												</td>
 											</tr>
+										
 										</tbody>
+										
 									</table>
+									
 								</div>
 							</div>
 						</div>
