@@ -34,7 +34,6 @@ import pe.edu.upc.spring.model.Reservation;
 import pe.edu.upc.spring.model.Room;
 import pe.edu.upc.spring.model.Schedule;
 import pe.edu.upc.spring.service.iReservationService;
-import pe.edu.upc.spring.service.iCleaningStaffService;
 import pe.edu.upc.spring.service.iDetailReservationService;
 import pe.edu.upc.spring.service.iRoomService;
 import pe.edu.upc.spring.service.iPropertyService;
@@ -68,10 +67,9 @@ public class ReservationController {
 
 	List<Parameter> listParameters = new ArrayList<Parameter>();
 	List<DetailReservation> listDetailReservation = new ArrayList<DetailReservation>();
-	List<CleaningStaff> listCleaningStaff= new ArrayList<CleaningStaff>();
+	List<CleaningStaff> listCleaningStaff = new ArrayList<CleaningStaff>();
 
 	private Reservation reservation;
-	
 
 	@RequestMapping("/list")
 	public String listReservationByClient(Map<String, Object> model) {
@@ -99,92 +97,87 @@ public class ReservationController {
 	@RequestMapping("/goRegister")
 	public String goPageCreate(Model model) {
 		Reservation reservation = new Reservation();
-
+		listDetailReservation.clear();
+		listParameters = paService.list();
 		List<Room> listRoom = roService.listRooms();
-		 for (int i = 0; i < listRoom.size(); i++) {
-	         DetailReservation detail = new DetailReservation();
-	         detail.setRoom(listRoom.get(i));
-	         listDetailReservation.add(detail);
-	     }
+		for (int i = 0; i < listRoom.size(); i++) {
+			DetailReservation detail = new DetailReservation();
+			detail.setRoom(listRoom.get(i));
+			listDetailReservation.add(detail);
+		}
 		reservation.setListDetails(this.listDetailReservation);
 
 		model.addAttribute("listClientStaff", listCleaningStaff);
 		model.addAttribute("listProperty", pService.findByClientId(sesion.getClient().getId_client()));
+		model.addAttribute("duration", listParameters.get(0).getValue());
+		model.addAttribute("cost_hour", listParameters.get(1).getValue());
+		model.addAttribute("cost_kit", listParameters.get(2).getValue());
+
 		listParameters = paService.list();
-		
+
 		this.reservation = reservation;
 		model.addAttribute("reservation", reservation);
 		return "/reservation/create";
 	}
 
-	@RequestMapping("/calculate")
-	public String calculate(@ModelAttribute Reservation reservation, BindingResult binRes, Model model) throws ParseException {
-			System.out.println("INGRESA");
-			System.out.println("INGRESA");
-
-			/*System.out.println(reservation.getListDetails());
-			System.out.println(reservation.getClass().getName());
-
-			int count= 23;
-
-			for (int i = 0; i < reservation.getListDetails().size(); i++) {
-				count = count +  reservation.getListDetails().get(i).getQuantity();
-			}
-			
-			this.reservation = reservation;
-			
-			reservation.setPrice(count);
-			model.addAttribute("reservation", reservation);
-			
-			
-			System.out.println(count);
-			*/
-			return "reservation";
-		
-	}
-
-	
 	@RequestMapping("/goPayment")
-	public String goPagePayment(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model) throws ParseException {
+	public String goPagePayment(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model)
+			throws ParseException {
 		if (binRes.hasErrors()) {
-			System.out.println(objReservation.getStart_time());
-
-			System.out.println(binRes.getAllErrors());
-
+			model.addAttribute("duration", listParameters.get(0).getValue());
+			model.addAttribute("cost_hour", listParameters.get(1).getValue());
+			model.addAttribute("cost_kit", listParameters.get(2).getValue());
 			return "/reservation/create";
 		} else {
-			System.out.println(objReservation.getStart_time());
+		
+			float total_duration = 0;
+			int aprox_duration = 0;
+			float total_price = 0;
 
-		this.reservation = objReservation;
-		model.addAttribute("reservation", objReservation);
+			for (int i = 0; i < objReservation.getListDetails().size(); i++) {
+				  DetailReservation detail=objReservation.getListDetails().get(i);
+			      total_duration= total_duration + listParameters.get(0).getValue() * detail.getQuantity();		    
+			}
+			
+			aprox_duration= (int) Math.ceil(total_duration/60);
+			total_price=aprox_duration*listParameters.get(1).getValue();
+			
+			if(objReservation.isExtra_cleaning_kit()) {
+				total_price=total_price + listParameters.get(2).getValue();
+			}
 
-		return "/reservation/payment";
-
-	/*	if (binRes.hasErrors()) {
-			model.addAttribute("listDetailsReservation", roService.listRooms());
-			model.addAttribute("listDetailsReservation", pService.findByClientId(sesion.getClient().getId_client()));
-			return "reservation";
-		} else {
 			this.reservation = objReservation;
-			this.listDetailReservation = listDetailsReservation;
+			this.reservation.setDuration(aprox_duration);
+			this.reservation.setPrice(total_price);
+			model.addAttribute("reservation", objReservation);
+			
 			return "/reservation/payment";
-		}*/
 		}
 	}
 
 	@RequestMapping("/register")
-	public String register(Model model, BindingResult binRes) throws ParseException {
+	public String register(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model)
+			throws ParseException {
 		if (binRes.hasErrors()) {
-			return "reservation";
+			return "/reservation/payment";
 		} else {
+			reservation.setCard_owner_name(objReservation.getCard_owner_name());
+			reservation.setState("solicitado");
+			reservation.setCard_number(objReservation.getCard_number());
+			reservation.setCvv_card(objReservation.getCvv_card());
+			reservation.setExpiration_date(objReservation.getExpiration_date());
 
 			boolean flag = true;
-			flag = rService.createReservation(this.reservation);
-
-			for (int i = 0; i < this.listDetailReservation.size(); i++) {
-				flag = dService.createDetailReservation(this.listDetailReservation.get(i));
+			Reservation resReservation = rService.createReservation(this.reservation);
+			if (resReservation == null) {
+				flag = false;
+			} else {
+				flag = true;
+				for (int i = 0; i < this.reservation.getListDetails().size(); i++) {
+					this.reservation.getListDetails().get(i).setReservation(resReservation);
+					flag = dService.createDetailReservation(this.reservation.getListDetails().get(i));
+				}
 			}
-
 			if (flag)
 				return "redirect:/reservation/list";
 			else {
@@ -198,46 +191,46 @@ public class ReservationController {
 	@RequestMapping("/listClientStaff/{date}")
 	public String listStaff(@PathVariable String date, Model model, RedirectAttributes objRedir,
 			Map<String, Object> modelList) throws ParseException, java.text.ParseException {
-		
-			listCleaningStaff.clear();
-			List<Schedule> listSchedule = new ArrayList<Schedule>();
-	
-			LocalDate localdate = LocalDate.parse((CharSequence) date);
-			Locale spanishLocale = new Locale("es", "ES");
-			String dateInSpanish = localdate.format(DateTimeFormatter.ofPattern("EEEE", spanishLocale));
 
-			listSchedule = sService.findHorarioByDate(dateInSpanish);
-	
-			List<Reservation> filteredReservations = new ArrayList<Reservation>();
-			
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			Date date_format = format.parse(date);
-			filteredReservations = rService.listByDate(date_format);
-	
-			List<CleaningStaff> cleaningStaffPerSchedule = new ArrayList<CleaningStaff>();
-	
-			for (int i = 0; i < listSchedule.size(); i++) {
+		listCleaningStaff.clear();
+		List<Schedule> listSchedule = new ArrayList<Schedule>();
 
-				if(listSchedule.get(i).getCleaning_staff().isEnabled()) {
-					cleaningStaffPerSchedule.add(listSchedule.get(i).getCleaning_staff());
+		LocalDate localdate = LocalDate.parse((CharSequence) date);
+		Locale spanishLocale = new Locale("es", "ES");
+		String dateInSpanish = localdate.format(DateTimeFormatter.ofPattern("EEEE", spanishLocale));
+
+		listSchedule = sService.findHorarioByDate(dateInSpanish);
+
+		List<Reservation> filteredReservations = new ArrayList<Reservation>();
+
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date_format = format.parse(date);
+		filteredReservations = rService.listByDate(date_format);
+
+		List<CleaningStaff> cleaningStaffPerSchedule = new ArrayList<CleaningStaff>();
+
+		for (int i = 0; i < listSchedule.size(); i++) {
+
+			if (listSchedule.get(i).getCleaning_staff().isEnabled()) {
+				cleaningStaffPerSchedule.add(listSchedule.get(i).getCleaning_staff());
+			}
+		}
+
+		for (int i = 0; i < cleaningStaffPerSchedule.size(); i++) {
+			boolean notFinded = true;
+			for (int j = 0; j < filteredReservations.size(); j++) {
+				if (filteredReservations.get(i).getCleaningStaff().getId_cleaning_staff() == cleaningStaffPerSchedule
+						.get(j).getId_cleaning_staff()) {
+					notFinded = false;
 				}
 			}
-	
-			for (int i = 0; i < cleaningStaffPerSchedule.size(); i++) {
-				boolean notFinded = true;
-				for (int j = 0; j < filteredReservations.size(); j++) {
-					if (filteredReservations.get(i).getCleaningStaff().getId_cleaning_staff() == cleaningStaffPerSchedule
-							.get(j).getId_cleaning_staff()) {
-						notFinded = false;
-					}
-				}
-				if (notFinded) {
-					listCleaningStaff.add(cleaningStaffPerSchedule.get(i));
-				}
+			if (notFinded) {
+				listCleaningStaff.add(cleaningStaffPerSchedule.get(i));
 			}
+		}
 
-			Gson gson = new Gson();
-			return gson.toJson(listCleaningStaff);
+		Gson gson = new Gson();
+		return gson.toJson(listCleaningStaff);
 	}
 
 }

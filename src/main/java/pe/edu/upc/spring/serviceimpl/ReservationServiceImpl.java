@@ -20,12 +20,12 @@ public class ReservationServiceImpl implements iReservationService {
 	
 	@Override
 	@Transactional
-	public boolean createReservation(Reservation reservation) {
+	public Reservation createReservation(Reservation reservation) {
 		Reservation objReservation = dReservation.save(reservation);
 		if(objReservation==null) {
-			return false;
+			return new Reservation();
 		} else {
-			return true;
+			return objReservation;
 		}
 	}
 		
