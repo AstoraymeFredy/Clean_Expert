@@ -74,7 +74,7 @@ public class LoginController {
 
 		if (error != null) {
 			model.addAttribute("error",
-					"Error en el login: Nombre de usuario o contraseña incorrecta, por favor vuelva a intentarlo!");
+					"Error: Nombre de usuario o contraseña incorrecta. Por favor vuelva a intentarlo.");
 		}
 
 		if (logout != null) {
