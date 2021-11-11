@@ -91,7 +91,7 @@ public class CleaningStaffController {
 		if(binRes.hasErrors()) {
 			return "redirect:/staff/edit";
 		} else {
-			boolean flag = csService.createCleaningStaff(objCleaningStaff);
+			boolean flag = csService.updateCleaningStaff(objCleaningStaff);
 			if(flag) {
 				httpSession.setAttribute("nameUser", objCleaningStaff.getName() + " " + objCleaningStaff.getLastname());
 				sesion.setCleaningStaff(objCleaningStaff);

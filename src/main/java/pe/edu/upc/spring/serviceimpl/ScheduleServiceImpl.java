@@ -59,7 +59,7 @@ public class ScheduleServiceImpl implements iScheduleService {
 	@Transactional(readOnly = true)
 	public Optional<Schedule> findByIdStaff(int idStaff)
 	{
-		return dSchedule.findById(idStaff);
+		return dSchedule.findByIdStaff(idStaff);
 	}
 	
 	@Override
