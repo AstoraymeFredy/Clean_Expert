@@ -63,9 +63,8 @@ public class PropertyController {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listDistrict", dService.listDistrict());
 			return "/property/Property";}
-			
-		else {
-	
+		else 
+		{
 			boolean flag = pService.createProperty(objProperty);
 			if (flag)
 				return "redirect:/property/list";
