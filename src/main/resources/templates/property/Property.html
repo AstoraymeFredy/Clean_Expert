@@ -73,10 +73,7 @@
 														th:value="${dis.id_district}" th:text="${dis.name}"
 														th:selected="(${dis.id_district}==*{district.id_district})"></option>
 												</select>
-											
 											</div>
-
-
 										</div>
 										<div class="mb-4 row">
 											<label for="address"
@@ -90,18 +87,12 @@
 													th:if="${#fields.hasErrors('address')}"
 													th:errors="*{address}"></small>
 											</div>
-
-
-
-
-
 										</div>
 										<div class="mt-2">
 											<a href="/property/list" class="btn btn-secondary px-4 me-2">Cancelar</a>
 											<button type="submit" class="btn btn-primary px-4">Guardar</button>
 										</div>
 										<p th:text="${mensaje}" class="form-text text-danger"></p>
-
 									</form>
 								</div>
 							</div>
