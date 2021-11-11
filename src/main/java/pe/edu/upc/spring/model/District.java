@@ -32,8 +32,6 @@ public class District implements Serializable {
 		this.name = name;
 	}
 
-	
-
 	public int getId_district() {
 		return id_district;
 	}

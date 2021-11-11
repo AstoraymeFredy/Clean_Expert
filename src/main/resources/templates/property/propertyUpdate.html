@@ -55,7 +55,6 @@
 	                                            form-label">Distrito</label>
 											<div class="col-md-8 col-12">
 												<select class="form-control" th:field="*{district.id_district}" >
-													<option value="0">Selecciona un distrito</option>
 													<option th:each="dis: ${listDistrict}" 
 															th:value="${dis.id_district}"
 															th:text="${dis.name}"
@@ -71,7 +70,11 @@
 	                                        <input id="id" placeholder="Ingrese" th:field="*{id_property}" type="hidden"/>
 											<div class="col-md-8 col-12">
 												<input type="text" class="form-control" th:field="*{address}" 
-												placeholder="Ingresa una direccion" id="address" required="required">
+												placeholder="Ingresa una direccion" id="address" required="required"
+												th:errorclass="'form-control alert-danger'">
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('address')}"
+													th:errors="*{address}"></small>
 											</div>
 										</div>
 										<div class="mt-2">
