@@ -187,11 +187,11 @@ function calculate(s) {
 													preferencias</label>
 											</div>
 											<div class="col-md-8 col-12">
-												<div class="form-check  mb-2">
-													<input type="checkbox" th:data-cost-kit="${cost_kit}"
-														class="form-check-input" id="extra-kit"> <label
-														class="form-check-label" th:field="*{extra_cleaning_kit}"
-														for="extra-kit">Agregar kit de limpieza</label>
+
+												<div class="form-check">
+												  <input class="form-check-input"  th:value="*{extra_cleaning_kit}"
+												      th:field="*{extra_cleaning_kit}" th:checked="*{extra_cleaning_kit}"  th:data-cost-kit="${cost_kit}" type="checkbox" id="extra-kit">
+												  <label class="form-check-label" for="extra-kit">Agregar kit de limpieza</label>
 												</div>
 											</div>
 

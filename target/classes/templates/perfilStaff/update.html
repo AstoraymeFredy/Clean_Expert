@@ -16,7 +16,8 @@
 <body class="bg-light">
 	<div class="page-flex">
 		<!-- ! Sidebar -->
-		<div th:replace="fragments/sidebarCleaningStaff :: sidebarCleaningStaff"></div>
+		<div
+			th:replace="fragments/sidebarCleaningStaff :: sidebarCleaningStaff"></div>
 		<div class="main-wrapper">
 			<!-- ! Navbar -->
 			<div th:replace="fragments/navbar :: navbar"></div>
@@ -56,11 +57,11 @@
 										<!-- row -->
 
 										<input id="usuario" placeholder="Ingrese su nombre"
-											th:field="*{id_cleaning_staff}" type="hidden" /> 
- 										<input id="usuario"	placeholder="Ingrese su nombre"  
- 											th:field="*{user.id_user}" type="hidden" /> 
-										<input id="usuario"	placeholder="Ingrese su nombre"  
- 											th:field="*{enabled}" type="hidden" /> 
+											th:field="*{id_cleaning_staff}" type="hidden" /> <input
+											id="usuario" placeholder="Ingrese su nombre"
+											th:field="*{user.id_user}" type="hidden" /> <input
+											id="usuario" placeholder="Ingrese su nombre"
+											th:field="*{enabled}" type="hidden" />
 
 										<div class="mb-4 row">
 
@@ -69,7 +70,9 @@
 	                                            form-label">Nombre:</label>
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su nombre"
-													th:field="*{name}" type="text" class="form-control" />
+													th:field="*{name}" type="text" class="form-control" /> <small
+													class="form-text text-danger"
+													th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
 											</div>
 										</div>
 
@@ -81,6 +84,9 @@
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su apellido"
 													th:field="*{lastname}" type="text" class="form-control" />
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('lastname')}"
+													th:errors="*{lastname}"></small>
 											</div>
 										</div>
 
@@ -91,8 +97,9 @@
 	                                            form-label">Celular:</label>
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su celular"
-													th:field="*{phone}" type="text" class="form-control" />
-
+													th:field="*{phone}" type="text" class="form-control" /> <small
+													class="form-text text-danger"
+													th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
 											</div>
 										</div>
 
@@ -103,17 +110,25 @@
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su correo"
 													th:field="*{email}" type="text" class="form-control" />
+												<small class="form-text text-danger"
+														th:if="${#fields.hasErrors('email')}"
+														th:errors="*{email}"></small>
 											</div>
 										</div>
 
-										
+
 										<div class="mb-4 row">
 											<label for="password"
 												class="col-sm-4 col-form-label
-	                                            form-label">¿En que te especializas?</label>
+	                                            form-label">¿En
+												que te especializas?</label>
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su especialidad"
 													th:field="*{description}" type="text" class="form-control" />
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('description')}"
+													th:errors="*{description}"></small>
+
 											</div>
 										</div>
 

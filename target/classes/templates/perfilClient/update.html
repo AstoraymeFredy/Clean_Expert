@@ -49,8 +49,6 @@
 							<div class="card rounded-3">
 								<!-- card body -->
 								<div class="card-body">
-
-
 									<form th:action="@{/client/editClient}" method="post"
 										th:object="${clientEdit}">
 										<!-- row -->
@@ -68,6 +66,9 @@
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su nombre"
 													th:field="*{name}" type="text" class="form-control" />
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('name')}"
+													th:errors="*{name}"></small>
 											</div>
 										</div>
 
@@ -79,6 +80,9 @@
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su apellido"
 													th:field="*{lastname}" type="text" class="form-control" />
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('lastname')}"
+													th:errors="*{lastname}"></small>
 											</div>
 										</div>
 
@@ -90,17 +94,22 @@
 											<div class="col-md-8 col-12">
 												<input id="usuario" placeholder="Ingrese su celular"
 													th:field="*{phone}" type="text" class="form-control" />
-
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('phone')}"
+													th:errors="*{phone}"></small>
 											</div>
 										</div>
 
 										<div class="mb-4 row">
-											<label for="password"
+											<label for="email"
 												class="col-sm-4 col-form-label
 	                                            form-label">Correo:</label>
 											<div class="col-md-8 col-12">
-												<input id="usuario" placeholder="Ingrese su correo"
+												<input id="email" placeholder="Ingrese su correo"
 													th:field="*{email}" type="text" class="form-control" />
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('email')}"
+													th:errors="*{email}"></small>
 											</div>
 										</div>
 

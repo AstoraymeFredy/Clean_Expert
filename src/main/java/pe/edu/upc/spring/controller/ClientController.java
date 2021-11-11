@@ -1,5 +1,7 @@
 package pe.edu.upc.spring.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -37,9 +39,9 @@ public class ClientController {
 	}
 	
 	@RequestMapping("/registerClient")
-	public String registerClient(@ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
+	public String registerClient(@Valid @ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
-			return "redirect:/client/register";
+			return "/register/registerClient";
 		} else {
 			UserModel user = objClient.getUser();
 			user.setType_user(new TypeUser(1, "Cliente"));
@@ -75,9 +77,9 @@ public class ClientController {
 	
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/editClient")
-	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model)throws ParseException{
+	public String editClient(@Valid @ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if(binRes.hasErrors()) {
-			return "redirect:/client/edit";
+			return "/perfilClient/update";
 		} else {
 			boolean flag = cService.updateClient(objClient);
 			if(flag) {

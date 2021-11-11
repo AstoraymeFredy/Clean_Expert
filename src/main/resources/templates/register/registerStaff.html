@@ -39,9 +39,10 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="name" class="form-control" required="required"
+													<input id="name" class="form-control" 
 														placeholder="Ingrese su nombre" th:field="*{name}"
-														type="text" />
+														type="text" /> <small class="form-text text-danger"
+														th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
 												</div>
 											</div>
 										</div>
@@ -55,8 +56,11 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="password" class="form-control"
-														required="required" placeholder="Ingrese su apellido"
+														placeholder="Ingrese su apellido"
 														th:field="*{lastname}" type="text" />
+															<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('lastname')}"
+													th:errors="*{lastname}"></small>
 												</div>
 											</div>
 										</div>
@@ -69,9 +73,12 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="phone" class="form-control" required="required"
+													<input id="phone" class="form-control"
 														placeholder="Ingrese su celular" th:field="*{phone}"
 														type="text" />
+																<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('phone')}"
+													th:errors="*{phone}"></small>
 												</div>
 											</div>
 										</div>
@@ -85,9 +92,12 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="email" class="form-control" required="required"
+													<input id="email" class="form-control"
 														placeholder="Ingrese su correo electronico"
 														th:field="*{email}" type="text" />
+														<small class="form-text text-danger"
+														th:if="${#fields.hasErrors('email')}"
+														th:errors="*{email}"></small>
 												</div>
 											</div>
 										</div>
@@ -132,8 +142,11 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<textarea id="description" class="form-control"
-														required="required" placeholder="Ingrese su descripcion"
+														placeholder="Ingrese su descripcion"
 														th:field="*{description}" type="text" />
+													<small class="form-text text-danger"
+														th:if="${#fields.hasErrors('description')}"
+														th:errors="*{description}"></small>
 												</div>
 											</div>
 										</div>
