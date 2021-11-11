@@ -1,5 +1,7 @@
 package pe.edu.upc.spring.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -75,12 +77,13 @@ public class ClientController {
 	
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/editClient")
-	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model)throws ParseException{
+	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
 		if(binRes.hasErrors()) {
 			return "redirect:/client/edit";
 		} else {
 			boolean flag = cService.updateClient(objClient);
 			if(flag) {
+				httpSession.setAttribute("nameUser", objClient.getName() + " " + objClient.getLastname());
 				sesion.setClient(objClient);
 				return "redirect:/client/view";
 			} else {

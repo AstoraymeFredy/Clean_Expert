@@ -1,5 +1,7 @@
 package pe.edu.upc.spring.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -85,12 +87,13 @@ public class CleaningStaffController {
 	
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/editStaff")
-	public String editClient(@ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
+	public String editClient(@ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
 		if(binRes.hasErrors()) {
 			return "redirect:/staff/edit";
 		} else {
 			boolean flag = csService.createCleaningStaff(objCleaningStaff);
 			if(flag) {
+				httpSession.setAttribute("nameUser", objCleaningStaff.getName() + " " + objCleaningStaff.getLastname());
 				sesion.setCleaningStaff(objCleaningStaff);
 				return "redirect:/staff/view";
 			} else {
