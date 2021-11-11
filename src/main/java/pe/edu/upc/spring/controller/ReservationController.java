@@ -7,6 +7,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -121,9 +123,11 @@ public class ReservationController {
 	}
 
 	@RequestMapping("/goPayment")
-	public String goPagePayment(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model)
+	public String goPagePayment(@Valid @ModelAttribute("reservation") Reservation objReservation, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
+			model.addAttribute("listClientStaff", listCleaningStaff);
+			model.addAttribute("listProperty", pService.findByClientId(sesion.getClient().getId_client()));
 			model.addAttribute("duration", listParameters.get(0).getValue());
 			model.addAttribute("cost_hour", listParameters.get(1).getValue());
 			model.addAttribute("cost_kit", listParameters.get(2).getValue());

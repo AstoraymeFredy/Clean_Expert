@@ -56,20 +56,19 @@ public class LoginController {
 				Client client = findedClient.get();
 				sesion.setClient(client);
 				model.addAttribute("client", client);
-				httpSession.setAttribute("nameUser", client.getName() + client.getLastname());
-				System.out.println("xsxs");
+				httpSession.setAttribute("nameUser", client.getName() + " " + client.getLastname());
 				return "redirect:/reservation/list";
 			} else {
 				if (customUser.getTypeUserID() == 2) {
 					Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(customUser.getUserID());
 					CleaningStaff cleaningStaff = findedCleaningStaff.get();
-					httpSession.setAttribute("nameUser", cleaningStaff.getName() + cleaningStaff.getLastname());
+					httpSession.setAttribute("nameUser", cleaningStaff.getName() + " " + cleaningStaff.getLastname());
 					sesion.setCleaningStaff(cleaningStaff);
 					return "redirect:/service/list";
 				} else {
 					Optional<Admin> findedAdmin =aService.findByUserId(customUser.getUserID());
 					Admin admin = findedAdmin.get();
-					httpSession.setAttribute("nameUser", admin.getName() + admin.getLastname());
+					httpSession.setAttribute("nameUser", admin.getName() + " " + admin.getLastname());
 					sesion.setAdmin(admin);
 					return "redirect:/admin/staff/list";
 				}

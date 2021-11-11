@@ -17,12 +17,26 @@
 
 window.onload = function() { 
 
+
 	document.getElementById("personal").addEventListener("click", function() {
 
 		var data = document.getElementById('date').value;
 		var time = document.getElementById('start_time').value;
-		console.log(time);
-		$.ajax({
+
+			if(data==='') {
+				window.alert("Selecciona una fecha");
+			} else {
+				calculate(data);
+			}
+		});	
+	};
+	
+	function calculate(data) {
+		
+		if(data===''){
+			
+		} else{
+			$.ajax({
 				type: 'GET',
 				url: '/reservation/listClientStaff/' + data,
 				success: function(result) {
@@ -42,20 +56,8 @@ window.onload = function() {
 					}
 				}				
 			});
-		});	
-};
-	
-function calculate(s) {
-	
-	var data = document.getElementById("Dormitorio").getAttribute('data-post');
-	console.log(typeof data)
-	
-	$.ajax({
-		url : "/reservation/calculate",
-		type : "post",
-	    data : JSON.stringify(s),
-	});
-}
+		}
+	}
 
 
 </script>
@@ -115,7 +117,7 @@ function calculate(s) {
 													th:data-duration="${duration}"
 													th:data-cost-hour="${cost_hour}"
 													th:id="|room_*{listDetails[__${rowStat.index}__].room.name}|"
-													th:placeholder="ss"></input> <input type="hidden"
+													placeholder="Ingresa una cantidad"></input> <input type="hidden"
 													th:field="*{listDetails[__${rowStat.index}__].room.name}">
 												<input type="hidden"
 													th:field="*{listDetails[__${rowStat.index}__].room.id_room}">
@@ -138,6 +140,9 @@ function calculate(s) {
 														th:selected="(${pro.id_property} == *{property.id_property})">
 													</option>
 												</select>
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('property')}"
+													th:errors="*{property}"></small>
 											</div>
 										</div>
 										<div class="mb-4 row">
@@ -147,11 +152,17 @@ function calculate(s) {
 											<div class="col-sm-4 mb-3 mb-lg-0">
 												<input class="form-control" type="time"
 													th:field="*{start_time}" id="start_time" min="08:00"
-													max="18:00" required>
+													max="18:00" />
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('start_time')}"
+													th:errors="*{start_time}"></small>
 											</div>
 											<div class="col-sm-4">
 												<input type="date" class="form-control" th:field="*{date}"
 													id="date"></input>
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('date')}"
+													th:errors="*{date}"></small>
 											</div>
 										</div>
 
@@ -174,8 +185,10 @@ function calculate(s) {
 											<div class="col-md-8 col-12">
 												<select class="form-select" id="select-personal"
 													th:field="*{cleaningStaff.id_cleaning_staff}">
-
 												</select>
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('cleaningStaff')}"
+													th:errors="*{cleaningStaff}"></small>
 											</div>
 										</div>
 										<div class="mb-4 mt-4">
@@ -250,6 +263,8 @@ function calculate(s) {
 	<script type="text/javascript">
 
 		$(function() {
+			functions.calculatePrice()     
+			
 			$("#room_Dormitorio").bind('keyup mouseup', function(){
 				functions.calculatePrice()
 			});
@@ -283,7 +298,9 @@ function calculate(s) {
 				var price_total=0;
 				
 				$('input[id^="room_"]').each(function(){
-					total += parseInt($(this).val())*parseInt(duration);
+					if($(this).val()!==''){
+						total += parseInt($(this).val())*parseInt(duration);
+					}
 				});
 
 				var aprox_duration= parseInt(Math.ceil(total/60));
