@@ -25,7 +25,6 @@ import pe.edu.upc.spring.service.iClientService;
 import pe.edu.upc.spring.utils.Sesion;
 
 @Controller
-@RequestMapping
 public class LoginController {
 	
 	@Autowired
@@ -40,7 +39,12 @@ public class LoginController {
 	@Autowired
 	private iAdminService aService;
 	
-	@GetMapping(value = { "/login", "/" })
+	@RequestMapping("/")
+    public String home (){
+        return "index";
+    }
+	
+	@RequestMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model, Principal principal,
 			RedirectAttributes flash, HttpSession httpSession) {
@@ -53,6 +57,7 @@ public class LoginController {
 				sesion.setClient(client);
 				model.addAttribute("client", client);
 				httpSession.setAttribute("nameUser", client.getName() + client.getLastname());
+				System.out.println("xsxs");
 				return "redirect:/reservation/list";
 			} else {
 				if (customUser.getTypeUserID() == 2) {
