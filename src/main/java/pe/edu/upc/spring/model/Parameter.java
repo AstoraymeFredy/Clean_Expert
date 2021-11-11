@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name="parametro")
@@ -22,8 +27,10 @@ public class Parameter implements Serializable {
 	@Column(name="nombre", nullable=false, length=50)
 	private String name;
 	
-	@Column(name="valor", nullable=false, length=50)
-	private int value;
+	@Range(min = 1, message="El campo debe ser mayor a 1")
+	@NotNull(message = "Ingresa un valor")
+	@Column(name="valor", nullable=false)
+	private Integer value;
 	
 	@Column(name="unidad", nullable=false, length=50)
 	private String unit;
@@ -32,7 +39,7 @@ public class Parameter implements Serializable {
 		super();
 	}
 
-	public Parameter(int id_parameter, String name, int value, String unit) {
+	public Parameter(int id_parameter, String name, Integer value, String unit) {
 		super();
 		this.id_parameter = id_parameter;
 		this.name = name;
@@ -56,11 +63,11 @@ public class Parameter implements Serializable {
 		this.name = name;
 	}
 
-	public int getValue() {
+	public Integer getValue() {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(Integer value) {
 		this.value = value;
 	}
 

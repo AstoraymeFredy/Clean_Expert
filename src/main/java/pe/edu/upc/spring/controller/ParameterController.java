@@ -3,6 +3,8 @@ package pe.edu.upc.spring.controller;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,11 +33,11 @@ public class ParameterController {
 	}
 	
 	@RequestMapping("/registerParameter")
-	public String registrar(@ModelAttribute Parameter objParameter, BindingResult binRes, Model model)
+	public String registrar(@Valid @ModelAttribute("parameter") Parameter objParameter, BindingResult binRes, Model model)
 			throws ParseException
 	{
 		if (binRes.hasErrors())
-			return "redirect:/parameter/update";
+			return "/parameter/update";
 		else {
 			boolean flag = pService.createParameter(objParameter);
 			if (flag)
