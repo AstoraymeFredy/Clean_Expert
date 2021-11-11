@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,10 +17,14 @@ public class AdminServiceImpl implements iAdminService {
 	
 	@Autowired
 	private iAdminRepository dAdmin;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@Override
 	@Transactional
 	public boolean createAdmin(Admin admin) {
+		admin.getUser().setPassword(passwordEncoder.encode(admin.getUser().getPassword()));
 		Admin objAdmin = dAdmin.save(admin);
 		if(objAdmin==null) {
 			return false;

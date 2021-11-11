@@ -1,5 +1,5 @@
 package pe.edu.upc.spring.controller;
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,25 +25,25 @@ import pe.edu.upc.spring.utils.Sesion;
 @Controller
 @RequestMapping("/staff")
 public class CleaningStaffController {
-	
+
 	@Autowired
 	private Sesion sesion;
-	
+
 	@Autowired
 	private iCleaningStaffService csService;
-	
+
 	@Autowired
 	private iScheduleService sService;
-	
+
 	@Autowired
 	private iUserService uService;
-	
+
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("staff", new CleaningStaff());
 		return "/register/registerStaff";
 	}
-	
+
 	@RequestMapping(value = "/registerStaff", method = RequestMethod.POST)
 	public String registerStaff (@Valid @ModelAttribute("staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)
 		throws ParseException{
@@ -68,33 +68,34 @@ public class CleaningStaffController {
 				return "redirect:/";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
-				return "redirect:/staff/register"; 
+				return "redirect:/staff/register";
 			}
 		}
 	}
-	
+
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/view";
 	}
-	
+
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/update";
 	}
-	
+
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/editStaff")
-	public String editClient(@Valid @ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)throws ParseException{
+	public String editClient(@Valid @ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
 		if(binRes.hasErrors()) {
 			return "/perfilStaff/update";
 		} else {
 			boolean flag = csService.updateCleaningStaff(objCleaningStaff);
 			if(flag) {
+				httpSession.setAttribute("nameUser", objCleaningStaff.getName() + " " + objCleaningStaff.getLastname());
 				sesion.setCleaningStaff(objCleaningStaff);
 				return "redirect:/staff/view";
 			} else {
