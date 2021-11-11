@@ -29,7 +29,7 @@
 								<div
 									class="border-bottom pb-4 mb-4 d-flex align-items-center justify-content-between">
 									<div>
-										<h3 class="mb-0 fw-bold text-primary">Editar direccion</h3>
+										<h3 class="mb-0 fw-bold text-primary">Guardar dirección</h3>
 									</div>
 									<div></div>
 								</div>
@@ -38,7 +38,7 @@
 					</div>
 					<div class="row mb-4">
 						<div class="col-xl-3 col-lg-4 col-md-12 col-12">
-							<div class="mb-4 mb-lg-0">						
+							<div class="mb-4 mb-lg-0">
 								<p class="mb-0 fs-5 text-muted">Complete los campos de la direccion</p>
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 	                                            form-label">Distrito</label>
 											<div class="col-md-8 col-12">
 												<select class="form-control" th:field="*{district.id_district}" >
-													<option th:each="dis: ${listDistrict}" 
+													<option th:each="dis: ${listDistrict}"
 															th:value="${dis.id_district}"
 															th:text="${dis.name}"
 															th:selected="(${dis.id_district}==*{district.id_district})"
@@ -69,8 +69,8 @@
 	                                            form-label">Direccion</label>
 	                                        <input id="id" placeholder="Ingrese" th:field="*{id_property}" type="hidden"/>
 											<div class="col-md-8 col-12">
-												<input type="text" class="form-control" th:field="*{address}" 
-												placeholder="Ingresa una direccion" id="address" required="required"
+												<input type="text" class="form-control" th:field="*{address}"
+												placeholder="Ingresa una direccion" id="address" 
 												th:errorclass="'form-control alert-danger'">
 												<small class="form-text text-danger"
 													th:if="${#fields.hasErrors('address')}"

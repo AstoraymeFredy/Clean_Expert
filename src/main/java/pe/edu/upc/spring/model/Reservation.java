@@ -17,8 +17,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,6 +37,8 @@ public class Reservation implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_reservation;
 	
+	@NotNull(message = "Ingrese la fecha")
+	@Future(message = "La fecha debe estar en el futuro")
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecha")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -42,6 +47,7 @@ public class Reservation implements Serializable {
 	@Column(name="precio", nullable=false)
 	private float price;
 	
+	@NotNull(message = "Ingrese la hora de inicio")
 	@Column(name="hora_inicio", nullable=false)
 	private LocalTime  start_time;
 	
@@ -70,10 +76,12 @@ public class Reservation implements Serializable {
 	@Size(min=3, max=3)
 	private String cvv_card;
 	
+	@NotNull(message = "Seleccione personal de limpieza")
 	@ManyToOne
 	@JoinColumn(name="id_personal_limpieza", nullable=false)
 	private CleaningStaff cleaningStaff;
 	
+	@NotNull(message = "Seleccione propiedad")
 	@ManyToOne
 	@JoinColumn(name="id_propiedad", nullable=false)
 	private Property property;

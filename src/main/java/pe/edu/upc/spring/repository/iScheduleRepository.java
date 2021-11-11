@@ -13,25 +13,25 @@ import pe.edu.upc.spring.model.Schedule;
 @Repository
 public interface iScheduleRepository extends JpaRepository<Schedule, Integer> {
 
-	@Query("from Schedule s where lunes = True")
+	@Query("from Schedule s where monday = True")
 	List<Schedule> findHorarioByMonday();
 
-	@Query("from Schedule s where martes = True")
+	@Query("from Schedule s where tuesday = True")
 	List<Schedule> findHorarioByTuesday();
 	
-	@Query("from Schedule s where miercoles = True")
+	@Query("from Schedule s where wednesday = True")
 	List<Schedule> findHorarioByWednesday();
 	
-	@Query("from Schedule s where jueves = True")
+	@Query("from Schedule s where thursday = True")
 	List<Schedule> findHorarioByThursday();
 	
-	@Query("from Schedule s where viernes = True")
+	@Query("from Schedule s where friday = True")
 	List<Schedule> findHorarioByFriday();
 	
-	@Query("from Schedule s where sabado = True")
+	@Query("from Schedule s where saturday = True")
 	List<Schedule> findHorarioBySaturday();
 	
-	@Query("from Schedule s where domingo = True")
+	@Query("from Schedule s where sunday = True")
 	List<Schedule> findHorarioBySunday();
 	
 	@Query("from Schedule s where s.cleaning_staff.id_cleaning_staff=:idStaff")

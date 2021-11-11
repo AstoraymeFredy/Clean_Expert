@@ -1,6 +1,7 @@
 package pe.edu.upc.spring.controller;
-
 import javax.servlet.http.HttpSession;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -22,26 +23,26 @@ import pe.edu.upc.spring.utils.Sesion;
 @Controller
 @RequestMapping("/client")
 public class ClientController {
-	
+
 	@Autowired
 	private Sesion sesion;
-	
+
 	@Autowired
 	private iClientService cService;
-	
+
 	@Autowired
 	private iUserService uService;
-	
+
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("client", new Client());
 		return "/register/registerClient";
 	}
-	
+
 	@RequestMapping("/registerClient")
-	public String registerClient(@ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
+	public String registerClient(@Valid @ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
-			return "redirect:/client/register";
+			return "/register/registerClient";
 		} else {
 			UserModel user = objClient.getUser();
 			user.setType_user(new TypeUser(1, "Cliente"));
@@ -51,35 +52,35 @@ public class ClientController {
 			if(flag) {
 				objClient.setUser(user);
 				flag = cService.createClient(objClient);
-			} 
+			}
 			if (flag) {
 				return "redirect:/";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
-				return "redirect:/client/register"; 
+				return "redirect:/client/register";
 			}
 		}
 	}
-	
+
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("client", sesion.getClient());
 		return "/perfilClient/view";
 	}
-	
+
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model){
 		model.addAttribute("clientEdit", sesion.getClient());
 		return "/perfilClient/update";
 	}
-	
+
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/editClient")
-	public String editClient(@ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
+	public String editClient(@Valid @ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
 		if(binRes.hasErrors()) {
-			return "redirect:/client/edit";
+			return "/perfilClient/update";
 		} else {
 			boolean flag = cService.updateClient(objClient);
 			if(flag) {
@@ -91,5 +92,5 @@ public class ClientController {
 			}
 		}
 	}
-	
+
 }

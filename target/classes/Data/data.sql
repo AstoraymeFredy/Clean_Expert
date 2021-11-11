@@ -8,12 +8,12 @@ INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$VgdKdZ/.
 INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$7j0Of9blyHI8u7g68P2RQu0rY9.GgL4n59Bch8MiFY8w92iIdsaty','MartaP',2);
 INSERT INTO usuario (password,username,id_tipo_usuario) VALUES ('$2a$10$UCGyX7aXX4jugVnQNt.9pOzEhOLD1z2KVzbZK/Bi1Dy6KZiqhZOy2','admin',3);
 
-INSERT INTO administrador (apellidos,email,nombre,id_usuario) VALUES ('Pacheco Diaz','pachecoD@gmail.com','Alberto',5);
+INSERT INTO administrador (apellidos,email,nombre,id_usuario) VALUES ('Pacheco Diaz','pacheco@gmail.com','Alberto',5);
 
-INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Torres Arias',978563412,'torresA@gmail.com','Ana',1);
+INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Torres Arias',978563412,'torres@gmail.com','Ana',1);
 INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Castillo Flores',975372412,'Juan1234@gmail.com','Juan',2);
 
-INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado','12345MP@gmail.com','Marta',true,4);
+INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado','12345mp@gmail.com','Marta',true,4);
 INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Galvez Acosta',912433412,'10 años de experiencia en limpieza','pedro123@gmail.com','Pedro',true,3);
 
 

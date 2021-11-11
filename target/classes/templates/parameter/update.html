@@ -60,7 +60,7 @@
 														class="col-sm-4 col-form-label
 			                                            form-label">Nombres*</label>
 											<div class="col-md-8 col-12">
-												<input type="text" class="form-control" th:field="*{name}" id="name" required="required">
+												<input type="text" class="form-control" th:field="*{name}" id="name" readonly>
 											</div>
 										</div>
 										<div class="mb-4 row">
@@ -68,15 +68,18 @@
 														class="col-sm-4 col-form-label
 			                                            form-label">Valor*</label>
 											<div class="col-md-8 col-12">
-												<input type="text" class="form-control" th:field="*{value}" id="value" required="required">
-											</div>
+												<input type="number" class="form-control" th:field="*{value}" id="value">
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('value')}"
+													th:errors="*{value}"></small>
+												</div>
 										</div>
 										<div class="mb-4 row">
 												<label for="unit"
 														class="col-sm-4 col-form-label
 			                                            form-label">Unidad*</label>
 											<div class="col-md-8 col-12">
-												<input type="text" class="form-control" th:field="*{unit}" id="unit" required="required">
+												<input type="text" class="form-control" th:field="*{unit}" min="1"  id="unit" readonly>
 											</div>
 										</div>
 										

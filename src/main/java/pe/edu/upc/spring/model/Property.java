@@ -17,15 +17,15 @@ import javax.validation.constraints.NotEmpty;
 public class Property implements Serializable {
 
 private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_property;
-	
+
 	@NotEmpty(message = "Ingrese su direccion")
 	@Column(name="direccion", nullable=false, length=150)
 	private String address;
-	
+
 	@ManyToOne
 	@JoinColumn(name="id_cliente", nullable=false)
 	private Client client;

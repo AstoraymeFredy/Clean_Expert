@@ -40,7 +40,7 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="username" name="username" class="form-control"
-														required="required" placeholder="Ingrese su usuario" 
+														required="required" placeholder="Ingrese su usuario"
 														type="text" />
 												</div>
 											</div>
@@ -67,9 +67,16 @@
 														class="btn btn-primary form-control px-4">
 														Ingresar</button>
 												</div>
+													<div class="col-sm-12 mt-4">
+													    <div class="alert alert-danger" th:if="${error != null}"
+															th:text="${error}"></div>
+														<div class="alert alert-info" th:if="${info != null}"
+															th:text="${info}"></div>
+													</div>
 											</div>
 
 										</div>
+
 									</form>
 
 								</div>
