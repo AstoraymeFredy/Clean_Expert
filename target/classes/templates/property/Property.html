@@ -51,14 +51,6 @@
 							<div class="card rounded-3">
 								<!-- card body -->
 								<div class="card-body">
-
-									<div th:object="${property}" th:remove="tag">
-										<ul th:if="${#fields.hasErrors('*')}"
-											class="alert alert-danger" role="alert">
-											<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
-										</ul>
-									</div>
-
 									<form th:action="@{/property/registerProperty}" method="post"
 										th:object="${property}">
 										<!-- row -->
