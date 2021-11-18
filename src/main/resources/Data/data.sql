@@ -18,7 +18,7 @@ INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Galindo
 
 INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado','12345mp@gmail.com','Marta',true,4);
 INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Galvez Acosta',912433412,'10 años de experiencia en limpieza','pedro123@gmail.com','Pedro',true,3);
-INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Acosta Granados',924516778,'especializata en limpiado de ventanas','pedroAG@gmail.com','Pedro',true,7);
+INSERT INTO personal_limpieza (apellidos,celular,descripcion,email,nombre, habilitado,id_usuario) VALUES ('Acosta Granados',924516778,'especializata en limpiado de ventanas','pedroAG@gmail.com','Mario',true,7);
 
 
 INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,id_personal_limpieza) VALUES (true,true,true,true,true,true,true,1);
@@ -88,23 +88,24 @@ INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Av. Univeritar
 INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Av. Javier Prado N°12',2,13);
 INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Jr. Carabaya',2,10);
 INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Av. Javier Prado N°12',2,13);
-INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Psje. Acuña 131',2,12);
 
 INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Av. Tomas Marsano',3,15);
 INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Jr. Cailloma 477',3,9);
 INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Psje. Martinetti 122',3,11);
+INSERT INTO propiedad (direccion,id_cliente,id_distrito) VALUES ('Psje. Acuña 131',3,12);
 
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-10-17', '08:00',true,80,2,1);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-10-19', '09:30',true,85,3,2);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-10-12', '10:00',false,100,1,3);
 
-INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-10-20', '11:00',false,85,2,7);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-10-20', '11:00',false,95,2,7);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-10-22', '08:30',false,85,3,8);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-10-25', '11:30',true,95,1,6);
 
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-10-10', '10:45',false,95,2,10);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-10-27', '09:45',true,90,3,11);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-10-30', '08:45',true,100,1,12);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-10-15', '11:45',false,80,1,9);
 
 
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,1,1);
@@ -169,6 +170,13 @@ INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,9);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,4,9);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,5,9);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,6,9);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,1,10);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,10);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,10);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,4,10);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,5,10);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,6,10);
 
 INSERT INTO parametro (nombre,valor,unidad) VALUES ('Tiempo de limpieza',45,'minutos');
 INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo de promedio',15,'soles/hora');

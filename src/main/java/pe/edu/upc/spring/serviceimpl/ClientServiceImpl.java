@@ -71,5 +71,13 @@ public class ClientServiceImpl implements iClientService {
 	public Optional<Client> findByUserId(int idUser) {
 		return dClient.findByUserId(idUser);
 	}
+
+	@Override
+	public List<String[]> clientReport() {	
+		return dClient.clientReport();
+	}
+	//public List<String[]> clientReport(int mes) {
+	//	return dClient.clientReport(mes);
+	//}
 	
 }
