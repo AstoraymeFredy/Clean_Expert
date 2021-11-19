@@ -71,6 +71,20 @@ public class AdminController {
 				return "redirect:/admin/staff/list";
 			}
 	
+	@RequestMapping("/prueba")
+	public String goPageListAdminprueba(Map<String, Object> model) {
+		model.put("listAdmin", aService.listAdmin());
+		return "/adminLists/reportPersonal";
+	}
+	
+
+	@RequestMapping("/prueba1")
+	public String goPageListAdminprueba1(Map<String, Object> model) {
+		model.put("listAdmin", aService.listAdmin());
+		return "/adminLists/reportGeneral";
+	}
+	
+	
 	@RequestMapping("/list")
 	public String goPageListAdmin(Map<String, Object> model) {
 		model.put("listAdmin", aService.listAdmin());
