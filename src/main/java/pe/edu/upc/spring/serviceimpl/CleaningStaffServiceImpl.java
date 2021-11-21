@@ -71,5 +71,10 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 	public List<CleaningStaff> searchCleaningStaff(String nameCleaningStaff) {
 		return dCleaningStaff.searchByName(nameCleaningStaff);
 	}
+
+	@Override
+	public List<String[]> generalReport() {
+		return dCleaningStaff.generalReport();
+	}
 	
 }

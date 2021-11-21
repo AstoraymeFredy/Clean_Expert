@@ -18,4 +18,11 @@ public interface iCleaningStaffRepository extends JpaRepository<CleaningStaff, I
 	
 	@Query("from CleaningStaff c where c.user.id_user=:idUser")
 	Optional<CleaningStaff> findByUserId(int idUser);
+	
+	@Query(value = "SELECT pl.id_cleaning_staff, pl.nombre, pl.apellidos,count(r.id_reservation)"
+			+ " from personal_limpieza pl join reserva r on r.id_personal_limpieza=pl.id_cleaning_staff"
+			+ " group by pl.id_cleaning_staff"
+			+ " ORDER BY count(r.id_reservation)  DESC "
+			+ " limit 5", nativeQuery = true)
+	public List<String[]> generalReport();
 }

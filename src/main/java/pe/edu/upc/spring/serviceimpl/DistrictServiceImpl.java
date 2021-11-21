@@ -21,4 +21,14 @@ public class DistrictServiceImpl implements iDistrictService{
 	public List<District> listDistrict() {
 		return dDistrict.findAll();
 	}
+
+	@Override
+	public List<String[]> generalReport() {
+		return dDistrict.generalReport();
+	}
+
+	@Override
+	public List<String[]> generalHeaderReport() {
+		return dDistrict.generalHeaderReport();
+	}
 }

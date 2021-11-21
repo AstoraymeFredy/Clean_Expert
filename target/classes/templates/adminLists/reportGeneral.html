@@ -56,10 +56,10 @@
                         <div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
                             
                             <div class="mb-4 row">
-                                	<p class="col-sm-4 col-form-label form-label"> # Reservas
+                                	<p class="col-sm-4 col-form-label form-label"> # Reservas : <span th:text="${header[0][0]}"></span> 
                                 	 </p>
                                 	 
-                                	 <p class="col-sm-4 col-form-label form-label"> S/ Ganancia
+                                	 <p class="col-sm-4 col-form-label form-label"> S/ Ganancia : <span th:text="${header[0][1]}"></span>
                                 	 </p>
                                 	 
                                 	<select class="col-sm-4 col-form-label form-label">
@@ -100,11 +100,11 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="admins: ${listAdmin}">
+											<tr th:each="district: ${listDistrictR}">
 
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
+												<td class="align-middle" th:text="${district[0]}"></td>
+												<td class="align-middle" th:text="${district[1]}"></td>
+												<td class="align-middle" th:text="${district[2]}"></td>
 
 
 											</tr>
@@ -131,11 +131,11 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="admins: ${listAdmin}">
+											<tr th:each="staff: ${listStaffR}">
 
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
+												<td class="align-middle" th:text="${staff[0]}"></td>
+												<td class="align-middle" th:text="${staff[1] + ' ' + staff[2]}"></td>
+												<td class="align-middle" th:text="${staff[3]}"></td>
 
 
 											</tr>

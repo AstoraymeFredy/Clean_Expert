@@ -21,6 +21,7 @@ import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iAdminService;
 import pe.edu.upc.spring.service.iCleaningStaffService;
 import pe.edu.upc.spring.service.iClientService;
+import pe.edu.upc.spring.service.iDistrictService;
 import pe.edu.upc.spring.service.iUserService;
 
 @Controller
@@ -38,6 +39,9 @@ public class AdminController {
 	
 	@Autowired
 	private iClientService clService;
+	
+	@Autowired
+	private iDistrictService dService;
 	
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
@@ -70,20 +74,6 @@ public class AdminController {
 				}
 				return "redirect:/admin/staff/list";
 			}
-	
-	@RequestMapping("/prueba")
-	public String goPageListAdminprueba(Map<String, Object> model) {
-		model.put("listAdmin", aService.listAdmin());
-		return "/adminLists/reportPersonal";
-	}
-	
-
-	@RequestMapping("/prueba1")
-	public String goPageListAdminprueba1(Map<String, Object> model) {
-		model.put("listAdmin", aService.listAdmin());
-		return "/adminLists/reportGeneral";
-	}
-	
 	
 	@RequestMapping("/list")
 	public String goPageListAdmin(Map<String, Object> model) {
@@ -142,6 +132,14 @@ public class AdminController {
 		//System.out.println(mes+"<-");
 		model.put("listClientR", clService.clientReport());
 		return "/adminLists/reportClient";
+	}
+	
+	@RequestMapping("/generalReport")
+	public String goPageGeneralReport(Map<String, Object> model) {
+		model.put("header", dService.generalHeaderReport());
+		model.put("listDistrictR", dService.generalReport());
+		model.put("listStaffR", csService.generalReport());
+		return "/adminLists/reportGeneral";
 	}
 	
 }

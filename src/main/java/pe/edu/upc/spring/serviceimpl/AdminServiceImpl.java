@@ -55,4 +55,5 @@ public class AdminServiceImpl implements iAdminService {
 		return dAdmin.searchByName(nameAdmin);
 	}
 
+
 }
