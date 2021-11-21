@@ -22,6 +22,7 @@ import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iAdminService;
 import pe.edu.upc.spring.service.iCleaningStaffService;
 import pe.edu.upc.spring.service.iClientService;
+import pe.edu.upc.spring.service.iDistrictService;
 import pe.edu.upc.spring.service.iUserService;
 
 @Controller
@@ -39,6 +40,9 @@ public class AdminController {
 	
 	@Autowired
 	private iClientService clService;
+	
+	@Autowired
+	private iDistrictService dService;
 	
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
@@ -86,7 +90,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/registerAdmin")
-	public String registerClient(@ModelAttribute Admin objAdmin, BindingResult binRes, Model model)throws ParseException{
+	public String registerAdmin(@ModelAttribute Admin objAdmin, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
 			return "registerAdmin";
 		} else {
@@ -94,6 +98,12 @@ public class AdminController {
 			user.setType_user(new TypeUser(3, "Administrador"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
+			Optional<UserModel> userRepeat = uService.findByUsernameRepeated(user.getUsername());
+			if (userRepeat.isPresent()) {
+				model.addAttribute("error",
+						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
+				return "/adminLists/registerAdmin";
+			}
 			boolean flag = uService.createUser(user);
 			if(flag) {
 				objAdmin.setUser(user);
@@ -130,6 +140,23 @@ public class AdminController {
 		//System.out.println(mes+"<-");
 		model.put("listClientR", clService.clientReport());
 		return "/adminLists/reportClient";
+	}
+	
+	@RequestMapping("/generalReport")
+	public String goPageGeneralReport(Model model) {
+		model.addAttribute("filter", new Filter());
+		model.addAttribute("headerReport", dService.generalHeaderReport(0));
+		model.addAttribute("listDistrictR", dService.generalReport(0));
+		model.addAttribute("listStaffR", csService.generalReport(0));
+		return "/adminLists/reportGeneral";
+	}
+	
+	@RequestMapping("/filterGeneralReport")
+	public String filterPageGeneralReport(Map<String, Object> model, @ModelAttribute Filter filter) {
+		model.put("headerReport", dService.generalHeaderReport(filter.getId_month()));
+		model.put("listDistrictR", dService.generalReport(filter.getId_month()));
+		model.put("listStaffR", csService.generalReport(filter.getId_month()));
+		return "/adminLists/reportGeneral";
 	}
 	
 	@RequestMapping("/cleaningStaffReport")

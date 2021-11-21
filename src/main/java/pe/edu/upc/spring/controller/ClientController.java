@@ -1,4 +1,6 @@
 package pe.edu.upc.spring.controller;
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 
 import javax.validation.Valid;
@@ -48,6 +50,13 @@ public class ClientController {
 			user.setType_user(new TypeUser(1, "Cliente"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
+			Optional<UserModel> userRepeat = uService.findByUsernameRepeated(user.getUsername());
+			if (userRepeat.isPresent()) {
+				model.addAttribute("error",
+						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
+				return "/register/registerClient";
+			}
+			
 			boolean flag = uService.createUser(user);
 			if(flag) {
 				objClient.setUser(user);

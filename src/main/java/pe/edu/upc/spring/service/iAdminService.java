@@ -11,4 +11,5 @@ public interface iAdminService {
 	public Optional<Admin> findByUserId(int idUser);
 	public List<Admin> listAdmin();
 	public List<Admin> searchAdmin(String nameAdmin);
+	
 }

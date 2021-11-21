@@ -26,7 +26,8 @@
 
 							<div class="container mt-5 w-65 p-3">
 								<div class="row col-12">
-									<h4 class="principal-title text-dark fs-2 ">¡Regístrate ahora!</h4>
+									<h4 class="principal-title text-dark fs-2 ">¡Regístrate
+										ahora!</h4>
 								</div>
 								<div>
 									<form th:action="@{/client/registerClient}" method="post"
@@ -40,13 +41,10 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="name" class="form-control" 
+													<input id="name" class="form-control"
 														placeholder="Ingrese su nombre" th:field="*{name}"
-														autocomplete="nada"
-														type="text" />
-													<small class="form-text text-danger"
-													th:if="${#fields.hasErrors('name')}"
-													th:errors="*{name}"></small>
+														type="text" /> <small class="form-text text-danger"
+														th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
 												</div>
 											</div>
 										</div>
@@ -60,13 +58,11 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="password" class="form-control"
-														autocomplete="nada"
-														 placeholder="Ingrese su apellido"
-														th:field="*{lastname}" type="text" />
-													<small class="form-text text-danger"
-													th:if="${#fields.hasErrors('lastname')}"
-													th:errors="*{lastname}"></small>
-											
+														placeholder="Ingrese su apellido" th:field="*{lastname}"
+														type="text" /> <small class="form-text text-danger"
+														th:if="${#fields.hasErrors('lastname')}"
+														th:errors="*{lastname}"></small>
+
 												</div>
 											</div>
 										</div>
@@ -79,13 +75,10 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="phone" class="form-control" 
-														autocomplete="nada"
+													<input id="phone" class="form-control"
 														placeholder="Ingrese su celular" th:field="*{phone}"
-														type="text" />
-													<small class="form-text text-danger"
-													th:if="${#fields.hasErrors('phone')}"
-													th:errors="*{phone}"></small>
+														type="text" /> <small class="form-text text-danger"
+														th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
 												</div>
 											</div>
 										</div>
@@ -99,13 +92,11 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="email" class="form-control" 
+													<input id="email" class="form-control"
 														placeholder="Ingrese su correo electronico"
-    													autocomplete="nada"
-														th:field="*{email}" type="text" />
-													<small class="form-text text-danger"
-														th:if="${#fields.hasErrors('email')}"
-														th:errors="*{email}"></small>
+														th:field="*{email}" type="text" /> <small
+														class="form-text text-danger"
+														th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
 												</div>
 											</div>
 										</div>
@@ -139,6 +130,12 @@
 												</div>
 											</div>
 										</div>
+										<div class="col-sm-12 mt-4">
+											<div class="alert alert-danger" th:if="${error != null}"
+												th:text="${error}"></div>
+											<div class="alert alert-info" th:if="${info != null}"
+												th:text="${info}"></div>
+										</div>
 										<div class="row">
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
@@ -146,6 +143,7 @@
 														class="btn btn-primary form-control px-4">
 														Registrar cuenta</button>
 												</div>
+
 											</div>
 
 										</div>
