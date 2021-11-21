@@ -167,11 +167,25 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/searchCleaningStaffReport")
-	public String buscar(Map<String, Object> model, @ModelAttribute Filter filter)
+	public String buscar(Model model, @ModelAttribute Filter filter)
 			throws ParseException
 	{
-		model.put("listCleaningStaffR", csService.cleaningStaffReportByDate(filter.getStart_date(), filter.getEnd_date()));	
-		return "/adminLists/reportPersonal";
+		    
+	    if(filter.getStart_date()==null || filter.getEnd_date()==null) {
+	    	model.addAttribute("message",
+					"Error: Debes seleccionar el rango de fecha");
+	    }else {
+	    	if(filter.getEnd_date().after(filter.getStart_date())){
+			  	model.addAttribute("message",
+						null);
+	    		model.addAttribute("listCleaningStaffR", csService.cleaningStaffReportByDate(filter.getStart_date(), filter.getEnd_date()));	
+			}else{
+			  	model.addAttribute("message",
+						"Error: Debes seleccionar correctamente las fechas. La fecha de inicio no puede ser posterior");			}
+	    }
+	    return "/adminLists/reportPersonal";
 	}	
+	
+
 	
 }

@@ -159,6 +159,17 @@ public class ReservationController {
 			return "/reservation/payment";
 		}
 	}
+	
+	@RequestMapping("/returnRegister")
+	public String returnPageCreate(Model model) {
+		model.addAttribute("listClientStaff", listCleaningStaff);
+		model.addAttribute("listProperty", pService.findByClientId(sesion.getClient().getId_client()));
+		model.addAttribute("duration", listParameters.get(0).getValue());
+		model.addAttribute("cost_hour", listParameters.get(1).getValue());
+		model.addAttribute("cost_kit", listParameters.get(2).getValue());
+		model.addAttribute("reservation", reservation);
+		return "/reservation/create";
+	}
 
 	@RequestMapping("/register")
 	public String register(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model)

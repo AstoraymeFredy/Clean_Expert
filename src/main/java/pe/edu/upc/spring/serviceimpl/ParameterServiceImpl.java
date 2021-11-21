@@ -35,7 +35,7 @@ public class ParameterServiceImpl implements iParameterService{
 	@Override
 	@Transactional(readOnly = true)
 	public List<Parameter> list() {
-		return dParameter.findAll();
+		return dParameter.findAllByOrderByIdParameterAsc();
 	}
 
 }

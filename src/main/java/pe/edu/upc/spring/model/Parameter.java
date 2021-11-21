@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
@@ -22,7 +20,7 @@ public class Parameter implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_parameter;
+	private int idParameter;
 	
 	@Column(name="nombre", nullable=false, length=50)
 	private String name;
@@ -41,18 +39,18 @@ public class Parameter implements Serializable {
 
 	public Parameter(int id_parameter, String name, Integer value, String unit) {
 		super();
-		this.id_parameter = id_parameter;
+		this.idParameter = id_parameter;
 		this.name = name;
 		this.value = value;
 		this.unit = unit;
 	}
 
 	public int getId_parameter() {
-		return id_parameter;
+		return idParameter;
 	}
 
 	public void setId_parameter(int id_parameter) {
-		this.id_parameter = id_parameter;
+		this.idParameter = id_parameter;
 	}
 
 	public String getName() {

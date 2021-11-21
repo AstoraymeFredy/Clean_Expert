@@ -12,7 +12,7 @@ public class Filter {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date start_date;
-	
+
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date end_date;
