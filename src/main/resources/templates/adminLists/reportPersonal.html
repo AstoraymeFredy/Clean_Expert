@@ -50,19 +50,17 @@
 					<!-- card -->
                         <div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
                             <form th:action="@{/admin/searchCleaningStaffReport}" method="post" th:object="${filter}">
-                            
                             <div class="mb-4 row">
                                 	<p class="col-sm-4 col-form-label form-label"> Desde
                                 	 <input th:field="*{start_date}" type="date" class="form-control" id="start_date"></p>
                                 	 <p class="col-sm-4 col-form-label form-label"> Hasta
                                 	 <input th:field="*{end_date}" type="date" class="form-control" id="end_date"></p>
                                 	 <div class="col-sm-4 d-flex justify-content-end align-items-center">
-		    							<button type="submit" class="btn btn-primary mr-2">Buscar</button>
-		    							<a href="/" class="btn btn-secondary">Cancelar</a>
+		    							<button type="submit" class="btn btn-primary me-2">Buscar</button>
+		    							<a href="/admin/cleaningStaffReport" class="btn btn-secondary">Limpiar</a>
     								</div>
                            	</div>
                          	</form>    			
-                     
                         </div>
 					<!-- card -->
 					
@@ -71,30 +69,26 @@
 						<div class="col-12">
 							<div class="card rounded-3 shadow-sm border-0">
 								<div class="card-header bg-white border-bottom-0 py-3">
-								
+									<h6 class="mb-0 fw-bold">Personales top ordenados por ganancia</h6>
 								</div>
 								<!-- card body -->
 								<div class="table-responsive">
 									<table class="table text-nowrap">
 										<thead class=" table-light">
-											<tr>
-											
+											<tr>										
 												<th>#</th>
 												<th>Nombre</th>
 												<th># Reservas</th>
-												<th>S/ Ganancia</th>
+												<th class="fw-bold text-primary" >S/ Ganancia</th>
 
 											</tr>
 										</thead>
 										<tbody>
 											<tr th:each="cleaningStaff, i: ${listCleaningStaffR}">
 												<td class="align-middle" th:text="${i.index+1}"></td>
-
 												<td class="align-middle" th:text="${cleaningStaff[0]} +' '+ ${cleaningStaff[1]}"></td>
 												<td class="align-middle" th:text="${cleaningStaff[2]}"></td>
 												<td class="align-middle" th:text="${cleaningStaff[3]}"></td>
-
-
 											</tr>
 										</tbody>
 									</table>
@@ -102,6 +96,9 @@
 							</div>
 						</div>
 
+					</div>
+					<div th:if="${message}" class="alert alert-danger">
+						<p th:text="${message}"></p>
 					</div>
 				</div>
 			</main>
