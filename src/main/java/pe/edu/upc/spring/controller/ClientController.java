@@ -54,7 +54,7 @@ public class ClientController {
 				flag = cService.createClient(objClient);
 			}
 			if (flag) {
-				return "redirect:/";
+				return "redirect:/login";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
 				return "redirect:/client/register";

@@ -17,7 +17,6 @@
 
 window.onload = function() { 
 
-
 	document.getElementById("personal").addEventListener("click", function() {
 
 		var data = document.getElementById('date').value;
@@ -43,7 +42,7 @@ window.onload = function() {
 					select = document.getElementById('select-personal');
 					var result = JSON.parse(result);
 			
-					var i, L = select.options.length - 1;
+					var i, L = select.options.length - 1;    
 				   for(i = L; i >= 0; i--) {
 				      select.remove(i);
 				   }
@@ -117,7 +116,8 @@ window.onload = function() {
 													th:data-duration="${duration}"
 													th:data-cost-hour="${cost_hour}"
 													th:id="|room_*{listDetails[__${rowStat.index}__].room.name}|"
-													placeholder="Ingresa una cantidad"></input> <input type="hidden"
+													placeholder="Ingresa una cantidad"></input> 
+												<input type="hidden"
 													th:field="*{listDetails[__${rowStat.index}__].room.name}">
 												<input type="hidden"
 													th:field="*{listDetails[__${rowStat.index}__].room.id_room}">
@@ -174,8 +174,6 @@ window.onload = function() {
 											<button type="button" id="personal"
 												class="btn btn-primary px-4">Listar personal
 												disponible</button>
-
-
 										</div>
 										<div class="mb-4 row">
 											<label for="location"
@@ -265,7 +263,7 @@ window.onload = function() {
 		$(function() {
 			functions.calculatePrice()     
 			
-			$("#room_Dormitorio").bind('keyup mouseup', function(){
+			$("#room_Dormitorio").bind('keyup mouseup', function(){ 
 				functions.calculatePrice()
 			});
 			$("#room_Comedor").bind('keyup mouseup',function(){
@@ -287,24 +285,23 @@ window.onload = function() {
 			$('#extra-kit').change(function() {
 				functions.calculatePrice()     
 		    });
-
 		});
 
-		var functions={
+		var functions = {
 			calculatePrice: function(){
 				var total = 0;
 				var duration= $("#room_Dormitorio").attr("data-duration");
-				var cost_hour=$("#room_Dormitorio").attr("data-cost-hour");
-				var price_total=0;
+				var cost_hour= $("#room_Dormitorio").attr("data-cost-hour");
+				var price_total = 0;
 				
 				$('input[id^="room_"]').each(function(){
 					if($(this).val()!==''){
-						total += parseInt($(this).val())*parseInt(duration);
+						total += parseInt($(this).val())*parseInt(duration);   
 					}
 				});
 
 				var aprox_duration= parseInt(Math.ceil(total/60));
-				price_total= aprox_duration*cost_hour;
+				price_total= aprox_duration*cost_hour;    
 
 				$('#hours').html(aprox_duration + ' horas');
 
@@ -317,7 +314,6 @@ window.onload = function() {
 				$('#price').html('S/. ' + price_total);
 							
 			},	
-	
 		}
 </script>
 </body>

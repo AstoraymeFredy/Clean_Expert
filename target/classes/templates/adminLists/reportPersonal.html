@@ -37,15 +37,10 @@
 							
 							<div>
 								<div
-									class="pb-3 mb-4 d-flex align-items-center justify-content-between">
+									class="pb-3 mb-4 d-flex align-items-center">
 									<div>
 										<h3 class="mb-0 fw-bold text-white">Top 5 personal</h3>
 									</div>
-									
-									<div>
-	                                    <button class="btn btn-light">Filtrar</i></button>
-	                                </div>
-	                                
 								</div>
 							</div>
 							<!--</form>  -->
@@ -54,13 +49,19 @@
 					
 					<!-- card -->
                         <div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
+                            <form th:action="@{/admin/searchCleaningStaffReport}" method="post" th:object="${filter}">
                             
                             <div class="mb-4 row">
                                 	<p class="col-sm-4 col-form-label form-label"> Desde
-                                	 <input type="date" class="form-control" id="date"></p>
+                                	 <input th:field="*{start_date}" type="date" class="form-control" id="start_date"></p>
                                 	 <p class="col-sm-4 col-form-label form-label"> Hasta
-                                	 <input type="date" class="form-control" id="date"></p>
+                                	 <input th:field="*{end_date}" type="date" class="form-control" id="end_date"></p>
+                                	 <div class="col-sm-4 d-flex justify-content-end align-items-center">
+		    							<button type="submit" class="btn btn-primary mr-2">Buscar</button>
+		    							<a href="/" class="btn btn-secondary">Cancelar</a>
+    								</div>
                            	</div>
+                         	</form>    			
                      
                         </div>
 					<!-- card -->
@@ -86,11 +87,12 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr th:each="admins: ${listAdmin}">
+											<tr th:each="cleaningStaff, i: ${listCleaningStaffR}">
+												<td class="align-middle" th:text="${i.index+1}"></td>
 
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
+												<td class="align-middle" th:text="${cleaningStaff[0]} +' '+ ${cleaningStaff[1]}"></td>
+												<td class="align-middle" th:text="${cleaningStaff[2]}"></td>
+												<td class="align-middle" th:text="${cleaningStaff[3]}"></td>
 
 
 											</tr>
