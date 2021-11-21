@@ -20,6 +20,7 @@ import pe.edu.upc.spring.model.TypeUser;
 import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iAdminService;
 import pe.edu.upc.spring.service.iCleaningStaffService;
+import pe.edu.upc.spring.service.iClientService;
 import pe.edu.upc.spring.service.iUserService;
 
 @Controller
@@ -34,6 +35,9 @@ public class AdminController {
 	
 	@Autowired
 	private iCleaningStaffService csService;
+	
+	@Autowired
+	private iClientService clService;
 	
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
@@ -67,6 +71,20 @@ public class AdminController {
 				return "redirect:/admin/staff/list";
 			}
 	
+	@RequestMapping("/prueba")
+	public String goPageListAdminprueba(Map<String, Object> model) {
+		model.put("listAdmin", aService.listAdmin());
+		return "/adminLists/reportPersonal";
+	}
+	
+
+	@RequestMapping("/prueba1")
+	public String goPageListAdminprueba1(Map<String, Object> model) {
+		model.put("listAdmin", aService.listAdmin());
+		return "/adminLists/reportGeneral";
+	}
+	
+	
 	@RequestMapping("/list")
 	public String goPageListAdmin(Map<String, Object> model) {
 		model.put("listAdmin", aService.listAdmin());
@@ -96,6 +114,28 @@ public class AdminController {
 			
 		}
 		
+	}
+	
+//	@RequestMapping("/clientR")
+//	public String goPageReportClient() {
+//		//model.put("listClientR", clService.clientReport(1));
+//		return "/adminLists/reportClient";
+//	}
+//	
+//	@RequestMapping("/listClient")
+//	public String reportClient(Map<String, Object> model) {
+//		
+//		
+//		model.put("listClientR", clService.clientReport());
+//		return "/adminLists/reportClient";
+//	}
+	//public String reportClient(Map<String, Object> model,@PathVariable int mes) {
+	
+	@RequestMapping("/clientReport")
+	public String reportClient(Map<String, Object> model) {
+		//System.out.println(mes+"<-");
+		model.put("listClientR", clService.clientReport());
+		return "/adminLists/reportClient";
 	}
 	
 }

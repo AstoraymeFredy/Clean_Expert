@@ -13,5 +13,7 @@ public interface iClientService {
 	public Optional<Client> findByUserId(int idUser);
 	public List<Client> listClient();
 	public List<Client> searchClient(String nameClient);
+	public List<String[]> clientReport();
+	//public List<String[]> clientReport(int mes);
 	
 }

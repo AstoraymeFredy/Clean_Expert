@@ -22,7 +22,7 @@
 						th:href="@{/admin/staff/list}"><span
 							class="icon bi bi-person-lines-fill fs-5" aria-hidden="true"></span>Personal
 							de limpieza</a></li>
-							
+
 					<li><a class="show-cat-btn text-decoration-none" href="##">
 							<span class="icon bi bi-person-workspace fs-5" aria-hidden="true"></span>Administradores
 							<span class="category__btn transparent-btn" title="Open list">
@@ -33,10 +33,23 @@
 							<li><a class="text-decoration-none" th:href="@{/admin/list}">Listado</a></li>
 							<li><a class="text-decoration-none" th:href="@{/admin/register}">Agregar</a></li>
 						</ul></li>
-						
+
 					<li><a class=" text-decoration-none"
 						th:href="@{/parameter/list}"><span class="icon bi bi-map fs-5"
 							aria-hidden="true"></span>Parametros</a></li>
+
+					<li><a class="show-cat-btn text-decoration-none" href="##">
+							<span class="icon bi bi-person-workspace fs-5" aria-hidden="true"></span>Reportes
+							<span class="category__btn transparent-btn" title="Open list">
+								<i class="bi bi-arrow-down-circle-fill text-white-50"></i>
+						</span>
+					</a>
+						<ul class="cat-sub-menu ms-4 list-unstyled">
+							<li><a class="text-decoration-none" th:href="@{/admin/prueba}">Personal</a></li>
+							<li><a class="text-decoration-none" th:href="@{/admin/clientReport}">Cliente</a></li>
+							<li><a class="text-decoration-none" th:href="@{/admin/prueba1}">General</a></li>
+						</ul>
+					</li>
 
 				</ul>
 			</div>
