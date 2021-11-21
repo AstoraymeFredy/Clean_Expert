@@ -42,6 +42,7 @@
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="name" class="form-control" 
 														placeholder="Ingrese su nombre" th:field="*{name}"
+														autocomplete="nada"
 														type="text" />
 													<small class="form-text text-danger"
 													th:if="${#fields.hasErrors('name')}"
@@ -59,6 +60,7 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="password" class="form-control"
+														autocomplete="nada"
 														 placeholder="Ingrese su apellido"
 														th:field="*{lastname}" type="text" />
 													<small class="form-text text-danger"
@@ -78,6 +80,7 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="phone" class="form-control" 
+														autocomplete="nada"
 														placeholder="Ingrese su celular" th:field="*{phone}"
 														type="text" />
 													<small class="form-text text-danger"
@@ -98,6 +101,7 @@
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="email" class="form-control" 
 														placeholder="Ingrese su correo electronico"
+    													autocomplete="nada"
 														th:field="*{email}" type="text" />
 													<small class="form-text text-danger"
 														th:if="${#fields.hasErrors('email')}"
