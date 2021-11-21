@@ -19,7 +19,8 @@
 			<main class="main position-relative d-flex" id="skip-target">
 				<div class="row" style="width: 100%">
 					<div class="col-6 background-image-client"></div>
-					<div class="col-6 container-scroll" style="height: 100vh; overflow: auto;">
+					<div class="col-6 container-scroll"
+						style="height: 100vh; overflow: auto;">
 						<div class="d-flex justify-content-center align-items-center mt-3">
 
 							<div class="container mt-5 w-65 p-3">
@@ -39,8 +40,7 @@
 											</div>
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="name" class="form-control" 
-														autocomplete="nada"
+													<input id="name" class="form-control"
 														placeholder="Ingrese su nombre" th:field="*{name}"
 														type="text" /> <small class="form-text text-danger"
 														th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
@@ -57,12 +57,10 @@
 											<div class="row">
 												<div class="col-sm-12 mb-2 mb-lg-0">
 													<input id="password" class="form-control"
-														autocomplete="nada"
-														placeholder="Ingrese su apellido"
-														th:field="*{lastname}" type="text" />
-															<small class="form-text text-danger"
-													th:if="${#fields.hasErrors('lastname')}"
-													th:errors="*{lastname}"></small>
+														placeholder="Ingrese su apellido" th:field="*{lastname}"
+														type="text" /> <small class="form-text text-danger"
+														th:if="${#fields.hasErrors('lastname')}"
+														th:errors="*{lastname}"></small>
 												</div>
 											</div>
 										</div>
@@ -78,10 +76,8 @@
 													<input id="phone" class="form-control"
 														autocomplete="nada"
 														placeholder="Ingrese su celular" th:field="*{phone}"
-														type="text" />
-																<small class="form-text text-danger"
-													th:if="${#fields.hasErrors('phone')}"
-													th:errors="*{phone}"></small>
+														type="text" /> <small class="form-text text-danger"
+														th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
 												</div>
 											</div>
 										</div>
@@ -98,10 +94,9 @@
 													<input id="email" class="form-control"
 														autocomplete="nada"
 														placeholder="Ingrese su correo electronico"
-														th:field="*{email}" type="text" />
-														<small class="form-text text-danger"
-														th:if="${#fields.hasErrors('email')}"
-														th:errors="*{email}"></small>
+														th:field="*{email}" type="text" /> <small
+														class="form-text text-danger"
+														th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
 												</div>
 											</div>
 										</div>
@@ -153,6 +148,12 @@
 														th:errors="*{description}"></small>
 												</div>
 											</div>
+										</div>
+										<div class="col-sm-12 mt-4">
+											<div class="alert alert-danger" th:if="${error != null}"
+												th:text="${error}"></div>
+											<div class="alert alert-info" th:if="${info != null}"
+												th:text="${info}"></div>
 										</div>
 										<div class="row">
 											<div class="row">

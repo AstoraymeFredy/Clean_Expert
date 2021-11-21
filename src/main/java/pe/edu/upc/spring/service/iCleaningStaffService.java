@@ -14,6 +14,7 @@ public interface iCleaningStaffService {
 	public Optional<CleaningStaff> findByUserId(int idUser);
 	public List<CleaningStaff> listCleaningStaff();
 	public List<CleaningStaff> searchCleaningStaff(String nameCleaningStaff);
+	public List<String[]> generalReport(int month);
 	public List<String[]> cleaningStaffReport();
 	public List<String[]> cleaningStaffReportByDate(Date start_date, Date end_date);
 

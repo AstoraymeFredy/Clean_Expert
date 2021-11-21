@@ -72,6 +72,15 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 	public List<CleaningStaff> searchCleaningStaff(String nameCleaningStaff) {
 		return dCleaningStaff.searchByName(nameCleaningStaff);
 	}
+
+	@Override
+	public List<String[]> generalReport(int month) {
+		if (month > 0) {
+			return dCleaningStaff.generalReportByMonth(month);
+		} else {
+			return dCleaningStaff.generalReport();
+		}
+	}
 	
 	@Override
 	public List<String[]> cleaningStaffReport() {	

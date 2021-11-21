@@ -32,124 +32,133 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<!-- Page header -->
-							
+
 							<!--<form th:action="" method="post" th:object="">  -->
-							
+
 							<div>
 								<div
 									class="pb-3 mb-4 d-flex align-items-center justify-content-between">
 									<div>
 										<h3 class="mb-0 fw-bold text-white">General</h3>
 									</div>
-									
-									<div>
-	                                    <button class="btn btn-light">Filtrar</i></button>
-	                                </div>
-	                                
+
+
+
 								</div>
 							</div>
 							<!--</form>  -->
 						</div>
 					</div>
-					
+
 					<!-- card -->
-                        <div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
-                            
-                            <div class="mb-4 row">
-                                	<p class="col-sm-4 col-form-label form-label"> # Reservas
-                                	 </p>
-                                	 
-                                	 <p class="col-sm-4 col-form-label form-label"> S/ Ganancia
-                                	 </p>
-                                	 
-                                	<select class="col-sm-4 col-form-label form-label">
-													
-													<option value="'Enero'" th:text="Enero"></option>
-    												<option value="'Febrero'" th:text="Febrero"></option>
-													<option value="'Marzo'" th:text="Marzo"></option>
-    												<option value="'Abril'" th:text="Abril"></option>
-													<option value="'Mayo'" th:text="Mayo"></option>
-													<option value="'Junio'" th:text="Junio"></option>
-													<option value="'Julio'" th:text="Julio"></option>
-													<option value="'Agosto'" th:text="Agosto"></option>
-													<option value="'Setiembre'" th:text="Setiembre"></option>
-													<option value="'Octubre'" th:text="Octubre"></option>
-													<option value="'Noviembre'" th:text="Noviembre"></option>
-													<option value="'Diciembre'" th:text="Diciembre"></option>
-													
+					<div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
+
+						<div class="mb-4 row">
+							<p class="col-sm-4 col-form-label form-label">
+								# Reservas : <span th:text="${headerReport[0][0]}"></span>
+							</p>
+
+							<p class="col-sm-4 col-form-label form-label">
+								S/ Ganancia : <span th:text="${headerReport[0][1]}"></span>
+							</p>
+							<div class="col-sm-4">
+								<form th:action="@{/admin/filterGeneralReport}" method="post"
+										th:object="${filter}">
+									<select class="col-sm-12 col-form-label form-label" id="id_month" name="id_month">
+										<option value="0" th:text="Siempre" th:selected="(0==*{id_month})"></option>
+										<option value="1" th:text="Enero" th:selected="(1==*{id_month})"></option>
+										<option value="2" th:text="Febrero" th:selected="(2==*{id_month})"></option>
+										<option value="3" th:text="Marzo" th:selected="(3==*{id_month})"></option>
+										<option value="4" th:text="Abril" th:selected="(4==*{id_month})"></option>
+										<option value="5" th:text="Mayo" th:selected="(5==*{id_month})"></option>
+										<option value="6" th:text="Junio" th:selected="(6==*{id_month})"></option>
+										<option value="7" th:text="Julio" th:selected="(7==*{id_month})"></option>
+										<option value="8" th:text="Agosto" th:selected="(8==*{id_month})"></option>
+										<option value="9" th:text="Setiembre" th:selected="(9==*{id_month})"></option>
+										<option value="10" th:text="Octubre" th:selected="(10==*{id_month})"></option>
+										<option value="11" th:text="Noviembre" th:selected="(11==*{id_month})"></option>
+										<option value="12" th:text="Diciembre" th:selected="(12==*{id_month})"></option>
 									</select>
-                           	</div>
-                     
-                        </div>
-					<!-- card -->
-
-							<div class="card rounded-3 shadow-sm border-0">
-								<div class="card-header bg-white border-bottom-0 py-3">
-									<h6 class="mb-0">Top distritos por # de reservas</h6>
-								</div>
-								<!-- card body -->
-								<div class="table-responsive">
-									<table class="table text-nowrap">
-										<thead class=" table-light">
-											<tr>
-											
-												<th>#</th>
-												<th>Distritos</th>
-												<th># Reservas</th>
-
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="admins: ${listAdmin}">
-
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-
-
-											</tr>
-										</tbody>
-									</table>
-								</div>
+									<div>
+										<button class="btn btn-primary mt-2" type="submit" id="filter">
+											Filtrar</i>
+										</button>
+									</div>
+								</form>
 							</div>
-							
-							
-							<div class="card rounded-3 shadow-sm border-0">
-								<div class="card-header bg-white border-bottom-0 py-3">
-									<h6 class="mb-0">Top personal por # de reservas</h6>
-								</div>
-								<!-- card body -->
-								<div class="table-responsive">
-									<table class="table text-nowrap">
-										<thead class=" table-light">
-											<tr>
-											
-												<th>#</th>
-												<th>Nombre</th>
-												<th># Reservas</th>
 
-											</tr>
-										</thead>
-										<tbody>
-											<tr th:each="admins: ${listAdmin}">
-
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-												<td class="align-middle" th:text="${admins.id_admin}"></td>
-
-
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
 						</div>
 
 					</div>
+					<!-- card -->
+
+					<div class="card rounded-3 shadow-sm border-0">
+						<div class="card-header bg-white border-bottom-0 py-3">
+							<h6 class="mb-0">Top distritos por # de reservas</h6>
+						</div>
+						<!-- card body -->
+						<div class="table-responsive">
+							<table class="table text-nowrap">
+								<thead class=" table-light">
+									<tr>
+
+										<th>#</th>
+										<th>Distritos</th>
+										<th># Reservas</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="district: ${listDistrictR}">
+
+										<td class="align-middle" th:text="${district[0]}"></td>
+										<td class="align-middle" th:text="${district[1]}"></td>
+										<td class="align-middle" th:text="${district[2]}"></td>
+
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+					<div class="card rounded-3 shadow-sm border-0">
+						<div class="card-header bg-white border-bottom-0 py-3">
+							<h6 class="mb-0">Top personal por # de reservas</h6>
+						</div>
+						<!-- card body -->
+						<div class="table-responsive">
+							<table class="table text-nowrap">
+								<thead class=" table-light">
+									<tr>
+
+										<th>#</th>
+										<th>Nombre</th>
+										<th># Reservas</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="staff: ${listStaffR}">
+
+										<td class="align-middle" th:text="${staff[0]}"></td>
+										<td class="align-middle"
+											th:text="${staff[1] + ' ' + staff[2]}"></td>
+										<td class="align-middle" th:text="${staff[3]}"></td>
+
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
-			
-			</main>
 		</div>
+	</div>
+
+	</main>
+	</div>
 	</div>
 
 	<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
