@@ -1,171 +1,235 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Favicon -->
-<link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" />
-<!-- Custom styles -->
-<link th:href="@{/css/style.css}" rel="stylesheet" />
-<link th:href="@{/css/main.css}" rel="stylesheet" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
-<title>CLEAN EXPERT</title>
-</head>
-<body class="bg-white" style="overflow: hidden">
-	<div th:replace="fragments/masterSesion :: masterSesion"></div>
-	<div class="page-flex">
-		<div class="main-wrapper">
-			<!-- ! Main -->
-			<main class="main position-relative d-flex" id="skip-target">
-				<div class="row" style="width: 100%">
-					<div class="col-6 background-image-client"></div>
-					<div class="col-6" style="height: 100vh; overflow: auto;">
-						<div class="d-flex justify-content-center align-items-center mt-3">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" />
+    <!-- Custom styles -->
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <title>CLEAN EXPERT</title>
+  </head>
+  <body class="bg-white" style="overflow: hidden">
+    <div th:replace="fragments/masterSesion :: masterSesion"></div>
+    <div class="page-flex">
+      <div class="main-wrapper">
+        <!-- ! Main -->
+        <main class="main position-relative d-flex" id="skip-target">
+          <div class="row" style="width: 100%">
+            <div class="col-6 background-image-client"></div>
+            <div class="col-6" style="height: 100vh; overflow: auto">
+              <div
+                class="d-flex justify-content-center align-items-center mt-3"
+              >
+                <div class="container mt-5 w-65 p-3">
+                  <div class="row col-12">
+                    <h4 class="principal-title text-dark fs-2">
+                      ¡Regístrate ahora!
+                    </h4>
+                  </div>
+                  <div>
+                    <form
+                      th:action="@{/client/registerClient}"
+                      method="post"
+                      th:object="${client}"
+                    >
+                      <div class="row mb-2">
+                        <div class="row">
+                          <label
+                            for="name"
+                            class="col-sm-12 col-form-label form-label"
+                            >Nombre*</label
+                          >
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <input
+                              id="name"
+                              class="form-control"
+                              placeholder="Ingrese su nombre"
+                              th:field="*{name}"
+                              <<<<<<<
+                              HEAD
+                              type="text"
+                            />
+                            <small
+                              class="form-text text-danger"
+                              th:if="${#fields.hasErrors('name')}"
+                              th:errors="*{name}"
+                            ></small>
+                            ======= autocomplete="nada" type="text" />
+                            <small
+                              class="form-text text-danger"
+                              th:if="${#fields.hasErrors('name')}"
+                              th:errors="*{name}"
+                            ></small>
+                            >>>>>>> main
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="row">
+                          <label
+                            for="lastname"
+                            class="col-sm-12 col-form-label form-label"
+                            >Apellidos*</label
+                          >
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <input
+                              id="password"
+                              class="form-control"
+                              placeholder="Ingrese su apellido"
+                              th:field="*{lastname}"
+                              type="text"
+                            />
+                            <small
+                              class="form-text text-danger"
+                              th:if="${#fields.hasErrors('lastname')}"
+                              th:errors="*{lastname}"
+                            ></small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="row">
+                          <label
+                            for="phone"
+                            class="col-sm-12 col-form-label form-label"
+                            >Celular*</label
+                          >
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <input
+                              id="phone"
+                              class="form-control"
+                              placeholder="Ingrese su celular"
+                              th:field="*{phone}"
+                              type="text"
+                            />
+                            <small
+                              class="form-text text-danger"
+                              th:if="${#fields.hasErrors('phone')}"
+                              th:errors="*{phone}"
+                            ></small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="row">
+                          <label
+                            for="email"
+                            class="col-sm-12 col-form-label form-label"
+                            >Correo electronico*</label
+                          >
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <input
+                              id="email"
+                              class="form-control"
+                              placeholder="Ingrese su correo electronico"
+                              th:field="*{email}"
+                              type="text"
+                            />
+                            <small
+                              class="form-text text-danger"
+                              th:if="${#fields.hasErrors('email')}"
+                              th:errors="*{email}"
+                            ></small>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-2">
+                        <div class="row">
+                          <label
+                            for="usuario"
+                            class="col-sm-12 col-form-label form-label"
+                            >Usuario*</label
+                          >
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <input
+                              id="usuario"
+                              class="form-control"
+                              required="required"
+                              placeholder="Ingrese su usuario"
+                              th:field="*{user.username}"
+                              type="text"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row mb-4">
+                        <div class="row">
+                          <label
+                            for="password"
+                            class="col-sm-12 col-form-label form-label"
+                            >Contraseña*</label
+                          >
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <input
+                              id="password"
+                              class="form-control"
+                              required="required"
+                              placeholder="Ingrese su contraseña"
+                              th:field="*{user.password}"
+                              type="password"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 mt-4">
+                        <div
+                          class="alert alert-danger"
+                          th:if="${error != null}"
+                          th:text="${error}"
+                        ></div>
+                        <div
+                          class="alert alert-info"
+                          th:if="${info != null}"
+                          th:text="${info}"
+                        ></div>
+                      </div>
+                      <div class="row">
+                        <div class="row">
+                          <div class="col-sm-12 mb-2 mb-lg-0">
+                            <button
+                              type="submit"
+                              class="btn btn-primary form-control px-4"
+                            >
+                              Registrar cuenta
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
 
-							<div class="container mt-5 w-65 p-3">
-								<div class="row col-12">
-									<h4 class="principal-title text-dark fs-2 ">¡Regístrate
-										ahora!</h4>
-								</div>
-								<div>
-									<form th:action="@{/client/registerClient}" method="post"
-										th:object="${client}">
-										<div class="row mb-2">
-											<div class="row">
-												<label for="name"
-													class="col-sm-12 col-form-label
-	                                            form-label">Nombre*</label>
-
-											</div>
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="name" class="form-control"
-														placeholder="Ingrese su nombre" th:field="*{name}"
-														type="text" /> <small class="form-text text-danger"
-														th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-2">
-											<div class="row">
-												<label for="lastname"
-													class="col-sm-12 col-form-label
-	                                            form-label">Apellidos*</label>
-
-											</div>
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="password" class="form-control"
-														placeholder="Ingrese su apellido" th:field="*{lastname}"
-														type="text" /> <small class="form-text text-danger"
-														th:if="${#fields.hasErrors('lastname')}"
-														th:errors="*{lastname}"></small>
-
-												</div>
-											</div>
-										</div>
-										<div class="row mb-2">
-											<div class="row">
-												<label for="phone"
-													class="col-sm-12 col-form-label
-	                                            form-label">Celular*</label>
-
-											</div>
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="phone" class="form-control"
-														placeholder="Ingrese su celular" th:field="*{phone}"
-														type="text" /> <small class="form-text text-danger"
-														th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-2">
-											<div class="row">
-												<label for="email"
-													class="col-sm-12 col-form-label
-	                                            form-label">Correo
-													electronico*</label>
-
-											</div>
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="email" class="form-control"
-														placeholder="Ingrese su correo electronico"
-														th:field="*{email}" type="text" /> <small
-														class="form-text text-danger"
-														th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
-												</div>
-											</div>
-										</div>
-										<div class="row mb-2">
-											<div class="row">
-												<label for="usuario"
-													class="col-sm-12 col-form-label
-	                                            form-label">Usuario*</label>
-
-											</div>
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="usuario" class="form-control"
-														required="required" placeholder="Ingrese su usuario"
-														th:field="*{user.username}" type="text" />
-												</div>
-											</div>
-										</div>
-										<div class="row mb-4">
-											<div class="row">
-												<label for="password"
-													class="col-sm-12 col-form-label
-	                                            form-label">Contraseña*</label>
-
-											</div>
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<input id="password" class="form-control"
-														required="required" placeholder="Ingrese su contraseña"
-														th:field="*{user.password}" type="password" />
-												</div>
-											</div>
-										</div>
-										<div class="col-sm-12 mt-4">
-											<div class="alert alert-danger" th:if="${error != null}"
-												th:text="${error}"></div>
-											<div class="alert alert-info" th:if="${info != null}"
-												th:text="${info}"></div>
-										</div>
-										<div class="row">
-											<div class="row">
-												<div class="col-sm-12 mb-2 mb-lg-0">
-													<button type="submit"
-														class="btn btn-primary form-control px-4">
-														Registrar cuenta</button>
-												</div>
-
-											</div>
-
-										</div>
-									</form>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</main>
-		</div>
-	</div>
-
-
-	<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
-	<script type="text/javascript" th:src="@{/js/script.js}"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
-
-</body>
+    <script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/script.js}"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

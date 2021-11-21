@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.serviceimpl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,6 +76,16 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 	@Override
 	public List<String[]> generalReport() {
 		return dCleaningStaff.generalReport();
+	}
+	
+	@Override
+	public List<String[]> cleaningStaffReport() {	
+		return dCleaningStaff.findTop2cleaningStaffReport();
+	}
+	
+	@Override
+	public List<String[]> cleaningStaffReportByDate(Date start_date, Date end_date) {
+		return dCleaningStaff.cleaningStaffReportByRangeDate(start_date, end_date);
 	}
 	
 }

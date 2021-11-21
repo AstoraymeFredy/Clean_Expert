@@ -16,6 +16,7 @@ import com.sun.el.parser.ParseException;
 
 import pe.edu.upc.spring.model.Admin;
 import pe.edu.upc.spring.model.CleaningStaff;
+import pe.edu.upc.spring.utils.Filter;
 import pe.edu.upc.spring.model.TypeUser;
 import pe.edu.upc.spring.model.UserModel;
 import pe.edu.upc.spring.service.iAdminService;
@@ -74,6 +75,13 @@ public class AdminController {
 				}
 				return "redirect:/admin/staff/list";
 			}
+	
+	@RequestMapping("/prueba1")
+	public String goPageListAdminprueba1(Map<String, Object> model) {
+		model.put("listAdmin", aService.listAdmin());
+		return "/adminLists/reportGeneral";
+	}
+	
 	
 	@RequestMapping("/list")
 	public String goPageListAdmin(Map<String, Object> model) {
@@ -141,5 +149,20 @@ public class AdminController {
 		model.put("listStaffR", csService.generalReport());
 		return "/adminLists/reportGeneral";
 	}
+	
+	@RequestMapping("/cleaningStaffReport")
+	public String reportPersonal(Model model) {
+		model.addAttribute("filter", new Filter());
+		model.addAttribute("listCleaningStaffR", csService.cleaningStaffReport());
+		return "/adminLists/reportPersonal";
+	}
+	
+	@RequestMapping("/searchCleaningStaffReport")
+	public String buscar(Map<String, Object> model, @ModelAttribute Filter filter)
+			throws ParseException
+	{
+		model.put("listCleaningStaffR", csService.cleaningStaffReportByDate(filter.getStart_date(), filter.getEnd_date()));	
+		return "/adminLists/reportPersonal";
+	}	
 	
 }
