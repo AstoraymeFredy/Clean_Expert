@@ -1,5 +1,6 @@
 package pe.edu.upc.spring.repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,4 +19,19 @@ public interface iCleaningStaffRepository extends JpaRepository<CleaningStaff, I
 	
 	@Query("from CleaningStaff c where c.user.id_user=:idUser")
 	Optional<CleaningStaff> findByUserId(int idUser);
+	
+	@Query(value = "SELECT p.nombre, p.apellidos, count(r.id_reservation), sum(r.precio) as Profit "
+			+ "from personal_limpieza p join reserva r on r.id_personal_limpieza = p.id_cleaning_staff "
+			+ "group by p.nombre, p.apellidos "
+			+ "order by Profit DESC "
+			+ "limit 5", nativeQuery = true)
+	List<String[]> findTop2cleaningStaffReport();
+	
+	@Query(value = "SELECT p.nombre, p.apellidos, count(r.id_reservation), sum(r.precio) as Profit "
+			+ "from personal_limpieza p join reserva r on r.id_personal_limpieza = p.id_cleaning_staff "
+			+ "where r.fecha>=:start_date and r.fecha<=:end_date "
+			+ "group by p.nombre, p.apellidos "
+			+ "order by Profit DESC "
+			+ "limit 5", nativeQuery = true)
+	List<String[]> cleaningStaffReportByRangeDate(@Param("start_date") Date start_date, @Param("end_date") Date end_date);
 }
