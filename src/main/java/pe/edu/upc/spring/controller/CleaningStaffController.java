@@ -1,4 +1,6 @@
 package pe.edu.upc.spring.controller;
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -54,6 +56,12 @@ public class CleaningStaffController {
 			user.setType_user(new TypeUser(2, "ROLE_Personal_de_Limpieza"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
+			Optional<UserModel> userRepeat = uService.findByUsernameRepeated(user.getUsername());
+			if (userRepeat.isPresent()) {
+				model.addAttribute("error",
+						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
+				return "/register/registerStaff";
+			}
 			boolean flag = uService.createUser(user);
 			if (flag) {
 				objCleaningStaff.setUser(user);
@@ -65,7 +73,7 @@ public class CleaningStaffController {
 				}
 			}
 			if(flag) {
-				return "redirect:/";
+				return "redirect:/login";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
 				return "redirect:/staff/register";

@@ -92,7 +92,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/registerAdmin")
-	public String registerClient(@ModelAttribute Admin objAdmin, BindingResult binRes, Model model)throws ParseException{
+	public String registerAdmin(@ModelAttribute Admin objAdmin, BindingResult binRes, Model model)throws ParseException{
 		if (binRes.hasErrors()) {
 			return "registerAdmin";
 		} else {
@@ -100,6 +100,12 @@ public class AdminController {
 			user.setType_user(new TypeUser(3, "Administrador"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
+			Optional<UserModel> userRepeat = uService.findByUsernameRepeated(user.getUsername());
+			if (userRepeat.isPresent()) {
+				model.addAttribute("error",
+						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
+				return "/adminLists/registerAdmin";
+			}
 			boolean flag = uService.createUser(user);
 			if(flag) {
 				objAdmin.setUser(user);
