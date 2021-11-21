@@ -74,8 +74,12 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 	}
 
 	@Override
-	public List<String[]> generalReport() {
-		return dCleaningStaff.generalReport();
+	public List<String[]> generalReport(int month) {
+		if (month > 0) {
+			return dCleaningStaff.generalReportByMonth(month);
+		} else {
+			return dCleaningStaff.generalReport();
+		}
 	}
 	
 	@Override

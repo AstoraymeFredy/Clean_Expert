@@ -23,12 +23,21 @@ public class DistrictServiceImpl implements iDistrictService{
 	}
 
 	@Override
-	public List<String[]> generalReport() {
-		return dDistrict.generalReport();
+	public List<String[]> generalReport(int month) {
+		if (month > 0) {
+			return dDistrict.generalReportByMonth(month);
+		} else {
+			return dDistrict.generalReport();
+		}
+		
 	}
 
 	@Override
-	public List<String[]> generalHeaderReport() {
-		return dDistrict.generalHeaderReport();
+	public List<String[]> generalHeaderReport(int month) {
+		if (month > 0) {
+			return dDistrict.generalHeaderReportByMonth(month);
+		} else {
+			return dDistrict.generalHeaderReport();
+		}
 	}
 }

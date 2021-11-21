@@ -7,6 +7,6 @@ import pe.edu.upc.spring.model.District;
 public interface iDistrictService {
 
 	public List<District> listDistrict();
-	public List<String[]> generalReport();
-	public List<String[]> generalHeaderReport();
+	public List<String[]> generalReport(int month);
+	public List<String[]> generalHeaderReport(int month);
 }

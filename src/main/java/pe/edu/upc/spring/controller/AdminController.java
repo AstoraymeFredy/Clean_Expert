@@ -143,10 +143,19 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/generalReport")
-	public String goPageGeneralReport(Map<String, Object> model) {
-		model.put("header", dService.generalHeaderReport());
-		model.put("listDistrictR", dService.generalReport());
-		model.put("listStaffR", csService.generalReport());
+	public String goPageGeneralReport(Model model) {
+		model.addAttribute("filter", new Filter());
+		model.addAttribute("headerReport", dService.generalHeaderReport(0));
+		model.addAttribute("listDistrictR", dService.generalReport(0));
+		model.addAttribute("listStaffR", csService.generalReport(0));
+		return "/adminLists/reportGeneral";
+	}
+	
+	@RequestMapping("/filterGeneralReport")
+	public String filterPageGeneralReport(Map<String, Object> model, @ModelAttribute Filter filter) {
+		model.put("headerReport", dService.generalHeaderReport(filter.getId_month()));
+		model.put("listDistrictR", dService.generalReport(filter.getId_month()));
+		model.put("listStaffR", csService.generalReport(filter.getId_month()));
 		return "/adminLists/reportGeneral";
 	}
 	
