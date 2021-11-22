@@ -34,7 +34,4 @@ public interface iClientRepository extends JpaRepository<Client, Integer> {
 			+ " ORDER BY count(r.id_reservation)  DESC "
 			+ " limit 5", nativeQuery = true)
 	public List<String[]> clientReportbyMonth(int month);
-	
 }
-
-
