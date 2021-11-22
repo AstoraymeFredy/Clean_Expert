@@ -1,5 +1,7 @@
 package pe.edu.upc.spring.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,10 +46,10 @@ public class ValorationController {
 	}
 
 	@RequestMapping("/registerValoration")
-	public String register(@ModelAttribute Valoration objValoration, BindingResult binRes, Model model)
+	public String register(@Valid @ModelAttribute ("valoration") Valoration objValoration, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors())
-			return "valoration";
+			return "valoration/create";
 		else {
 			boolean flag = vService.createValoration(objValoration);
 			System.out.println(flag);

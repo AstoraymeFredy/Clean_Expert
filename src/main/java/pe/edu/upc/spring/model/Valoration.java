@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
 
 
 
@@ -26,8 +29,10 @@ public class Valoration implements Serializable {
 	@Column(name="comentario", nullable=false, length=200)
 	private String comment;
 	
+	@Range(min = 1, message= "Ingrese la calificación")
+	@NotNull(message = "Ingrese la calificacion")
 	@Column(name="calificacion", nullable=false)
-	private int calification;
+	private Integer calification;
 	
 	@ManyToOne
 	@JoinColumn(name="id_client", nullable=false)
@@ -41,7 +46,7 @@ public class Valoration implements Serializable {
 		super();
 	}
 
-	public Valoration(int id_valoracion, String comment, int calification, Client client,
+	public Valoration(int id_valoracion, String comment, Integer calification, Client client,
 			CleaningStaff cleaning_staff) {
 		super();
 		this.id_valoracion = id_valoracion;
@@ -67,11 +72,11 @@ public class Valoration implements Serializable {
 		this.comment = comment;
 	}
 
-	public int getCalification() {
+	public Integer getCalification() {
 		return calification;
 	}
 
-	public void setCalification(int calification) {
+	public void setCalification(Integer calification) {
 		this.calification = calification;
 	}
 
