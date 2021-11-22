@@ -34,12 +34,12 @@ public class AdminServiceImpl implements iAdminService {
 	}
 
 	@Override
-	public Optional<Admin> findById(int idAdmin) {
-		return dAdmin.findById(idAdmin);
+	public Admin findById(int idAdmin) {
+		return dAdmin.findById(idAdmin).get();
 	}
 
 	@Override
-	public Optional<Admin> findByUserId(int idUser) {
+	public Admin findByUserId(int idUser) {
 		return dAdmin.findByUserId(idUser);
 	}
 
