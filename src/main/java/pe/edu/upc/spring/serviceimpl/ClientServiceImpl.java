@@ -72,11 +72,15 @@ public class ClientServiceImpl implements iClientService {
 	}
 
 	@Override
-	public List<String[]> clientReport() {	
-		return dClient.clientReport();
+	public List<String[]> clientReport(int month) {	
+		
+		if(month>0) {
+			
+			return dClient.clientReportbyMonth(month);
+		}
+		else
+			
+			return dClient.clientReport();	
 	}
-	//public List<String[]> clientReport(int mes) {
-	//	return dClient.clientReport(mes);
-	//}
 	
 }

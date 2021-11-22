@@ -12,7 +12,7 @@ public interface iClientService {
 	public Client findByUserId(int idUser);
 	public List<Client> listClient();
 	public List<Client> searchClient(String nameClient);
-	public List<String[]> clientReport();
-	//public List<String[]> clientReport(int mes);
+	public List<String[]> clientReport(int month);
+	
 	
 }
