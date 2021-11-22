@@ -31,23 +31,19 @@
 					<form th:action="@{/schedule/registerSchedule}" method="post" th:object="${schedule}">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
-							
-								<div>
-									<div
-										class="pb-3 mb-4 d-flex align-items-center justify-content-between">
-										<div>
-											<h3 class="mb-0 fw-bold text-white">Mi horario</h3>
-										</div>
-										<div>
-											<button class="btn btn-light" type="submit">
-												<i>Guardar</i>
-											</button>
-											<input type="hidden" th:field= "*{id_schedule}">
-											<input type="hidden" th:field= "*{cleaning_staff.id_cleaning_staff}">
-										</div>
+							<div>
+								<div class="pb-3 mb-4 d-flex align-items-center justify-content-between">
+									<div>
+										<h3 class="mb-0 fw-bold text-white">Mi horario</h3>
+									</div>
+									<div>
+										<button class="btn btn-light" type="submit"> <i>Guardar</i>
+										</button>
+										<input type="hidden" th:field= "*{id_schedule}">
+										<input type="hidden" th:field= "*{cleaning_staff.id_cleaning_staff}">
 									</div>
 								</div>
-							
+							</div>
 						</div>
 					</div>
 					<div class="row mb-4">
@@ -59,7 +55,6 @@
 								
 								<!-- card body -->
 								<div class="table-responsive">
-									
 									<table class="table text-nowrap">
 										<thead class=" table-light">
 											<tr>
@@ -70,7 +65,6 @@
 										</thead>
 										
 										<tbody>
-											
 											<tr>
 												<td class="align-middle">1</td>
 												<td class="align-middle">Lunes</td>
@@ -135,9 +129,7 @@
 											</tr>
 										
 										</tbody>
-										
 									</table>
-									
 								</div>
 							</div>
 						</div>
