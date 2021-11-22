@@ -34,7 +34,7 @@ public class ScheduleController {
 			if (objSch != null) {
 				model.addAttribute("schedule", objSch);
 			}
-			return "/schedule/update";
+			return "schedule/update";
 		}
 	}
 

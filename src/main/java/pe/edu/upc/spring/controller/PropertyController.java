@@ -38,7 +38,7 @@ public class PropertyController {
 	@RequestMapping("/list")
 	public String goPageListProperties(Map<String, Object> model) {
 		model.put("listProp", pService.findByClientId(sesion.getClient().getId_client()));
-		return "/property/listProperties";
+		return "property/listProperties";
 	}
 
 	@RequestMapping("/register")
@@ -47,7 +47,7 @@ public class PropertyController {
 		model.addAttribute("district", new District());
 		model.addAttribute("listDistrict", dService.listDistrict());
 
-		return "/property/Property";
+		return "property/Property";
 	}
 
 	@RequestMapping("/registerProperty")
@@ -59,7 +59,7 @@ public class PropertyController {
 
 		if (binRes.hasErrors()) {
 			model.addAttribute("listDistrict", dService.listDistrict());
-			return "/property/Property";
+			return "property/Property";
 		} else {
 			boolean flag = pService.createProperty(objProperty);
 			if (flag)

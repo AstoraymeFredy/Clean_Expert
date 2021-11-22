@@ -73,7 +73,7 @@ public class ReservationController {
 	@RequestMapping("/list")
 	public String listReservationByClient(Map<String, Object> model) {
 		model.put("listReservations", rService.listByClient(sesion.getClient().getId_client()));
-		return "/reservation/list";
+		return "reservation/list";
 	}
 
 	@RequestMapping("/view/{id}")
@@ -116,7 +116,7 @@ public class ReservationController {
 
 		this.reservation = reservation;
 		model.addAttribute("reservation", reservation);
-		return "/reservation/create";
+		return "reservation/create";
 	}
 
 	@RequestMapping("/goPayment")
@@ -128,7 +128,7 @@ public class ReservationController {
 			model.addAttribute("duration", listParameters.get(0).getValue());
 			model.addAttribute("cost_hour", listParameters.get(1).getValue());
 			model.addAttribute("cost_kit", listParameters.get(2).getValue());
-			return "/reservation/create";
+			return "reservation/create";
 		} else {
 
 			float total_duration = 0;
@@ -153,7 +153,7 @@ public class ReservationController {
 			this.reservation.setPrice(total_price);
 			model.addAttribute("reservation", objReservation);
 
-			return "/reservation/payment";
+			return "reservation/payment";
 		}
 	}
 
@@ -165,14 +165,14 @@ public class ReservationController {
 		model.addAttribute("cost_hour", listParameters.get(1).getValue());
 		model.addAttribute("cost_kit", listParameters.get(2).getValue());
 		model.addAttribute("reservation", reservation);
-		return "/reservation/create";
+		return "reservation/create";
 	}
 
 	@RequestMapping("/register")
 	public String register(@ModelAttribute Reservation objReservation, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			return "/reservation/payment";
+			return "reservation/payment";
 		} else {
 			reservation.setCard_owner_name(objReservation.getCard_owner_name());
 			reservation.setState("solicitado");

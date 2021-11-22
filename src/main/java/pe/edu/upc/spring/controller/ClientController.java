@@ -36,14 +36,14 @@ public class ClientController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("client", new Client());
-		return "/register/registerClient";
+		return "register/registerClient";
 	}
 
 	@RequestMapping("/registerClient")
 	public String registerClient(@Valid @ModelAttribute Client objClient, BindingResult binRes, Model model)
 			throws ParseException {
 		if (binRes.hasErrors()) {
-			return "/register/registerClient";
+			return "register/registerClient";
 		} else {
 			UserModel user = objClient.getUser();
 			user.setType_user(new TypeUser(1, "Cliente"));
@@ -53,7 +53,7 @@ public class ClientController {
 			if (userRepeat != null) {
 				model.addAttribute("error",
 						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
-				return "/register/registerClient";
+				return "register/registerClient";
 			}
 
 			boolean flag = uService.createUser(user);
@@ -74,14 +74,14 @@ public class ClientController {
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("client", sesion.getClient());
-		return "/perfilClient/view";
+		return "perfilClient/view";
 	}
 
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model) {
 		model.addAttribute("clientEdit", sesion.getClient());
-		return "/perfilClient/update";
+		return "perfilClient/update";
 	}
 
 	@Secured("ROLE_Cliente")
@@ -89,7 +89,7 @@ public class ClientController {
 	public String editClient(@Valid @ModelAttribute(value = "clientEdit") Client objClient, BindingResult binRes,
 			Model model, HttpSession httpSession) throws ParseException {
 		if (binRes.hasErrors()) {
-			return "/perfilClient/update";
+			return "perfilClient/update";
 		} else {
 			boolean flag = cService.updateClient(objClient);
 			if (flag) {

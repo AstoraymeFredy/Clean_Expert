@@ -28,14 +28,14 @@ public class ParameterController {
 	@RequestMapping("/list")
 	public String goPageListParameters(Map<String, Object> model) {
 		model.put("listParameters", pService.list());
-		return "/parameter/listParameter";
+		return "parameter/listParameter";
 	}
 
 	@RequestMapping("/registerParameter")
 	public String registrar(@Valid @ModelAttribute("parameter") Parameter objParameter, BindingResult binRes,
 			Model model) throws ParseException {
 		if (binRes.hasErrors())
-			return "/parameter/update";
+			return "parameter/update";
 		else {
 			boolean flag = pService.createParameter(objParameter);
 			if (flag)
@@ -55,7 +55,7 @@ public class ParameterController {
 			return "redirect:/parameter/list";
 		} else {
 			model.addAttribute("parameter", objPar);
-			return "/parameter/update";
+			return "parameter/update";
 		}
 	}
 }
