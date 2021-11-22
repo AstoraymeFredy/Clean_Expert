@@ -39,7 +39,7 @@ public class ValorationController {
 				objValoration.setCleaning_staff(objRes.getCleaningStaff());
 			}
 			model.addAttribute("valoration", objValoration);
-			return "/valoration/create";
+			return "valoration/create";
 		}
 	}
 

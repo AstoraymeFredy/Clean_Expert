@@ -32,7 +32,7 @@ public class ServiceController {
 	@RequestMapping("/list")
 	public String listReservationByClient(Map<String, Object> model) {
 		model.put("listServices", rService.listByCleaningStaff(sesion.getCleaningStaff().getId_cleaning_staff()));
-		return "/service/list";
+		return "service/list";
 	}
 
 	@RequestMapping("/view/{id}")
