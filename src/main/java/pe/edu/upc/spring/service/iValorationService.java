@@ -8,7 +8,5 @@ public interface iValorationService {
 	
 	public boolean createValoration(Valoration valoration);
 	public Valoration listId(int id_valoration);
-	//public Valoration listByReservation(int id_reservation);
 	List<Valoration> list();
-	
 }
