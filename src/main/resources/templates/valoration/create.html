@@ -60,16 +60,19 @@
 	                                            form-label">Puntaje</label>
 											<div class="col-md-8 col-12">
 											
-												<select class="form-control" th:field="*{calification}" >
+												<select class="form-control" th:field="*{calification}" id="calification">
 													
 													<option value="0">Seleccione el puntaje</option>
-													<option th:value="'1'" th:text="1"></option>
-    												<option th:value="'2'" th:text="2"></option>
-													<option th:value="'3'" th:text="3"></option>
-    												<option th:value="'4'" th:text="4"></option>
-													<option th:value="'5'" th:text="5"></option>
+													<option th:value="1" >1</option>
+    												<option th:value="2">2</option>
+													<option th:value="3" >3</option>
+    												<option th:value="4" >4</option>
+													<option th:value="5" >5</option>
 												</select>
-
+												
+												<small class="form-text text-danger"
+													th:if="${#fields.hasErrors('calification')}"
+													th:errors="*{calification}"></small>
 
 											</div>
 										</div>
@@ -90,6 +93,7 @@
 											<a href="/reservation/list" class="btn btn-secondary px-4 me-2">Cancelar</a>
 											<button type="submit" class="btn btn-primary px-4">Guardar</button>
 										</div>
+										<p th:text="${mensaje}" class="form-text text-danger"></p>
 									</form>
 								</div>
 							</div>
