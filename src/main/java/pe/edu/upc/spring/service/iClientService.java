@@ -13,6 +13,4 @@ public interface iClientService {
 	public List<Client> listClient();
 	public List<Client> searchClient(String nameClient);
 	public List<String[]> clientReport(int month);
-	
-	
 }

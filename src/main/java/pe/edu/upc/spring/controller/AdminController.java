@@ -116,39 +116,18 @@ public class AdminController {
 
 	}
 
-//	@RequestMapping("/clientR")
-//	public String goPageReportClient() {
-//		//model.put("listClientR", clService.clientReport(1));
-//		return "/adminLists/reportClient";
-//	}
-//
-//	@RequestMapping("/listClient")
-//	public String reportClient(Map<String, Object> model) {
-//
-//
-//		model.put("listClientR", clService.clientReport());
-//		return "/adminLists/reportClient";
-//	}
-// public String reportClient(Map<String, Object> model,@PathVariable int mes) {
-
 	@RequestMapping("/clientReport")
 	public String reportClient(Model model) {
 		model.addAttribute("filter", new Filter());
-		
 		model.addAttribute("listClientR", clService.clientReport(0));
 		return "adminLists/reportClient";
 	}
 	
-	
 	@RequestMapping("/filterClientReport")
 	public String filterClient(Map<String, Object> model, @ModelAttribute Filter filter) {
-		
 		model.put("listClientR", clService.clientReport(filter.getId_month()));
-		
 		return "adminLists/reportClient";
 	}
-	
-	
 
 	@RequestMapping("/generalReport")
 	public String goPageGeneralReport(Model model) {
