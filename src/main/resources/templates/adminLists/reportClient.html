@@ -32,7 +32,7 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-12">
 							<!-- Page header -->
-							
+
 							<div>
 								<div
 									class="pb-3 mb-4 d-flex align-items-center justify-content-between">
@@ -40,39 +40,53 @@
 										<h3 class="mb-0 fw-bold text-white">Top 5 clientes</h3>
 									</div>
 
-								
 
-									
-								
+
+
+
 								</div>
 							</div>
-							
+
 						</div>
 					</div>
-					
+
 					<div class="card rounded-3 shadow-sm border-0 p-4 mb-4">
 
 						<div class="mb-4 row">
-							
 
-							
+
+
 							<div class="col-sm-4">
 								<form th:action="@{/admin/filterClientReport}" method="post"
-										th:object="${filter}">
-									<select class="col-sm-12 col-form-label form-label" id="id_month" name="id_month">
-										<option value="0" th:text="Siempre" th:selected="(0==*{id_month})"></option>
-										<option value="1" th:text="Enero" th:selected="(1==*{id_month})"></option>
-										<option value="2" th:text="Febrero" th:selected="(2==*{id_month})"></option>
-										<option value="3" th:text="Marzo" th:selected="(3==*{id_month})"></option>
-										<option value="4" th:text="Abril" th:selected="(4==*{id_month})"></option>
-										<option value="5" th:text="Mayo" th:selected="(5==*{id_month})"></option>
-										<option value="6" th:text="Junio" th:selected="(6==*{id_month})"></option>
-										<option value="7" th:text="Julio" th:selected="(7==*{id_month})"></option>
-										<option value="8" th:text="Agosto" th:selected="(8==*{id_month})"></option>
-										<option value="9" th:text="Setiembre" th:selected="(9==*{id_month})"></option>
-										<option value="10" th:text="Octubre" th:selected="(10==*{id_month})"></option>
-										<option value="11" th:text="Noviembre" th:selected="(11==*{id_month})"></option>
-										<option value="12" th:text="Diciembre" th:selected="(12==*{id_month})"></option>
+									th:object="${filter}">
+									<select class="col-sm-12 col-form-label form-label"
+										id="id_month" name="id_month">
+										<option value="0" th:text="Siempre"
+											th:selected="(0==*{id_month})"></option>
+										<option value="1" th:text="Enero"
+											th:selected="(1==*{id_month})"></option>
+										<option value="2" th:text="Febrero"
+											th:selected="(2==*{id_month})"></option>
+										<option value="3" th:text="Marzo"
+											th:selected="(3==*{id_month})"></option>
+										<option value="4" th:text="Abril"
+											th:selected="(4==*{id_month})"></option>
+										<option value="5" th:text="Mayo"
+											th:selected="(5==*{id_month})"></option>
+										<option value="6" th:text="Junio"
+											th:selected="(6==*{id_month})"></option>
+										<option value="7" th:text="Julio"
+											th:selected="(7==*{id_month})"></option>
+										<option value="8" th:text="Agosto"
+											th:selected="(8==*{id_month})"></option>
+										<option value="9" th:text="Setiembre"
+											th:selected="(9==*{id_month})"></option>
+										<option value="10" th:text="Octubre"
+											th:selected="(10==*{id_month})"></option>
+										<option value="11" th:text="Noviembre"
+											th:selected="(11==*{id_month})"></option>
+										<option value="12" th:text="Diciembre"
+											th:selected="(12==*{id_month})"></option>
 									</select>
 									<div>
 										<button class="btn btn-primary mt-2" type="submit" id="filter">
@@ -85,7 +99,7 @@
 						</div>
 
 					</div>
-					
+
 					<div class="row mb-4">
 						<div class="col-12">
 							<div class="card rounded-3 shadow-sm border-0">
