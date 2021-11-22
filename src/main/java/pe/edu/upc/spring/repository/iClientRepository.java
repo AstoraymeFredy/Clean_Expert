@@ -35,5 +35,3 @@ public interface iClientRepository extends JpaRepository<Client, Integer> {
 			+ " limit 5", nativeQuery = true)
 	public List<String[]> clientReportbyMonth(int month);
 }
-
-

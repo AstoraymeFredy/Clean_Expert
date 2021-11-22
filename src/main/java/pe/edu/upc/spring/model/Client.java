@@ -111,7 +111,4 @@ public class Client implements Serializable {
 	public void setUser(UserModel user) {
 		this.user = user;
 	}
-	
-	
-
 }
