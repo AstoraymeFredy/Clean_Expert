@@ -133,7 +133,7 @@ public class AdminController {
 //		model.put("listClientR", clService.clientReport());
 //		return "/adminLists/reportClient";
 //	}
-	//public String reportClient(Map<String, Object> model,@PathVariable int mes) {
+
 	
 	@RequestMapping("/clientReport")
 	public String reportClient(Map<String, Object> model) {
