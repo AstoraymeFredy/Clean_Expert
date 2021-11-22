@@ -2,7 +2,6 @@ package pe.edu.upc.spring.serviceimpl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -52,12 +51,12 @@ public class CleaningStaffServiceImpl implements iCleaningStaffService {
 	}
 
 	@Override
-	public Optional<CleaningStaff> findById(int idCleaningStaff) {
-		return dCleaningStaff.findById(idCleaningStaff);
+	public CleaningStaff findById(int idCleaningStaff) {
+		return dCleaningStaff.findById(idCleaningStaff).get();
 	}
 
 	@Override
-	public Optional<CleaningStaff> findByUserId(int idUser) {
+	public CleaningStaff findByUserId(int idUser) {
 		return dCleaningStaff.findByUserId(idUser);
 	}
 

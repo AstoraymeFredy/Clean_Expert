@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.serviceimpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,8 +35,8 @@ public class PropertyServiceImpl implements iPropertyService{
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Property> findById(int idProperty) {
-		return dProperty.findById(idProperty);
+	public Property findById(int idProperty) {
+		return dProperty.findById(idProperty).get();
 	}	
 	
 	@Override

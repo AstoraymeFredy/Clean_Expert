@@ -2,7 +2,6 @@ package pe.edu.upc.spring.repository;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,7 +21,7 @@ public interface iReservationRepository extends JpaRepository<Reservation, Integ
 	
     List<Reservation> findByDate(Date date);
     
-    Optional<Reservation> findById(int id);
+    Reservation findById(int id);
 
 }
 
