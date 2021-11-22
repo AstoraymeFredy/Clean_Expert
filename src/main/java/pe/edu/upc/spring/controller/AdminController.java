@@ -116,21 +116,6 @@ public class AdminController {
 
 	}
 
-//	@RequestMapping("/clientR")
-//	public String goPageReportClient() {
-//		//model.put("listClientR", clService.clientReport(1));
-//		return "/adminLists/reportClient";
-//	}
-//
-//	@RequestMapping("/listClient")
-//	public String reportClient(Map<String, Object> model) {
-//
-//
-//		model.put("listClientR", clService.clientReport());
-//		return "/adminLists/reportClient";
-//	}
-// public String reportClient(Map<String, Object> model,@PathVariable int mes) {
-
 	@RequestMapping("/clientReport")
 	public String reportClient(Model model) {
 		model.addAttribute("filter", new Filter());
