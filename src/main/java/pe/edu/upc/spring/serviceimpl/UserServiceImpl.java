@@ -27,7 +27,6 @@ public class UserServiceImpl implements iUserService {
 
 	@Override
 	public UserModel findByUsernameRepeated(String username) {
-		System.out.println(username);
 		return dUser.findByUsernameRepeated(username);
 	}
 
