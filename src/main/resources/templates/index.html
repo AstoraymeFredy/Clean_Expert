@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="/css/main.css" rel="stylesheet" type="text/css" />
-<link href="/css/landing.css" rel="stylesheet" type="text/css"/>
-<title>CLEAN EXPERT</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/jpg" href="./favicon.ico" />
+	<link th:href="@{/css/main.css}" rel="stylesheet" />
+	<link th:href="@{/css/landing.css}" rel="stylesheet" />
+		<title>CLEAN EXPERT</title>
 </head>
 <body>
 	<!--Navbar-->
 	<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img src="/img/logo.png"
-				alt="logo-share" height="90" />
+			<a class="navbar-brand" href="#"> <img
+				th:src="@{/img/logo.png}" alt="logo-share" height="90" />
 			</a>
 			<!--Navbar:button-collapse-->
 			<button class="navbar-toggler" type="button"
@@ -22,8 +23,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<!--Navbar:items-menu-->
-			<div class="collapse navbar-collapse justify-content-end"
-				id="navbarSupportedContent">
+			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 					<li class="nav-item ms-3"><a
 						class="nav-link text-white text-uppercase" href="#features">Características</a>
@@ -34,7 +34,8 @@
 					<li class="nav-item ms-3"><a
 						class="nav-link text-white text-uppercase" href="#teachers">Personal</a>
 					</li>
-					<li class="nav-item ms-3"><a th:href="@{/login}">
+					<li class="nav-item ms-3"><a
+						th:href="@{/login}">
 							<button type="button"
 								class="btn btn-dark button text-uppercase btn-padding-x-sm fw-bold">
 								Únete</button>
@@ -59,7 +60,7 @@
 				</div>
 				<div class="col-lg-1 col-md-12"></div>
 				<div class="col-lg-5 col-md-12 text-center">
-					<img src="/img/portada-screens.png" alt=""
+					<img  th:src="@{/img/portada-screens.png}" alt=""
 						class="img-fluid big-principal-img ms-2" />
 				</div>
 			</div>
@@ -82,7 +83,7 @@
 							class="d-flex flex-column justify-content-center p-xs-3 p-xl-5 feature-item-container">
 							<div class="feature-item animated">
 								<div class="p-2 text-center">
-									<img src="/img/feature1.png" alt=""
+									<img th:src="@{/img/feature1.png}" alt=""
 										class="img-fluid feature-img" />
 								</div>
 								<div class="p-2 text-center fw-bold">Diferentes
@@ -95,7 +96,7 @@
 							class="d-flex flex-column justify-content-center p-xs-3 p-xl-5 feature-item-container">
 							<div class="feature-item">
 								<div class="p-2 text-center">
-									<img src="/img/feature2.png" alt=""
+									<img th:src="@{/img/feature2.png}" alt=""
 										class="img-fluid feature-img" />
 								</div>
 								<div class="p-2 text-center fw-bold">Información al
@@ -108,7 +109,7 @@
 							class="d-flex flex-column justify-content-center p-xs-3 p-xl-5 feature-item-container">
 							<div class="feature-item animated">
 								<div class="p-2 text-center">
-									<img src="/img/feature3.png" alt=""
+									<img th:src="@{/img/feature3.png}" alt=""
 										class="img-fluid feature-img" />
 								</div>
 								<div class="p-2 text-center fw-bold">A solo S/15 por hora</div>
@@ -193,7 +194,7 @@
 			<div class="container animated email-container">
 				<div class="row">
 					<div class="col animated text-center">
-						<img src="/img/email.png" />
+						<img th:src="@{/img/email.png}"/>
 					</div>
 					<div class="col animated">
 						<h3 class="secondary-title text-white text-center animated">
@@ -217,7 +218,7 @@
 					<div class="col-md-6 mt-5 animated">
 						<div class="row mb-4">
 							<div class="col-auto">
-								<img src="/img/CirculoVineta.png"
+								<img th:src="@{/img/CirculoVineta.png}"
 									class="rounded float-start" alt="" />
 							</div>
 							<div class="col">
@@ -227,7 +228,7 @@
 						</div>
 						<div class="row mb-4">
 							<div class="col-auto">
-								<img src="/img/CirculoVineta.png"
+								<img th:src="@{/img/CirculoVineta.png}"
 									class="rounded float-start" alt="..." />
 							</div>
 							<div class="col">
@@ -236,7 +237,7 @@
 						</div>
 						<div class="row mb-4">
 							<div class="col-auto">
-								<img src="/img/CirculoVineta.png"
+								<img th:src="@{/img/CirculoVineta.png}"
 									class="rounded float-start" alt="..." />
 							</div>
 							<div class="col">
@@ -246,7 +247,7 @@
 						</div>
 						<div class="row mb-4">
 							<div class="col-auto">
-								<img src="/img/CirculoVineta.png"
+								<img th:src="@{/img/CirculoVineta.png}"
 									class="rounded float-start" alt="..." />
 							</div>
 							<div class="col">
@@ -256,7 +257,7 @@
 						<div class="mt-lg-5"></div>
 					</div>
 					<div class="col-md-6 text-right animated">
-						<img src="/img/PersonaShare.png" alt=""
+						<img th:src="@{/img/PersonaShare.png}" alt=""
 							class="img-fluid ms-2 d-none d-md-block" />
 					</div>
 				</div>
@@ -273,8 +274,8 @@
 					<div class="col-md-5">
 						<!-- Content -->
 						<h6 class="text-uppercase fw-bold mb-4">
-							<i class="fas fa-gem mr-3"></i><img src="/img/logo.png"
-								alt="logo-share" height="90" />
+							<i class="fas fa-gem mr-3"></i><img
+								th:src="@{/img/logo.png}" alt="logo-share" height="90" />
 						</h6>
 						<p class="text-left description">Clean Expert es una empresa
 							que te brinda servicio de limpieza</p>
@@ -303,17 +304,17 @@
 								contacto@clean.com.pe </span>
 						</p>
 						<p class="d-flex">
-							<i class="bi bi-telephone-fill mr-2"></i> <span> +51
-								922556565</span>
+							<i class="bi bi-telephone-fill mr-2"></i> <span>
+								+51 922556565</span>
 						</p>
 						<p class="d-flex">
-							<i class="bi bi-geo-fill"></i> <span>772 Av. Grau - La
-								Molina</span>
+							<i class="bi bi-geo-fill"></i> <span>772
+								Av. Grau - La Molina</span>
 						</p>
 					</div>
 					<!-- Copyright -->
-					<div class="col-xs-12 text-left p-3">© 2021 Clean Expert.
-						Todos los derechos reservados</div>
+					<div class="col-xs-12 text-left p-3">© 2021 Clean
+						Expert. Todos los derechos reservados</div>
 					<!-- Copyright -->
 				</div>
 			</div>
