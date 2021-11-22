@@ -16,5 +16,5 @@ public interface iAdminRepository extends JpaRepository<Admin, Integer> {
 	List<Admin> searchByName(@Param("nameAdmin") String nameAdmin);
 	
 	@Query("from Admin c where c.user.id_user=:idUser")
-	Optional<Admin> findByUserId(int idUser);
+	Admin findByUserId(int idUser);
 }

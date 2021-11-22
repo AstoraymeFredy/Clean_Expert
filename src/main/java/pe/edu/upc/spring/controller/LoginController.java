@@ -65,8 +65,8 @@ public class LoginController {
 					sesion.setCleaningStaff(cleaningStaff);
 					return "redirect:/service/list";
 				} else {
-					Optional<Admin> findedAdmin =aService.findByUserId(customUser.getUserID());
-					Admin admin = findedAdmin.get();
+					Admin findedAdmin =aService.findByUserId(customUser.getUserID());
+					Admin admin = findedAdmin;
 					httpSession.setAttribute("nameUser", admin.getName() + " " + admin.getLastname());
 					sesion.setAdmin(admin);
 					return "redirect:/admin/staff/list";
