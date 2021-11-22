@@ -1,7 +1,5 @@
 package pe.edu.upc.spring.controller;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,36 +17,30 @@ import pe.edu.upc.spring.utils.Sesion;
 @Controller
 @RequestMapping("/schedule")
 public class ScheduleController {
-	
+
 	@Autowired
 	private iScheduleService sService;
-	
+
 	@Autowired
 	private Sesion sesion;
-	
+
 	@RequestMapping("/register")
-	public String goPageRegister(Model model, RedirectAttributes objRedir)
-		throws ParseException 
-	{
-		Optional<Schedule> objSch = sService.findByIdStaff(sesion.getCleaningStaff().getId_cleaning_staff());
+	public String goPageRegister(Model model, RedirectAttributes objRedir) throws ParseException {
+		Schedule objSch = sService.findByIdStaff(sesion.getCleaningStaff().getId_cleaning_staff());
 		if (objSch == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/schedule/register";
-		}
-		else {	
-			if (objSch.isPresent()) {
-                objSch.ifPresent(o -> {
-                	model.addAttribute("schedule", o);
-                });
-            }
+		} else {
+			if (objSch != null) {
+				model.addAttribute("schedule", objSch);
+			}
 			return "/schedule/update";
 		}
 	}
-	
+
 	@RequestMapping("/registerSchedule")
 	public String registrar(@ModelAttribute Schedule objSchedule, BindingResult binRes, Model model)
-			throws ParseException
-	{
+			throws ParseException {
 		if (binRes.hasErrors())
 			return "schedule";
 		else {

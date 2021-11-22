@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.serviceimpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,7 +56,7 @@ public class ScheduleServiceImpl implements iScheduleService {
 	
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Schedule> findByIdStaff(int idStaff)
+	public Schedule findByIdStaff(int idStaff)
 	{
 		return dSchedule.findByIdStaff(idStaff);
 	}

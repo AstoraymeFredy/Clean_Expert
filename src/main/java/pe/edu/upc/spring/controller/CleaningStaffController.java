@@ -1,5 +1,4 @@
 package pe.edu.upc.spring.controller;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -47,17 +46,17 @@ public class CleaningStaffController {
 	}
 
 	@RequestMapping(value = "/registerStaff", method = RequestMethod.POST)
-	public String registerStaff (@Valid @ModelAttribute("staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model)
-		throws ParseException{
-		if(binRes.hasErrors()) {
+	public String registerStaff(@Valid @ModelAttribute("staff") CleaningStaff objCleaningStaff, BindingResult binRes,
+			Model model) throws ParseException {
+		if (binRes.hasErrors()) {
 			return "/register/registerStaff";
 		} else {
 			UserModel user = objCleaningStaff.getUser();
 			user.setType_user(new TypeUser(2, "ROLE_Personal_de_Limpieza"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
-			Optional<UserModel> userRepeat = uService.findByUsernameRepeated(user.getUsername());
-			if (userRepeat.isPresent()) {
+			UserModel userRepeat = uService.findByUsernameRepeated(user.getUsername());
+			if (userRepeat != null) {
 				model.addAttribute("error",
 						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
 				return "/register/registerStaff";
@@ -72,7 +71,7 @@ public class CleaningStaffController {
 					flag = sService.createSchedule(schedule);
 				}
 			}
-			if(flag) {
+			if (flag) {
 				return "redirect:/login";
 			} else {
 				model.addAttribute("errorMessage", "Ocurrio un error");
@@ -90,19 +89,20 @@ public class CleaningStaffController {
 
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/edit")
-	public String goPageEdit(Model model){
+	public String goPageEdit(Model model) {
 		model.addAttribute("staff", sesion.getCleaningStaff());
 		return "/perfilStaff/update";
 	}
 
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/editStaff")
-	public String editClient(@Valid @ModelAttribute (value="staff") CleaningStaff objCleaningStaff, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
-		if(binRes.hasErrors()) {
+	public String editClient(@Valid @ModelAttribute(value = "staff") CleaningStaff objCleaningStaff,
+			BindingResult binRes, Model model, HttpSession httpSession) throws ParseException {
+		if (binRes.hasErrors()) {
 			return "/perfilStaff/update";
 		} else {
 			boolean flag = csService.updateCleaningStaff(objCleaningStaff);
-			if(flag) {
+			if (flag) {
 				httpSession.setAttribute("nameUser", objCleaningStaff.getName() + " " + objCleaningStaff.getLastname());
 				sesion.setCleaningStaff(objCleaningStaff);
 				return "redirect:/staff/view";
@@ -111,6 +111,5 @@ public class CleaningStaffController {
 			}
 		}
 	}
-	
 
 }

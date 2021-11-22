@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.controller;
 
 import java.util.Map;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -22,20 +21,19 @@ import pe.edu.upc.spring.service.iParameterService;
 @Controller
 @RequestMapping("/parameter")
 public class ParameterController {
-	
+
 	@Autowired
 	private iParameterService pService;
-	
+
 	@RequestMapping("/list")
 	public String goPageListParameters(Map<String, Object> model) {
 		model.put("listParameters", pService.list());
 		return "/parameter/listParameter";
 	}
-	
+
 	@RequestMapping("/registerParameter")
-	public String registrar(@Valid @ModelAttribute("parameter") Parameter objParameter, BindingResult binRes, Model model)
-			throws ParseException
-	{
+	public String registrar(@Valid @ModelAttribute("parameter") Parameter objParameter, BindingResult binRes,
+			Model model) throws ParseException {
 		if (binRes.hasErrors())
 			return "/parameter/update";
 		else {
@@ -48,19 +46,16 @@ public class ParameterController {
 			}
 		}
 	}
-	
+
 	@RequestMapping("/modify/{id}")
-	public String modify(@PathVariable int id, Model model, RedirectAttributes objRedir)
-		throws ParseException 
-		{
-			Optional<Parameter> objPar= pService.listId(id);
-			if (objPar == null) {
-				objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
-				return "redirect:/parameter/list";
-			}
-			else {
-				model.addAttribute("parameter", objPar);
-				return "/parameter/update";
-			}
+	public String modify(@PathVariable int id, Model model, RedirectAttributes objRedir) throws ParseException {
+		Parameter objPar = pService.listId(id);
+		if (objPar == null) {
+			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
+			return "redirect:/parameter/list";
+		} else {
+			model.addAttribute("parameter", objPar);
+			return "/parameter/update";
 		}
+	}
 }

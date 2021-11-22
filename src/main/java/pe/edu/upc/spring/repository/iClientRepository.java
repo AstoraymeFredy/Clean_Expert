@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,7 @@ public interface iClientRepository extends JpaRepository<Client, Integer> {
 	List<Client> searchByName(@Param("nameClient") String nameClient);
 	
 	@Query("from Client c where c.user.id_user=:idUser")
-	Optional<Client> findByUserId(int idUser);
+	Client findByUserId(int idUser);
 	
 	@Query(value = "SELECT c.nombre,count(r.id_reservation),sum(r.precio)"
 			+ " from cliente c join propiedad p on c.id_client=p.id_cliente"

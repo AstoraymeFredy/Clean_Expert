@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.controller;
 
 import java.security.Principal;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,54 +24,52 @@ import pe.edu.upc.spring.utils.Sesion;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private Sesion sesion;
-	
+
 	@Autowired
 	private iClientService cService;
-	
+
 	@Autowired
 	private iCleaningStaffService csService;
-	
+
 	@Autowired
 	private iAdminService aService;
-	
+
 	@RequestMapping("/")
-    public String home (){
-        return "index";
-    }
-	
+	public String home() {
+		return "index";
+	}
+
 	@RequestMapping("/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, Model model, Principal principal,
 			RedirectAttributes flash, HttpSession httpSession) {
 		if (principal != null) {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-			CustomUser customUser = (CustomUser)authentication.getPrincipal();
-			if(customUser.getTypeUserID() == 1) {
-				Optional<Client> findedClient =cService.findByUserId(customUser.getUserID());
-				Client client = findedClient.get();
+			CustomUser customUser = (CustomUser) authentication.getPrincipal();
+			if (customUser.getTypeUserID() == 1) {
+				Client client = cService.findByUserId(customUser.getUserID());
 				sesion.setClient(client);
 				model.addAttribute("client", client);
 				httpSession.setAttribute("nameUser", client.getName() + " " + client.getLastname());
 				return "redirect:/reservation/list";
 			} else {
 				if (customUser.getTypeUserID() == 2) {
-					Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(customUser.getUserID());
-					CleaningStaff cleaningStaff = findedCleaningStaff.get();
+					CleaningStaff cleaningStaff = csService.findByUserId(customUser.getUserID());
 					httpSession.setAttribute("nameUser", cleaningStaff.getName() + " " + cleaningStaff.getLastname());
 					sesion.setCleaningStaff(cleaningStaff);
 					return "redirect:/service/list";
 				} else {
-					Admin findedAdmin =aService.findByUserId(customUser.getUserID());
+					Admin findedAdmin = aService.findByUserId(customUser.getUserID());
 					Admin admin = findedAdmin;
 					httpSession.setAttribute("nameUser", admin.getName() + " " + admin.getLastname());
 					sesion.setAdmin(admin);
 					return "redirect:/admin/staff/list";
 				}
 			}
-			
+
 		}
 
 		if (error != null) {

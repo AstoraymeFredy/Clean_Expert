@@ -1,8 +1,6 @@
 package pe.edu.upc.spring.controller;
-import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +40,8 @@ public class ClientController {
 	}
 
 	@RequestMapping("/registerClient")
-	public String registerClient(@Valid @ModelAttribute Client objClient, BindingResult binRes, Model model)throws ParseException{
+	public String registerClient(@Valid @ModelAttribute Client objClient, BindingResult binRes, Model model)
+			throws ParseException {
 		if (binRes.hasErrors()) {
 			return "/register/registerClient";
 		} else {
@@ -50,15 +49,15 @@ public class ClientController {
 			user.setType_user(new TypeUser(1, "Cliente"));
 			user.setUsername(user.getUsername().trim());
 			user.setPassword(user.getPassword().trim());
-			Optional<UserModel> userRepeat = uService.findByUsernameRepeated(user.getUsername());
-			if (userRepeat.isPresent()) {
+			UserModel userRepeat = uService.findByUsernameRepeated(user.getUsername());
+			if (userRepeat != null) {
 				model.addAttribute("error",
 						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
 				return "/register/registerClient";
 			}
-			
+
 			boolean flag = uService.createUser(user);
-			if(flag) {
+			if (flag) {
 				objClient.setUser(user);
 				flag = cService.createClient(objClient);
 			}
@@ -80,19 +79,20 @@ public class ClientController {
 
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/edit")
-	public String goPageEdit(Model model){
+	public String goPageEdit(Model model) {
 		model.addAttribute("clientEdit", sesion.getClient());
 		return "/perfilClient/update";
 	}
 
 	@Secured("ROLE_Cliente")
 	@RequestMapping("/editClient")
-	public String editClient(@Valid @ModelAttribute(value="clientEdit") Client objClient, BindingResult binRes, Model model, HttpSession httpSession)throws ParseException{
-		if(binRes.hasErrors()) {
+	public String editClient(@Valid @ModelAttribute(value = "clientEdit") Client objClient, BindingResult binRes,
+			Model model, HttpSession httpSession) throws ParseException {
+		if (binRes.hasErrors()) {
 			return "/perfilClient/update";
 		} else {
 			boolean flag = cService.updateClient(objClient);
-			if(flag) {
+			if (flag) {
 				httpSession.setAttribute("nameUser", objClient.getName() + " " + objClient.getLastname());
 				sesion.setClient(objClient);
 				return "redirect:/client/view";

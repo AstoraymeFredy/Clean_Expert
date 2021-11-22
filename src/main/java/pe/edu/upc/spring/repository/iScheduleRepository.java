@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -35,5 +34,5 @@ public interface iScheduleRepository extends JpaRepository<Schedule, Integer> {
 	List<Schedule> findHorarioBySunday();
 	
 	@Query("from Schedule s where s.cleaning_staff.id_cleaning_staff=:idStaff")
-	Optional<Schedule> findByIdStaff(@Param("idStaff") int idStaff);
+	Schedule findByIdStaff(@Param("idStaff") int idStaff);
 }

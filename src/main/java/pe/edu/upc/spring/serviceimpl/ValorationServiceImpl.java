@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.serviceimpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,8 @@ public class ValorationServiceImpl implements iValorationService{
 	}
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Valoration> listId(int id_valoration) {
-		return dValoration.findById(id_valoration);
+	public Valoration listId(int id_valoration) {
+		return dValoration.findById(id_valoration).get();
 	}
 	
 	@Override

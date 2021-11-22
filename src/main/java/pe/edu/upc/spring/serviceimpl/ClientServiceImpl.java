@@ -1,7 +1,6 @@
 package pe.edu.upc.spring.serviceimpl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -51,8 +50,8 @@ public class ClientServiceImpl implements iClientService {
 	}
 
 	@Override
-	public Optional<Client> findById(int idClient) {
-		return dClient.findById(idClient);
+	public Client findById(int idClient) {
+		return dClient.findById(idClient).get();
 	}
 
 	@Override
@@ -68,7 +67,7 @@ public class ClientServiceImpl implements iClientService {
 	}
 
 	@Override
-	public Optional<Client> findByUserId(int idUser) {
+	public Client findByUserId(int idUser) {
 		return dClient.findByUserId(idUser);
 	}
 

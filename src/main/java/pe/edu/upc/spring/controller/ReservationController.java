@@ -1,11 +1,14 @@
 package pe.edu.upc.spring.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -22,25 +25,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 import com.sun.el.parser.ParseException;
 
-import pe.edu.upc.spring.utils.Sesion;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import pe.edu.upc.spring.model.CleaningStaff;
 import pe.edu.upc.spring.model.DetailReservation;
 import pe.edu.upc.spring.model.Parameter;
 import pe.edu.upc.spring.model.Reservation;
 import pe.edu.upc.spring.model.Room;
 import pe.edu.upc.spring.model.Schedule;
-import pe.edu.upc.spring.service.iReservationService;
 import pe.edu.upc.spring.service.iDetailReservationService;
-import pe.edu.upc.spring.service.iRoomService;
-import pe.edu.upc.spring.service.iPropertyService;
-import pe.edu.upc.spring.service.iScheduleService;
 import pe.edu.upc.spring.service.iParameterService;
+import pe.edu.upc.spring.service.iPropertyService;
+import pe.edu.upc.spring.service.iReservationService;
+import pe.edu.upc.spring.service.iRoomService;
+import pe.edu.upc.spring.service.iScheduleService;
+import pe.edu.upc.spring.utils.Sesion;
 
 @Controller
 @RequestMapping("/reservation")
@@ -82,13 +79,13 @@ public class ReservationController {
 	@RequestMapping("/view/{id}")
 	public String goPageView(@PathVariable int id, Model model, RedirectAttributes objRedir,
 			Map<String, Object> modelList) throws ParseException {
-		Optional<Reservation> objRes = rService.findById(id);
+		Reservation objRes = rService.findById(id);
 		if (objRes == null) {
 			objRedir.addFlashAttribute("mensaje", "Ocurrio un error");
 			return "redirect:/reservation/list";
 		} else {
-			if (objRes.isPresent())
-				objRes.ifPresent(o -> model.addAttribute("reservation", o));
+			if (objRes != null)
+				model.addAttribute("reservation", objRes);
 
 			modelList.put("listDetailsReservation", dService.listByReservation(id));
 
@@ -123,8 +120,8 @@ public class ReservationController {
 	}
 
 	@RequestMapping("/goPayment")
-	public String goPagePayment(@Valid @ModelAttribute("reservation") Reservation objReservation, BindingResult binRes, Model model)
-			throws ParseException {
+	public String goPagePayment(@Valid @ModelAttribute("reservation") Reservation objReservation, BindingResult binRes,
+			Model model) throws ParseException {
 		if (binRes.hasErrors()) {
 			model.addAttribute("listClientStaff", listCleaningStaff);
 			model.addAttribute("listProperty", pService.findByClientId(sesion.getClient().getId_client()));
@@ -133,21 +130,21 @@ public class ReservationController {
 			model.addAttribute("cost_kit", listParameters.get(2).getValue());
 			return "/reservation/create";
 		} else {
-		
+
 			float total_duration = 0;
 			int aprox_duration = 0;
 			float total_price = 0;
 
 			for (int i = 0; i < objReservation.getListDetails().size(); i++) {
-				  DetailReservation detail=objReservation.getListDetails().get(i);
-			      total_duration= total_duration + listParameters.get(0).getValue() * detail.getQuantity();		    
+				DetailReservation detail = objReservation.getListDetails().get(i);
+				total_duration = total_duration + listParameters.get(0).getValue() * detail.getQuantity();
 			}
-			
-			aprox_duration= (int) Math.ceil(total_duration/60);
-			total_price=aprox_duration*listParameters.get(1).getValue();
-			
+
+			aprox_duration = (int) Math.ceil(total_duration / 60);
+			total_price = aprox_duration * listParameters.get(1).getValue();
+
 			System.out.println(objReservation.isExtra_cleaning_kit());
-			if(objReservation.isExtra_cleaning_kit()) {
+			if (objReservation.isExtra_cleaning_kit()) {
 				total_price = total_price + listParameters.get(2).getValue();
 			}
 
@@ -155,11 +152,11 @@ public class ReservationController {
 			this.reservation.setDuration(aprox_duration);
 			this.reservation.setPrice(total_price);
 			model.addAttribute("reservation", objReservation);
-			
+
 			return "/reservation/payment";
 		}
 	}
-	
+
 	@RequestMapping("/returnRegister")
 	public String returnPageCreate(Model model) {
 		model.addAttribute("listClientStaff", listCleaningStaff);

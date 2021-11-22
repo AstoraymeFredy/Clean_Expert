@@ -2,7 +2,6 @@ package pe.edu.upc.spring.serviceimpl;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +29,7 @@ public class ReservationServiceImpl implements iReservationService {
 	}
 		
 	@Override
-	public Optional<Reservation> findById(int idReservation) {
+	public Reservation findById(int idReservation) {
 		return dReservation.findById(idReservation);
 	}
 
