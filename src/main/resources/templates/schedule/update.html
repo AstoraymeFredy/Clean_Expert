@@ -4,8 +4,7 @@
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" />
+	
 	<!-- Custom styles -->
 	<link th:href="@{/css/style.css}" rel="stylesheet" />
 	<link th:href="@{/css/main.css}" rel="stylesheet" />
@@ -17,25 +16,25 @@
 		<!-- ! Sidebar -->
 		<div th:replace="fragments/sidebarCleaningStaff :: sidebarCleaningStaff"></div>
 		<div class="main-wrapper">
-		
-			<!-- ! Navbar -->
-			<div th:replace="fragments/navbar :: navbar"></div>
-			<!-- ! Only for table-->
-			<div class="bg-primary mt-0 pb-4 position-absolute"
-				style="height: 180px; width: 100%; z-index: -4"></div>
+	
+		<!-- ! Navbar -->
+		<div th:replace="fragments/navbar :: navbar"></div>
+		<!-- ! Only for table-->
+		<div class="bg-primary mt-0 pb-4 position-absolute"
+			style="height: 180px; width: 100%; z-index: -4"></div>
 				
 			<!-- ! Main -->
 			<main class="main position-relative mt-5" id="skip-target">
 				<div class="container ">
 					<!-- Page header -->
 					<form th:action="@{/schedule/registerSchedule}" method="post" th:object="${schedule}">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-12">
-							<div>
-								<div class="pb-3 mb-4 d-flex align-items-center justify-content-between">
-									<div>
-										<h3 class="mb-0 fw-bold text-white">Mi horario</h3>
-									</div>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-12">
+								<div>
+									<div class="pb-3 mb-4 d-flex align-items-center justify-content-between">
+										<div>
+											<h3 class="mb-0 fw-bold text-white">Mi horario</h3>
+										</div>
 									<div>
 										<button class="btn btn-light" type="submit"> <i>Guardar</i>
 										</button>
@@ -54,89 +53,84 @@
 								</div>
 								
 								<!-- card body -->
-								<div class="table-responsive">
-									<table class="table text-nowrap">
-										<thead class=" table-light">
-											<tr>
-												<th>#</th>
-												<th>Día</th>
-												<th>Disponibilidad</th>
-											</tr>
-										</thead>
+									<div class="table-responsive">
+										<table class="table text-nowrap">
+											<thead class=" table-light">
+												<tr>
+													<th>#</th>
+													<th>Día</th>
+													<th>Disponibilidad</th>
+												</tr>
+											</thead>
 										
-										<tbody>
-											<tr>
-												<td class="align-middle">1</td>
-												<td class="align-middle">Lunes</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{monday}"
-													class="form-check-label">
-												</td>
-											</tr>
+												<tbody>
+													<tr>
+														<td class="align-middle">1</td>
+														<td class="align-middle">Lunes</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{monday}"
+															class="form-check-label">
+														</td>
+													</tr>
+												
+													<tr>
+														<td class="align-middle">2</td>
+														<td class="align-middle">Martes</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{tuesday}">
+														</td>
+													</tr>
+													
+													<tr>
+														<td class="align-middle">3</td>
+														<td class="align-middle">Miércoles</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{wednesday}">
+														</td>
+													</tr>
+													
+													<tr>
+														<td class="align-middle">4</td>
+														<td class="align-middle">Jueves</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{thursday}">
+														</td>
+													</tr>
+													
+													<tr>
+														<td class="align-middle">5</td>
+														<td class="align-middle">Viernes</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{friday}">
+
+														</td>
+													</tr>
+													
+													<tr>
+														<td class="align-middle">6</td>
+														<td class="align-middle">Sábado</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{saturday}">
+														</td>
+													</tr>
+													
+													<tr>
+														<td class="align-middle">7</td>
+														<td class="align-middle">Domingo</td>
+														<td class="align-middle">
+															<input type="checkbox" th:field="*{sunday}">
+														</td>
+													</tr>
 										
-											<tr>
-												<td class="align-middle">2</td>
-												<td class="align-middle">Martes</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{tuesday}"
-													>
-												</td>
-											</tr>
-											
-											<tr>
-												<td class="align-middle">3</td>
-												<td class="align-middle">Miércoles</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{wednesday}"
-													>
-												</td>
-											</tr>
-											
-											<tr>
-												<td class="align-middle">4</td>
-												<td class="align-middle">Jueves</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{thursday}"
-													>
-												</td>
-											</tr>
-											
-											<tr>
-												<td class="align-middle">5</td>
-												<td class="align-middle">Viernes</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{friday}"
-													>
-												</td>
-											</tr>
-											
-											<tr>
-												<td class="align-middle">6</td>
-												<td class="align-middle">Sábado</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{saturday}"
-													>
-												</td>
-											</tr>
-											
-											<tr>
-												<td class="align-middle">7</td>
-												<td class="align-middle">Domingo</td>
-												<td class="align-middle">
-													<input type="checkbox" th:field="*{sunday}"
-													>
-												</td>
-											</tr>
-										
-										</tbody>
-									</table>
+												</tbody>
+											</table>
+										</div>
+									</div>
 								</div>
 							</div>
+						<div th:if="${mensaje}" class="alert alert-danger">
+							<p th:text="${mensaje}"></p>
 						</div>
-					</div>
-					<div th:if="${mensaje}" class="alert alert-danger">
-						<p th:text="${mensaje}"></p>
-					</div>
 					</form>
 				</div>
 			</main>
