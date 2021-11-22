@@ -52,7 +52,6 @@ public class ValorationController {
 			return "valoration/create";
 		else {
 			boolean flag = vService.createValoration(objValoration);
-			System.out.println(flag);
 			if (flag)
 				return "redirect:/reservation/list";
 			else {
