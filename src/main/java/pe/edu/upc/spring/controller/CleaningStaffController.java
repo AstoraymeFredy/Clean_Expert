@@ -42,14 +42,14 @@ public class CleaningStaffController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("staff", new CleaningStaff());
-		return "/register/registerStaff";
+		return "register/registerStaff";
 	}
 
 	@RequestMapping(value = "/registerStaff", method = RequestMethod.POST)
 	public String registerStaff(@Valid @ModelAttribute("staff") CleaningStaff objCleaningStaff, BindingResult binRes,
 			Model model) throws ParseException {
 		if (binRes.hasErrors()) {
-			return "/register/registerStaff";
+			return "register/registerStaff";
 		} else {
 			UserModel user = objCleaningStaff.getUser();
 			user.setType_user(new TypeUser(2, "ROLE_Personal_de_Limpieza"));
@@ -59,7 +59,7 @@ public class CleaningStaffController {
 			if (userRepeat != null) {
 				model.addAttribute("error",
 						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
-				return "/register/registerStaff";
+				return "register/registerStaff";
 			}
 			boolean flag = uService.createUser(user);
 			if (flag) {
@@ -84,14 +84,14 @@ public class CleaningStaffController {
 	@RequestMapping("/view")
 	public String goPageView(Model model) {
 		model.addAttribute("staff", sesion.getCleaningStaff());
-		return "/perfilStaff/view";
+		return "perfilStaff/view";
 	}
 
 	@Secured("ROLE_Personal_de_Limpieza")
 	@RequestMapping("/edit")
 	public String goPageEdit(Model model) {
 		model.addAttribute("staff", sesion.getCleaningStaff());
-		return "/perfilStaff/update";
+		return "perfilStaff/update";
 	}
 
 	@Secured("ROLE_Personal_de_Limpieza")
@@ -99,7 +99,7 @@ public class CleaningStaffController {
 	public String editClient(@Valid @ModelAttribute(value = "staff") CleaningStaff objCleaningStaff,
 			BindingResult binRes, Model model, HttpSession httpSession) throws ParseException {
 		if (binRes.hasErrors()) {
-			return "/perfilStaff/update";
+			return "perfilStaff/update";
 		} else {
 			boolean flag = csService.updateCleaningStaff(objCleaningStaff);
 			if (flag) {
