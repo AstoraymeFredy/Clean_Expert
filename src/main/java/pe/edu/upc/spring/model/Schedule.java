@@ -51,7 +51,6 @@ public class Schedule implements Serializable {
 		super();
 	}
 
-
 	public Schedule(int id_schedule, boolean monday, boolean tuesday, boolean wednesday, boolean thursday,
 			boolean friday, boolean saturday, boolean sunday, CleaningStaff cleaning_staff) {
 		super();
@@ -156,6 +155,4 @@ public class Schedule implements Serializable {
 		this.cleaning_staff = cleaning_staff;
 	}
 
-	
-	
 }
