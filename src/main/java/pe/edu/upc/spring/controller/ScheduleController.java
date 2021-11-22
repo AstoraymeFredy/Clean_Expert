@@ -44,9 +44,6 @@ public class ScheduleController {
 		if (binRes.hasErrors())
 			return "schedule";
 		else {
-			System.out.println(objSchedule.getId_schedule());
-			System.out.println(objSchedule.isMonday());
-			System.out.println(objSchedule.isSunday());
 			boolean flag = sService.createSchedule(objSchedule);
 			if (flag)
 				return "redirect:/schedule/register";

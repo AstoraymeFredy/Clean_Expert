@@ -46,13 +46,13 @@ public class AdminController {
 	@RequestMapping("/register")
 	public String goPageRegister(Model model) {
 		model.addAttribute("admin", new Admin());
-		return "/adminLists/registerAdmin";
+		return "adminLists/registerAdmin";
 	}
 
 	@RequestMapping("/staff/list")
 	public String goPageListStaff(Map<String, Object> model) {
 		model.put("listStaff", csService.listCleaningStaff());
-		return "/adminLists/listStaff";
+		return "adminLists/listStaff";
 	}
 
 	@RequestMapping("/staff/active/{id}")
@@ -75,13 +75,13 @@ public class AdminController {
 	@RequestMapping("/prueba1")
 	public String goPageListAdminprueba1(Map<String, Object> model) {
 		model.put("listAdmin", aService.listAdmin());
-		return "/adminLists/reportGeneral";
+		return "adminLists/reportGeneral";
 	}
 
 	@RequestMapping("/list")
 	public String goPageListAdmin(Map<String, Object> model) {
 		model.put("listAdmin", aService.listAdmin());
-		return "/adminLists/listAdmin";
+		return "adminLists/listAdmin";
 	}
 
 	@RequestMapping("/registerAdmin")
@@ -98,7 +98,7 @@ public class AdminController {
 			if (userRepeat != null) {
 				model.addAttribute("error",
 						"Error: El nombre de usuario o contraseña ya existe. Por favor ingrese otros valores.");
-				return "/adminLists/registerAdmin";
+				return "adminLists/registerAdmin";
 			}
 			boolean flag = uService.createUser(user);
 			if (flag) {
@@ -135,7 +135,7 @@ public class AdminController {
 	public String reportClient(Map<String, Object> model) {
 		// System.out.println(mes+"<-");
 		model.put("listClientR", clService.clientReport());
-		return "/adminLists/reportClient";
+		return "adminLists/reportClient";
 	}
 
 	@RequestMapping("/generalReport")
@@ -144,7 +144,7 @@ public class AdminController {
 		model.addAttribute("headerReport", dService.generalHeaderReport(0));
 		model.addAttribute("listDistrictR", dService.generalReport(0));
 		model.addAttribute("listStaffR", csService.generalReport(0));
-		return "/adminLists/reportGeneral";
+		return "adminLists/reportGeneral";
 	}
 
 	@RequestMapping("/filterGeneralReport")
@@ -152,14 +152,14 @@ public class AdminController {
 		model.put("headerReport", dService.generalHeaderReport(filter.getId_month()));
 		model.put("listDistrictR", dService.generalReport(filter.getId_month()));
 		model.put("listStaffR", csService.generalReport(filter.getId_month()));
-		return "/adminLists/reportGeneral";
+		return "adminLists/reportGeneral";
 	}
 
 	@RequestMapping("/cleaningStaffReport")
 	public String reportPersonal(Model model) {
 		model.addAttribute("filter", new Filter());
 		model.addAttribute("listCleaningStaffR", csService.cleaningStaffReport());
-		return "/adminLists/reportPersonal";
+		return "adminLists/reportPersonal";
 	}
 
 	@RequestMapping("/searchCleaningStaffReport")
@@ -177,7 +177,7 @@ public class AdminController {
 						"Error: Debes seleccionar correctamente las fechas. La fecha de inicio no puede ser posterior");
 			}
 		}
-		return "/adminLists/reportPersonal";
+		return "adminLists/reportPersonal";
 	}
 
 }
