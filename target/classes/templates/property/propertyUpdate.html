@@ -69,8 +69,8 @@
 	                                            form-label">Direccion</label>
 	                                        <input id="id" placeholder="Ingrese" th:field="*{id_property}" type="hidden"/>
 											<div class="col-md-8 col-12">
-												<input type="text" class="form-control" th:field="*{address}" 
-												placeholder="Ingresa una direccion" id="address"
+												<input type="text" class="form-control" th:field="*{address}"
+												placeholder="Ingresa una direccion" id="address" 
 												th:errorclass="'form-control alert-danger'">
 												<small class="form-text text-danger"
 													th:if="${#fields.hasErrors('address')}"
