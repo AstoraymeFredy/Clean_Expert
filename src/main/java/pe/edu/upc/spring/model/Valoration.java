@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 
 
@@ -26,6 +27,7 @@ public class Valoration implements Serializable {
 	@Column(name="comentario", nullable=false, length=200)
 	private String comment;
 	
+	@NotEmpty(message = "Ingrese la calificación")
 	@Column(name="calificacion", nullable=false)
 	private int calification;
 	
