@@ -25,11 +25,15 @@ public interface iClientRepository extends JpaRepository<Client, Integer> {
 			+ " ORDER BY count(r.id_reservation)  DESC "
 			+ " limit 5", nativeQuery = true)
 	public List<String[]> clientReport();
-	//public List<String[]> clientReport(int mes);
 	
-	//+ " where month(r.fecha)=:mes"
-
-
+	@Query(value = "SELECT c.nombre,count(r.id_reservation),sum(r.precio)"
+			+ " from cliente c join propiedad p on c.id_client=p.id_cliente"
+			+ " join reserva r on r.id_propiedad=p.id_property"
+			+ " where date_part('month', r.fecha) = :month" 
+			+ " group by c.nombre"
+			+ " ORDER BY count(r.id_reservation)  DESC "
+			+ " limit 5", nativeQuery = true)
+	public List<String[]> clientReportbyMonth(int month);
 	
 }
 

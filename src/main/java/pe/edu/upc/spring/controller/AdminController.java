@@ -132,11 +132,23 @@ public class AdminController {
 // public String reportClient(Map<String, Object> model,@PathVariable int mes) {
 
 	@RequestMapping("/clientReport")
-	public String reportClient(Map<String, Object> model) {
-		// System.out.println(mes+"<-");
-		model.put("listClientR", clService.clientReport());
+	public String reportClient(Model model) {
+		model.addAttribute("filter", new Filter());
+		
+		model.addAttribute("listClientR", clService.clientReport(0));
 		return "adminLists/reportClient";
 	}
+	
+	
+	@RequestMapping("/filterClientReport")
+	public String filterClient(Map<String, Object> model, @ModelAttribute Filter filter) {
+		
+		model.put("listClientR", clService.clientReport(filter.getId_month()));
+		
+		return "adminLists/reportClient";
+	}
+	
+	
 
 	@RequestMapping("/generalReport")
 	public String goPageGeneralReport(Model model) {
