@@ -143,7 +143,6 @@ public class ReservationController {
 			aprox_duration = (int) Math.ceil(total_duration / 60);
 			total_price = aprox_duration * listParameters.get(1).getValue();
 
-			System.out.println(objReservation.isExtra_cleaning_kit());
 			if (objReservation.isExtra_cleaning_kit()) {
 				total_price = total_price + listParameters.get(2).getValue();
 			}
