@@ -7,8 +7,8 @@ import pe.edu.upc.spring.model.Admin;
 
 public interface iAdminService {
 	public boolean createAdmin(Admin admin);
-	public Optional<Admin> findById(int idAdmin);
-	public Optional<Admin> findByUserId(int idUser);
+	public Admin findById(int idAdmin);
+	public Admin findByUserId(int idUser);
 	public List<Admin> listAdmin();
 	public List<Admin> searchAdmin(String nameAdmin);
 	
