@@ -107,6 +107,19 @@ INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, preci
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-10-30', '08:45',true,100,1,12);
 INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-10-15', '11:45',false,80,1,9);
 
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-09-17', '08:00',true,90,2,4);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-09-19', '09:30',true,85,3,2);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-09-12', '10:00',false,140,1,3);
+
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-08-20', '11:00',false,45,2,7);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-08-22', '08:30',false,95,3,8);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-08-25', '11:30',true,125,1,6);
+
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (3,'realizado','2021-07-10', '10:45',false,165,2,4);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-07-27', '09:45',true,9,3,11);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (4,'realizado','2021-07-30', '08:45',true,150,1,12);
+INSERT INTO reserva (duracion,estado,fecha,hora_inicio,kit_limpieza_extra, precio, id_personal_limpieza,id_propiedad) VALUES (2,'realizado','2021-07-15', '11:45',false,70,1,9);
+
 
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,1,1);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,2,1);
@@ -177,6 +190,76 @@ INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,10);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,4,10);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,5,10);
 INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,6,10);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,1,11);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,2,11);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,11);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,4,11);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,5,11);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,6,11);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,1,12);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,2,12);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,3,12);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,4,12);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,5,12);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,6,12);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,1,13);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,13);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,3,13);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,4,13);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,5,13);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,6,13);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (4,1,14);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,2,14);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,3,14);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,4,14);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,5,14);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,6,14);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,1,15);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,15);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,15);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,4,15);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,5,15);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,6,15);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (4,1,16);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,16);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,3,16);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,4,16);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,5,16);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,6,16);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,1,17);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,17);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,3,17);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,4,17);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,5,17);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,6,17);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (5,1,18);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,18);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,18);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,4,18);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,5,18);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,6,18);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,1,19);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,2,19);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,19);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,4,19);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,5,19);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,6,19);
+
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,1,20);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,2,20);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (2,3,20);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (0,4,20);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (3,5,20);
+INSERT INTO detalle_reserva (cantidad,id_ambiente,id_reserva) VALUES (1,6,20);
 
 INSERT INTO parametro (nombre,valor,unidad) VALUES ('Tiempo de limpieza',45,'minutos');
 INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo de promedio',15,'soles/hora');
