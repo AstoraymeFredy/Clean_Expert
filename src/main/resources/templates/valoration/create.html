@@ -69,11 +69,9 @@
     												<option th:value="4" >4</option>
 													<option th:value="5" >5</option>
 												</select>
-												
 												<small class="form-text text-danger"
 													th:if="${#fields.hasErrors('calification')}"
 													th:errors="*{calification}"></small>
-
 											</div>
 										</div>
 										<input type="hidden" th:field= "*{client.id_client}">
@@ -85,14 +83,13 @@
 	                                            form-label">Comentario</label>
 											<div class="col-md-8 col-12">
 												<textarea class="form-control" th:field="*{comment}" placeholder="Ingresa tu comentario" id="comentario"></textarea>
-													
-												
+											
 											</div>
 										</div>
-										<div class="mt-2">
-											<a href="/reservation/list" class="btn btn-secondary px-4 me-2">Cancelar</a>
-											<button type="submit" class="btn btn-primary px-4">Guardar</button>
-										</div>
+											<div class="mt-2">
+												<a href="/reservation/list" class="btn btn-secondary px-4 me-2">Cancelar</a>
+												<button type="submit" class="btn btn-primary px-4">Guardar</button>
+											</div>
 										<p th:text="${mensaje}" class="form-text text-danger"></p>
 									</form>
 								</div>
@@ -104,7 +101,6 @@
 			</main>
 		</div>
 	</div>
-
 
 	<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/script.js}"></script>
